@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" data-product="recall">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recall Health | Practice Engine (Mobile)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/practice-engine.css">
+</head>
+<body data-desktop-pair>
+
+<div class="mobile-shell">
+  <header class="mobile-topbar">
+    <a class="btn btn-icon" href="index-mobile.html" aria-label="Back to suite home">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+    </a>
+    <h1 class="h3" style="color: var(--accent-strong);">Recall Health</h1>
+    <button class="btn btn-icon" aria-label="Notifications">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+    </button>
+    <span class="avatar avatar-sm" title="Demo User">DU</span>
+  </header>
+
+  <main class="mobile-main">
+
+    <div class="alert alert-info" role="status">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+      <div><span class="alert-title">Skin Check campaign launches tomorrow.</span> 412 patients get their first reminder at 9:00 AM.</div>
+    </div>
+
+    <div class="grid grid-2" style="gap: var(--space-3);">
+      <div class="card stat-card" style="padding: var(--space-4);">
+        <span class="stat-label">Patients due</span>
+        <span class="stat-value" style="font-size: var(--text-xl);">1,284</span>
+        <span class="stat-delta down">&#9660; 6%</span>
+      </div>
+      <div class="card stat-card" style="padding: var(--space-4);">
+        <span class="stat-label">Booked (30d)</span>
+        <span class="stat-value" style="font-size: var(--text-xl);">847</span>
+        <span class="stat-delta up">&#9650; 9%</span>
+      </div>
+      <div class="card stat-card" style="padding: var(--space-4);">
+        <span class="stat-label">Reminders sent</span>
+        <span class="stat-value" style="font-size: var(--text-xl);">3,092</span>
+        <span class="stat-delta up">&#9650; 14%</span>
+      </div>
+      <div class="card stat-card" style="padding: var(--space-4);">
+        <span class="stat-label">Conversion</span>
+        <span class="stat-value" style="font-size: var(--text-xl);">27.4%</span>
+        <span class="stat-delta up">&#9650; 2.1 pts</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">Bookings from recalls</h2>
+        <span class="badge badge-accent">6M</span>
+      </div>
+      <div class="card-body">
+        <div class="bar-chart" style="height: 110px;" role="img" aria-label="Bookings by month, February through July">
+          <div class="bar" style="height: 42%"></div>
+          <div class="bar" style="height: 55%"></div>
+          <div class="bar" style="height: 48%"></div>
+          <div class="bar" style="height: 68%"></div>
+          <div class="bar" style="height: 76%"></div>
+          <div class="bar emph" style="height: 92%"></div>
+        </div>
+        <div class="chart-labels">
+          <span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">Outreach by channel</h2>
+        <span class="text-sm text-muted">3,092 sent</span>
+      </div>
+      <div class="card-body stack" style="gap: var(--space-3);">
+        <div class="mix-bar" role="img" aria-label="Outreach mix: text 46 percent, email 25 percent, voice 17 percent, auto-book 12 percent">
+          <span class="sw-1" style="width: 46%"></span>
+          <span class="sw-2" style="width: 25%"></span>
+          <span class="sw-3" style="width: 17%"></span>
+          <span class="sw-4" style="width: 12%"></span>
+        </div>
+        <div class="legend">
+          <span class="legend-item"><span class="legend-swatch sw-1"></span>Text</span>
+          <span class="legend-item"><span class="legend-swatch sw-2"></span>Email</span>
+          <span class="legend-item"><span class="legend-swatch sw-3"></span>Voice</span>
+          <span class="legend-item"><span class="legend-swatch sw-4"></span>Auto-book</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">Patients due</h2>
+        <a class="text-sm" href="#">View all</a>
+      </div>
+      <div>
+        <a class="list-item" href="#">
+          <span class="avatar">AM</span>
+          <div class="list-item-body">
+            <div class="list-item-title">Alex Morgan (demo)</div>
+            <div class="list-item-sub">Annual skin check &middot; due Jul 24</div>
+          </div>
+          <span class="badge badge-warning">Due soon</span>
+        </a>
+        <a class="list-item" href="#">
+          <span class="avatar">JP</span>
+          <div class="list-item-body">
+            <div class="list-item-title">Jordan Park (demo)</div>
+            <div class="list-item-sub">Follow-up visit &middot; due Jul 02</div>
+          </div>
+          <span class="badge badge-danger">Overdue</span>
+        </a>
+        <a class="list-item" href="#">
+          <span class="avatar">SR</span>
+          <div class="list-item-body">
+            <div class="list-item-title">Sam Rivera (demo)</div>
+            <div class="list-item-sub">Lab work &middot; due Jul 15</div>
+          </div>
+          <span class="badge badge-danger">Overdue</span>
+        </a>
+        <a class="list-item" href="#">
+          <span class="avatar">TW</span>
+          <div class="list-item-body">
+            <div class="list-item-title">Taylor Wells (demo)</div>
+            <div class="list-item-sub">Annual skin check &middot; due Aug 09</div>
+          </div>
+          <span class="badge badge-success">Sent</span>
+        </a>
+      </div>
+    </div>
+
+    <button class="btn btn-primary btn-lg" data-modal-open="modal-new-campaign" style="width: 100%;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+      New Campaign
+    </button>
+
+    <p class="text-xs text-muted" style="text-align:center;"><a href="recall-health.html">Desktop version</a></p>
+  </main>
+
+  <nav class="mobile-tabbar" aria-label="Primary">
+    <a class="mobile-tab active" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+      Dashboard
+    </a>
+    <a class="mobile-tab" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+      Campaigns
+    </a>
+    <a class="mobile-tab" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+      Patients
+    </a>
+    <a class="mobile-tab" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 10v6m11-11h-6M7 12H1"/></svg>
+      Settings
+    </a>
+  </nav>
+</div>
+
+<div class="modal-overlay" id="modal-new-campaign" role="dialog" aria-modal="true" aria-labelledby="new-campaign-title-m">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 class="h3" id="new-campaign-title-m">New recall campaign</h2>
+      <button class="btn btn-icon" data-modal-close aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+    </div>
+    <div class="modal-body stack" style="gap: var(--space-4);">
+      <div class="field">
+        <label class="field-label" for="campaign-name-m">Campaign name</label>
+        <input class="input" id="campaign-name-m" type="text" placeholder="e.g. Annual Skin Check 2026">
+      </div>
+      <div class="field">
+        <label class="field-label" for="campaign-type-m">Recall type</label>
+        <select class="select" id="campaign-type-m">
+          <option>Annual skin check</option>
+          <option>Follow-up visit</option>
+          <option>Lab work</option>
+        </select>
+      </div>
+      <label class="toggle">
+        <input type="checkbox" checked>
+        <span class="toggle-track" aria-hidden="true"></span>
+        <span class="text-sm">Auto-book from reminder link</span>
+      </label>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" data-modal-close>Cancel</button>
+      <button class="btn btn-primary" data-modal-close>Create</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/practice-engine.js"></script>
+</body>
+</html>

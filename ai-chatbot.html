@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" data-product="chatbot">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Chatbot | Practice Engine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/practice-engine.css">
+<style>
+  .console { display: grid; grid-template-columns: 300px 1fr 280px; gap: var(--space-5); align-items: start; }
+  .convo-list .list-item { cursor: pointer; }
+  .convo-list .list-item.selected { background: var(--accent-softer); box-shadow: inset 3px 0 0 var(--accent); }
+  .chat-composer {
+    display: flex; gap: var(--space-2);
+    padding: var(--space-4) var(--space-5);
+    border-top: 1px solid var(--border-color);
+  }
+  .chat-window-body { padding: var(--space-5); max-height: 420px; overflow-y: auto; }
+  @media (max-width: 1200px) { .console { grid-template-columns: 280px 1fr; } .console > .lead-panel { display: none; } }
+  @media (max-width: 900px) { .console { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body data-mobile-pair>
+
+<header class="topbar">
+  <a class="topbar-brand" href="index.html">
+    <div class="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+    </div>
+    <span>Practice Engine</span>
+  </a>
+  <div class="topbar-divider" aria-hidden="true"></div>
+  <span class="topbar-product">AI Chatbot</span>
+  <div class="topbar-spacer"></div>
+  <div class="input-group topbar-search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    <input class="input" type="search" placeholder="Search conversations...">
+  </div>
+  <div class="topbar-actions">
+    <button class="btn btn-icon" aria-label="Notifications">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+    </button>
+    <div class="app-switcher">
+      <button class="btn btn-icon" data-switcher-toggle aria-label="Switch application" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="5" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="12" cy="19" r="2"/><circle cx="19" cy="19" r="2"/></svg>
+      </button>
+      <nav class="app-switcher-menu" aria-label="Applications">
+        <a class="app-switcher-item" href="index.html"><span class="app-tile app-tile-suite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>Suite Home</a>
+        <a class="app-switcher-item" href="recall-health.html"><span class="app-tile app-tile-recall"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></span>Recall Health</a>
+        <a class="app-switcher-item" href="ai-receptionist.html"><span class="app-tile app-tile-receptionist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>AI Receptionist</a>
+        <a class="app-switcher-item" href="ai-chatbot.html"><span class="app-tile app-tile-chatbot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span>AI Chatbot</a>
+        <a class="app-switcher-item" href="appointment-scheduler.html"><span class="app-tile app-tile-scheduler"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg></span>Scheduler</a>
+        <a class="app-switcher-item" href="patient-intake.html"><span class="app-tile app-tile-intake"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></span>Patient Intake</a>
+        <a class="app-switcher-item" href="design-system.html"><span class="app-tile app-tile-design"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></span>Design System</a>
+      </nav>
+    </div>
+    <span class="avatar" title="Demo User">DU</span>
+  </div>
+</header>
+
+<div class="app-shell">
+  <nav class="sidebar" aria-label="AI Chatbot navigation">
+    <span class="sidebar-section">Overview</span>
+    <a class="nav-item" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+      Dashboard
+    </a>
+    <a class="nav-item active" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+      Conversations
+      <span class="badge badge-accent">3</span>
+    </a>
+    <a class="nav-item" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6"/><path d="M22 11h-6"/></svg>
+      Leads
+    </a>
+    <a class="nav-item" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+      Knowledge Base
+    </a>
+    <span class="sidebar-section">Insights</span>
+    <a class="nav-item" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+      Reports
+    </a>
+    <a class="nav-item" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 10v6m11-11h-6M7 12H1"/></svg>
+      Settings
+    </a>
+  </nav>
+
+  <main class="main">
+    <div class="main-inner stack">
+
+      <div class="page-header">
+        <div>
+          <span class="eyebrow">AI Chatbot</span>
+          <h1 class="h1">Conversations</h1>
+          <p class="text-secondary">Your website assistant, answering patients around the clock.</p>
+        </div>
+        <div class="row">
+          <div class="segmented" role="tablist" aria-label="Conversation filter">
+            <button class="active">Active</button>
+            <button>Resolved</button>
+            <button>All</button>
+          </div>
+          <button class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+            Edit Bot Persona
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-4">
+        <div class="card stat-card">
+          <span class="stat-label">Conversations (7d)</span>
+          <span class="stat-value">642</span>
+          <span class="stat-delta up">&#9650; 18%</span>
+        </div>
+        <div class="card stat-card">
+          <span class="stat-label">Resolved by bot</span>
+          <span class="stat-value">86%</span>
+          <span class="stat-delta up">&#9650; 4 pts</span>
+        </div>
+        <div class="card stat-card">
+          <span class="stat-label">Leads captured</span>
+          <span class="stat-value">57</span>
+          <span class="stat-delta up">&#9650; 11</span>
+        </div>
+        <div class="card stat-card">
+          <span class="stat-label">Avg. rating</span>
+          <span class="stat-value">4.8 &#9733;</span>
+          <span class="stat-delta up">&#9650; 0.2</span>
+        </div>
+      </div>
+
+      <div class="console">
+
+        <div class="card convo-list">
+          <div class="card-header"><h2 class="card-title">Active chats</h2><span class="badge badge-accent">3</span></div>
+          <div>
+            <div class="list-item selected">
+              <span class="avatar">VW</span>
+              <div class="list-item-body">
+                <div class="list-item-title">Website visitor</div>
+                <div class="list-item-sub">Do you take new patients?</div>
+              </div>
+              <span class="text-xs text-muted">now</span>
+            </div>
+            <div class="list-item">
+              <span class="avatar">PK</span>
+              <div class="list-item-body">
+                <div class="list-item-title">Pat K. (demo)</div>
+                <div class="list-item-sub">What insurance do you accept?</div>
+              </div>
+              <span class="text-xs text-muted">2m</span>
+            </div>
+            <div class="list-item">
+              <span class="avatar">VW</span>
+              <div class="list-item-body">
+                <div class="list-item-title">Website visitor</div>
+                <div class="list-item-sub">Office hours on Saturday?</div>
+              </div>
+              <span class="text-xs text-muted">8m</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-ghost btn-sm" style="width: 100%;">View resolved chats</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div class="avatar-row">
+              <span class="avatar">VW</span>
+              <div>
+                <div class="card-title">Website visitor</div>
+                <span class="text-xs text-muted">practiceengine.example &middot; started 4 min ago</span>
+              </div>
+            </div>
+            <span class="badge badge-success"><span class="dot"></span>Bot handling</span>
+          </div>
+          <div class="chat-window-body">
+            <div class="chat-thread">
+              <div class="chat-msg">
+                <span class="avatar avatar-sm">VW</span>
+                <div>
+                  <div class="chat-bubble">Hi! Do you take new patients?</div>
+                  <div class="chat-meta">Visitor &middot; 4:02 PM</div>
+                </div>
+              </div>
+              <div class="chat-msg outbound">
+                <span class="avatar avatar-sm" style="background: var(--accent); color: var(--accent-contrast);">AI</span>
+                <div>
+                  <div class="chat-bubble">Welcome! Yes, we are accepting new patients at both of our locations. Would you like me to help you book a first visit?</div>
+                  <div class="chat-meta">Assistant &middot; 4:02 PM</div>
+                </div>
+              </div>
+              <div class="chat-msg">
+                <span class="avatar avatar-sm">VW</span>
+                <div>
+                  <div class="chat-bubble">Yes please. Do you have anything next week in the afternoon?</div>
+                  <div class="chat-meta">Visitor &middot; 4:03 PM</div>
+                </div>
+              </div>
+              <div class="chat-msg outbound">
+                <span class="avatar avatar-sm" style="background: var(--accent); color: var(--accent-contrast);">AI</span>
+                <div>
+                  <div class="chat-bubble">We have openings Tuesday at 2:15 PM and Thursday at 3:40 PM. To hold a spot I just need your name and a phone number.</div>
+                  <div class="chat-meta">Assistant &middot; 4:03 PM</div>
+                </div>
+              </div>
+              <div class="chat-msg">
+                <span class="avatar avatar-sm">VW</span>
+                <div><div class="chat-bubble typing-dots" aria-label="Visitor is typing"><span></span><span></span><span></span></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="chat-composer">
+            <input class="input" type="text" placeholder="Type to take over the conversation..." aria-label="Message">
+            <button class="btn btn-primary" aria-label="Send">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="stack lead-panel" style="gap: var(--space-5);">
+          <div class="card">
+            <div class="card-header"><h2 class="card-title">Lead details</h2></div>
+            <div class="card-body stack" style="gap: var(--space-3);">
+              <div>
+                <div class="text-xs text-muted">Interest</div>
+                <div class="cell-strong">New patient visit</div>
+              </div>
+              <div>
+                <div class="text-xs text-muted">Preferred time</div>
+                <div class="cell-strong">Next week, afternoons</div>
+              </div>
+              <div>
+                <div class="text-xs text-muted">Source</div>
+                <div class="cell-strong">Website widget</div>
+              </div>
+              <div class="progress" aria-label="Lead capture progress">
+                <div class="progress-fill" style="width: 60%"></div>
+              </div>
+              <span class="text-xs text-muted">3 of 5 details captured</span>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-soft btn-sm" style="width: 100%;">Send to Scheduler</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header"><h2 class="card-title">Top topics this week</h2></div>
+            <div class="card-body stack" style="gap: var(--space-3);">
+              <div class="hbar-row">
+                <span class="hbar-label">Insurance accepted</span>
+                <div class="hbar-track"><div class="hbar-fill sw-1" style="width: 100%"></div></div>
+                <span class="hbar-value">31%</span>
+              </div>
+              <div class="hbar-row">
+                <span class="hbar-label">New patient booking</span>
+                <div class="hbar-track"><div class="hbar-fill sw-2" style="width: 77%"></div></div>
+                <span class="hbar-value">24%</span>
+              </div>
+              <div class="hbar-row">
+                <span class="hbar-label">Office hours</span>
+                <div class="hbar-track"><div class="hbar-fill sw-3" style="width: 55%"></div></div>
+                <span class="hbar-value">17%</span>
+              </div>
+              <div class="hbar-row">
+                <span class="hbar-label">Directions</span>
+                <div class="hbar-track"><div class="hbar-fill sw-4" style="width: 29%"></div></div>
+                <span class="hbar-value">9%</span>
+              </div>
+              <div class="hbar-row">
+                <span class="hbar-label">Everything else</span>
+                <div class="hbar-track"><div class="hbar-fill sw-5" style="width: 61%"></div></div>
+                <span class="hbar-value">19%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="js/practice-engine.js"></script>
+</body>
+</html>
