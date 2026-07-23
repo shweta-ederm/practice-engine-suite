@@ -19,21 +19,25 @@
   }
 </style>
 </head>
-<body data-mobile-pair>
+<body>
 
 <header class="topbar">
   <a class="topbar-brand" href="index.html">
-    <div class="brand-mark" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
-    </div>
-    <span>Practice Engine</span>
+    <span class="pe-mark" style="--mark-size: 32px;" aria-hidden="true">
+      <span class="pe-mark-text">PE</span>
+      <span class="pe-mark-rule"></span>
+    </span>
+    <span class="wm-inline" aria-hidden="true">
+      <span class="wm-words"><span class="g">PRACTICE</span><span class="k">ENGINE</span></span>
+      <span class="wm-rule"></span>
+    </span>
   </a>
   <div class="topbar-divider" aria-hidden="true"></div>
   <span class="topbar-product">Patient Intake</span>
   <div class="topbar-spacer"></div>
   <div class="input-group topbar-search">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-    <input class="input" type="search" placeholder="Search intake packets...">
+    <input class="input" type="search" placeholder="Search intake forms...">
   </div>
   <div class="topbar-actions">
     <button class="btn btn-icon" aria-label="Notifications">
@@ -50,23 +54,30 @@
         <a class="app-switcher-item" href="ai-chatbot.html"><span class="app-tile app-tile-chatbot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span>AI Chatbot</a>
         <a class="app-switcher-item" href="appointment-scheduler.html"><span class="app-tile app-tile-scheduler"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg></span>Scheduler</a>
         <a class="app-switcher-item" href="patient-intake.html"><span class="app-tile app-tile-intake"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></span>Patient Intake</a>
+        <a class="app-switcher-item" href="pay-my-doc.html"><span class="app-tile app-tile-paymydoc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>Pay My Doc</a>
+        <a class="app-switcher-item" href="pe-admin.html"><span class="app-tile app-tile-admin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7"/><path d="M4 10V3"/><path d="M12 21v-9"/><path d="M12 8V3"/><path d="M20 21v-5"/><path d="M20 12V3"/><path d="M1 14h6"/><path d="M9 8h6"/><path d="M17 16h6"/></svg></span>PE Admin</a>
         <a class="app-switcher-item" href="design-system.html"><span class="app-tile app-tile-design"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></span>Design System</a>
       </nav>
     </div>
-    <span class="avatar" title="Demo User">DU</span>
+    <div class="avatar-row">
+      <div style="text-align: right;">
+        <div class="text-sm" style="font-weight: var(--weight-semibold); line-height: 1.2;">Shweta Singh</div>
+        <div class="text-xs text-muted">Global Admin</div>
+      </div>
+      <span class="avatar" title="Shweta Singh">SS</span>
+    </div>
   </div>
 </header>
 
 <div class="app-shell">
   <nav class="sidebar" aria-label="Patient Intake navigation">
-    <span class="sidebar-section">Overview</span>
     <a class="nav-item active" href="#">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
       Dashboard
     </a>
     <a class="nav-item" href="#">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M8 11h8"/><path d="M8 15h5"/></svg>
-      Intake Packets
+      Intake Forms
       <span class="badge badge-accent">9</span>
     </a>
     <a class="nav-item" href="#">
@@ -89,7 +100,6 @@
 
       <div class="page-header">
         <div>
-          <span class="eyebrow">Patient Intake</span>
           <h1 class="h1">Intake Dashboard</h1>
           <p class="text-secondary">Paperwork done before patients walk in the door.</p>
         </div>
@@ -100,28 +110,49 @@
           </button>
           <button class="btn btn-primary">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
-            Send Intake Packet
+            Send Intake Forms
           </button>
         </div>
       </div>
 
+      <div class="card">
+        <div class="card-body filter-bar">
+          <div class="field">
+            <label class="field-label" for="f-period">Period</label>
+            <select class="select" id="f-period"><option>June 2026</option><option>May 2026</option><option>April 2026</option></select>
+          </div>
+          <div class="field">
+            <label class="field-label" for="f-practice">Practice (1)</label>
+            <select class="select" id="f-practice"><option>Coastal Dermatology (demo)</option><option>All practices</option></select>
+          </div>
+          <div class="field">
+            <label class="field-label" for="f-locations">Locations (4)</label>
+            <select class="select" id="f-locations"><option>All locations</option><option>Main Street Clinic</option><option>Harbor Medical Center</option><option>Lakeside Office</option><option>Telehealth</option></select>
+          </div>
+          <div class="field">
+            <label class="field-label" for="f-providers">Providers (16)</label>
+            <select class="select" id="f-providers"><option>All providers</option><option>Dr. Avery North, MD</option><option>Quinn Gold, PA-C</option><option>Dr. Rowan West, MD</option></select>
+          </div>
+        </div>
+      </div>
+
       <div class="grid grid-4">
-        <div class="card stat-card">
-          <span class="stat-label">Packets sent (7d)</span>
+        <div class="card stat-card stat-edge" style="--edge: var(--chart-1);">
+          <span class="stat-label">Forms sent (7d)</span>
           <span class="stat-value">132</span>
           <span class="stat-delta up">&#9650; 9%</span>
         </div>
-        <div class="card stat-card">
+        <div class="card stat-card stat-edge" style="--edge: var(--chart-2);">
           <span class="stat-label">Completed before visit</span>
           <span class="stat-value">91%</span>
           <span class="stat-delta up">&#9650; 3 pts</span>
         </div>
-        <div class="card stat-card">
+        <div class="card stat-card stat-edge" style="--edge: var(--chart-3);">
           <span class="stat-label">Avg. completion time</span>
           <span class="stat-value">6m 20s</span>
           <span class="stat-delta up">&#9650; 40s faster</span>
         </div>
-        <div class="card stat-card">
+        <div class="card stat-card stat-edge" style="--edge: var(--chart-4);">
           <span class="stat-label">Front desk time saved</span>
           <span class="stat-value">14 hrs</span>
           <span class="stat-delta up">&#9650; this week</span>
@@ -141,8 +172,8 @@
               </select>
             </div>
             <div class="card-body stack" style="gap: var(--space-2); padding-bottom: var(--space-4); border-bottom: 1px solid var(--border-color);">
-              <div class="row-between text-sm"><span style="font-weight: var(--weight-medium);">Packet status (7d)</span><span class="text-muted">132 packets</span></div>
-              <div class="mix-bar" role="img" aria-label="Packet status: complete 62 percent, in progress 21 percent, not started 10 percent, reminded 7 percent">
+              <div class="row-between text-sm"><span style="font-weight: var(--weight-medium);">Form completion (7d)</span><span class="text-muted">132 form sets</span></div>
+              <div class="mix-bar" role="img" aria-label="Form set status: complete 62 percent, in progress 21 percent, not started 10 percent, reminded 7 percent">
                 <span class="sw-1" style="width: 62%"></span>
                 <span class="sw-2" style="width: 21%"></span>
                 <span class="sw-3" style="width: 10%"></span>
@@ -160,7 +191,7 @@
                 <span class="avatar">RC</span>
                 <div class="list-item-body">
                   <div class="list-item-title">Riley Chen (demo)</div>
-                  <div class="list-item-sub">New patient packet &middot; visit Jul 23, 8:00 AM</div>
+                  <div class="list-item-sub">New patient registration &middot; visit Jul 23, 8:00 AM</div>
                 </div>
                 <span class="badge badge-success"><span class="dot"></span>Complete</span>
               </div>
@@ -168,7 +199,7 @@
                 <span class="avatar">WS</span>
                 <div class="list-item-body">
                   <div class="list-item-title">Winter Smith (demo)</div>
-                  <div class="list-item-sub">New patient packet &middot; visit Jul 24, 1:00 PM</div>
+                  <div class="list-item-sub">New patient registration &middot; visit Jul 24, 1:00 PM</div>
                 </div>
                 <div style="width: 120px;">
                   <div class="progress" aria-label="60 percent complete"><div class="progress-fill" style="width: 60%"></div></div>
@@ -179,7 +210,7 @@
                 <span class="avatar">LT</span>
                 <div class="list-item-body">
                   <div class="list-item-title">Lee Tran (demo)</div>
-                  <div class="list-item-sub">Consent renewal &middot; visit Jul 23, 11:00 AM</div>
+                  <div class="list-item-sub">Consent form renewal &middot; visit Jul 23, 11:00 AM</div>
                 </div>
                 <span class="badge badge-warning"><span class="dot"></span>Not started</span>
               </div>
@@ -193,7 +224,7 @@
               </div>
             </div>
             <div class="card-footer" style="justify-content: space-between;">
-              <span class="text-sm text-muted">9 packets pending</span>
+              <span class="text-sm text-muted">9 patients pending</span>
               <button class="btn btn-soft btn-sm">Remind all</button>
             </div>
           </div>
@@ -205,7 +236,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M8 11h8"/><path d="M8 15h5"/></svg>
               </div>
               <h3 class="h4">No custom forms yet</h3>
-              <p>Build your first custom intake form and it will appear here, ready to add to any packet.</p>
+              <p>Build your first custom intake form and it will appear here, ready to add to any form set.</p>
               <button class="btn btn-primary btn-sm">Create a form</button>
             </div>
           </div>
@@ -213,7 +244,7 @@
 
         <div class="card">
           <div class="card-header">
-            <h2 class="card-title">Patient view: new patient packet</h2>
+            <h2 class="card-title">Patient view: new patient form set</h2>
             <span class="badge badge-neutral">Preview</span>
           </div>
           <div class="card-body stack" style="gap: var(--space-5);">

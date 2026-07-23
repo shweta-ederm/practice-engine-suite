@@ -1,28 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" data-product="receptionist">
+<html lang="en" data-product="paymydoc">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Medical Receptionist | Practice Engine</title>
+<title>Pay My Doc | Practice Engine</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/practice-engine.css">
-<style>
-  .live-pill {
-    display: inline-flex; align-items: center; gap: var(--space-2);
-    font-size: var(--text-xs); font-weight: var(--weight-semibold);
-    color: var(--pe-danger);
-  }
-  .live-pill .pulse {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--pe-danger);
-    animation: pulse 1.4s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
-    50% { box-shadow: 0 0 0 6px rgba(220, 38, 38, 0); }
-  }
-</style>
 </head>
 <body>
 
@@ -38,11 +22,11 @@
     </span>
   </a>
   <div class="topbar-divider" aria-hidden="true"></div>
-  <span class="topbar-product">AI Medical Receptionist</span>
+  <span class="topbar-product">Pay My Doc</span>
   <div class="topbar-spacer"></div>
   <div class="input-group topbar-search">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-    <input class="input" type="search" placeholder="Search calls, callers...">
+    <input class="input" type="search" placeholder="Search payments, statements...">
   </div>
   <div class="topbar-actions">
     <button class="btn btn-icon" aria-label="Notifications">
@@ -75,19 +59,23 @@
 </header>
 
 <div class="app-shell">
-  <nav class="sidebar" aria-label="AI Receptionist navigation">
+  <nav class="sidebar" aria-label="Pay My Doc navigation">
     <a class="nav-item active" href="#">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
       Dashboard
     </a>
     <a class="nav-item" href="#">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      Call Log
-      <span class="badge badge-accent">12</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+      Payments
+      <span class="badge badge-accent">18</span>
     </a>
     <a class="nav-item" href="#">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
-      Assistant Setup
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+      Statements
+    </a>
+    <a class="nav-item" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      Payment Plans
     </a>
     <span class="sidebar-section">Insights</span>
     <a class="nav-item" href="#">
@@ -105,18 +93,17 @@
 
       <div class="page-header">
         <div>
-          <h1 class="h1">Call Center</h1>
-          <p class="text-secondary">Your AI answers every call, day and night.</p>
+          <h1 class="h1">Payments Dashboard</h1>
+          <p class="text-secondary">Patient balances collected without the phone calls.</p>
         </div>
         <div class="row">
-          <label class="toggle">
-            <input type="checkbox" checked>
-            <span class="toggle-track" aria-hidden="true"></span>
-            <span class="text-sm" style="font-weight: var(--weight-medium);">Assistant active</span>
-          </label>
+          <button class="btn btn-secondary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+            Export
+          </button>
           <button class="btn btn-primary">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 3 20 12 6 21 6 3"/></svg>
-            Test Call
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+            Send Payment Link
           </button>
         </div>
       </div>
@@ -144,105 +131,72 @@
 
       <div class="grid grid-4">
         <div class="card stat-card stat-edge" style="--edge: var(--chart-1);">
-          <span class="stat-label">Calls answered today</span>
-          <span class="stat-value">96</span>
-          <span class="stat-delta up">&#9650; 100% answer rate</span>
+          <span class="stat-label">Collected this month</span>
+          <span class="stat-value">$94,213</span>
+          <span class="stat-delta up">&#9650; 11% vs May</span>
         </div>
         <div class="card stat-card stat-edge" style="--edge: var(--chart-2);">
-          <span class="stat-label">Appointments booked</span>
-          <span class="stat-value">38</span>
-          <span class="stat-delta up">&#9650; 5 vs yesterday</span>
+          <span class="stat-label">Outstanding patient balances</span>
+          <span class="stat-value">$27,480</span>
+          <span class="stat-delta down">&#9660; 8% and falling</span>
         </div>
         <div class="card stat-card stat-edge" style="--edge: var(--chart-3);">
-          <span class="stat-label">Avg. call duration</span>
-          <span class="stat-value">2m 41s</span>
-          <span class="stat-delta up">&#9650; 12s faster</span>
+          <span class="stat-label">Average days to payment</span>
+          <span class="stat-value">3.4</span>
+          <span class="stat-delta up">&#9650; 9 days faster than mail</span>
         </div>
         <div class="card stat-card stat-edge" style="--edge: var(--chart-4);">
-          <span class="stat-label">Escalated to staff</span>
-          <span class="stat-value">7</span>
-          <span class="stat-delta down">&#9660; 3 fewer than avg</span>
+          <span class="stat-label">Payment plans active</span>
+          <span class="stat-value">42</span>
+          <span class="stat-delta up">&#9650; 97% on schedule</span>
         </div>
       </div>
 
       <div class="grid grid-2">
         <div class="card">
           <div class="card-header">
-            <h2 class="card-title">Live call</h2>
-            <span class="live-pill"><span class="pulse" aria-hidden="true"></span>ON CALL &middot; 1m 12s</span>
-          </div>
-          <div class="card-body">
-            <div class="chat-thread" aria-label="Live call transcript">
-              <div class="chat-msg">
-                <span class="avatar avatar-sm">CL</span>
-                <div>
-                  <div class="chat-bubble">Hi, I need to reschedule my appointment for this Friday.</div>
-                  <div class="chat-meta">Caller &middot; 0:14</div>
-                </div>
-              </div>
-              <div class="chat-msg outbound">
-                <span class="avatar avatar-sm" style="background: var(--accent); color: var(--accent-contrast);">AI</span>
-                <div>
-                  <div class="chat-bubble">Of course, I can help with that. I see your visit on Friday at 2:30 PM. Would you prefer another day this week or next week?</div>
-                  <div class="chat-meta">Assistant &middot; 0:19</div>
-                </div>
-              </div>
-              <div class="chat-msg">
-                <span class="avatar avatar-sm">CL</span>
-                <div>
-                  <div class="chat-bubble">Next Tuesday morning if possible.</div>
-                  <div class="chat-meta">Caller &middot; 0:31</div>
-                </div>
-              </div>
-              <div class="chat-msg outbound">
-                <span class="avatar avatar-sm" style="background: var(--accent); color: var(--accent-contrast);">AI</span>
-                <div>
-                  <div class="chat-bubble typing-dots" aria-label="Assistant is speaking"><span></span><span></span><span></span></div>
-                </div>
-              </div>
+            <h2 class="card-title">Collections by month</h2>
+            <div class="segmented" role="tablist" aria-label="Chart range">
+              <button class="active">6M</button>
+              <button>12M</button>
             </div>
           </div>
-          <div class="card-footer" style="justify-content: space-between;">
-            <span class="badge badge-accent"><span class="dot"></span>Intent: Reschedule</span>
-            <button class="btn btn-secondary btn-sm">Take over call</button>
+          <div class="card-body">
+            <div class="bar-chart" role="img" aria-label="Collections by month, February through July">
+              <div class="bar" style="height: 48%"></div>
+              <div class="bar" style="height: 55%"></div>
+              <div class="bar" style="height: 63%"></div>
+              <div class="bar" style="height: 60%"></div>
+              <div class="bar" style="height: 78%"></div>
+              <div class="bar emph" style="height: 94%"></div>
+            </div>
+            <div class="chart-labels">
+              <span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span>
+            </div>
           </div>
         </div>
 
         <div class="card">
           <div class="card-header">
-            <h2 class="card-title">Call volume today</h2>
-            <span class="text-sm text-muted">Hourly</span>
+            <h2 class="card-title">Collections by payment method</h2>
+            <span class="text-sm text-muted">$94,213 total</span>
           </div>
-          <div class="card-body">
-            <div class="bar-chart" role="img" aria-label="Calls per hour from 8 AM to 5 PM">
-              <div class="bar" style="height: 35%"></div>
-              <div class="bar" style="height: 62%"></div>
-              <div class="bar emph" style="height: 88%"></div>
-              <div class="bar" style="height: 70%"></div>
-              <div class="bar" style="height: 45%"></div>
-              <div class="bar" style="height: 30%"></div>
-              <div class="bar" style="height: 52%"></div>
-              <div class="bar" style="height: 66%"></div>
-              <div class="bar" style="height: 58%"></div>
-              <div class="bar" style="height: 24%"></div>
+          <div class="card-body stack" style="gap: var(--space-3);">
+            <div class="mix-bar" role="img" aria-label="Payment methods: card on file 48 percent, payment links 27 percent, payment plans 15 percent, in office 10 percent">
+              <span class="sw-1" style="width: 48%"></span>
+              <span class="sw-2" style="width: 27%"></span>
+              <span class="sw-3" style="width: 15%"></span>
+              <span class="sw-4" style="width: 10%"></span>
             </div>
-            <div class="chart-labels">
-              <span>8a</span><span>9a</span><span>10a</span><span>11a</span><span>12p</span><span>1p</span><span>2p</span><span>3p</span><span>4p</span><span>5p</span>
+            <div class="legend">
+              <span class="legend-item"><span class="legend-swatch sw-1"></span>Card on file</span>
+              <span class="legend-item"><span class="legend-swatch sw-2"></span>Payment links</span>
+              <span class="legend-item"><span class="legend-swatch sw-3"></span>Payment plans</span>
+              <span class="legend-item"><span class="legend-swatch sw-4"></span>In office</span>
             </div>
-            <div class="stack" style="gap: var(--space-2); margin-top: var(--space-5);">
-              <div class="row-between text-sm"><span style="font-weight: var(--weight-medium);">Outcomes today</span><span class="text-muted">96 calls</span></div>
-              <div class="mix-bar" role="img" aria-label="Call outcomes: booked 40 percent, answered 34 percent, escalated 15 percent, voicemail 11 percent">
-                <span class="sw-1" style="width: 40%"></span>
-                <span class="sw-2" style="width: 34%"></span>
-                <span class="sw-3" style="width: 15%"></span>
-                <span class="sw-4" style="width: 11%"></span>
-              </div>
-              <div class="legend">
-                <span class="legend-item"><span class="legend-swatch sw-1"></span>Booked</span>
-                <span class="legend-item"><span class="legend-swatch sw-2"></span>Answered</span>
-                <span class="legend-item"><span class="legend-swatch sw-3"></span>Escalated</span>
-                <span class="legend-item"><span class="legend-swatch sw-4"></span>Voicemail</span>
-              </div>
+            <div class="alert alert-success" role="status" style="margin-top: var(--space-2);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+              <div><span class="alert-title">Text-to-pay is working.</span> 82% of payment links sent by text are paid within 48 hours.</div>
             </div>
           </div>
         </div>
@@ -250,72 +204,78 @@
 
       <div class="card">
         <div class="card-header">
-          <h2 class="card-title">Recent calls</h2>
+          <h2 class="card-title">Recent payments</h2>
           <div class="tabs" style="border-bottom: none;">
             <button class="tab active">All</button>
-            <button class="tab">Booked</button>
-            <button class="tab">Escalated</button>
-            <button class="tab">Voicemail</button>
+            <button class="tab">Paid</button>
+            <button class="tab">Pending</button>
+            <button class="tab">Overdue</button>
           </div>
         </div>
         <div class="table-wrap">
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">Caller</th>
-                <th scope="col">Time</th>
-                <th scope="col">Duration</th>
-                <th scope="col">Intent</th>
-                <th scope="col">Outcome</th>
+                <th scope="col">Patient</th>
+                <th scope="col">Description</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Method</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
                 <th scope="col"><span class="visually-hidden">Actions</span></th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><div class="avatar-row"><span class="avatar avatar-sm">RC</span><span class="cell-strong">Riley Chen (demo)</span></div></td>
-                <td class="cell-muted">10:42 AM</td>
-                <td>3m 05s</td>
-                <td>New appointment</td>
-                <td><span class="badge badge-success"><span class="dot"></span>Booked</span></td>
-                <td><button class="btn btn-ghost btn-sm">Transcript</button></td>
-              </tr>
-              <tr>
-                <td><div class="avatar-row"><span class="avatar avatar-sm">DK</span><span class="cell-strong">Dana Kim (demo)</span></div></td>
-                <td class="cell-muted">10:18 AM</td>
-                <td>1m 47s</td>
-                <td>Prescription refill</td>
-                <td><span class="badge badge-warning"><span class="dot"></span>Escalated</span></td>
-                <td><button class="btn btn-ghost btn-sm">Transcript</button></td>
+                <td>Copay, office visit</td>
+                <td class="cell-strong">$40.00</td>
+                <td>Card on file</td>
+                <td class="cell-muted">Jul 22, 2026</td>
+                <td><span class="badge badge-success"><span class="dot"></span>Paid</span></td>
+                <td><button class="btn btn-ghost btn-sm">Receipt</button></td>
               </tr>
               <tr>
                 <td><div class="avatar-row"><span class="avatar avatar-sm">MB</span><span class="cell-strong">Morgan Bell (demo)</span></div></td>
-                <td class="cell-muted">9:56 AM</td>
-                <td>2m 12s</td>
-                <td>Reschedule</td>
-                <td><span class="badge badge-success"><span class="dot"></span>Rescheduled</span></td>
-                <td><button class="btn btn-ghost btn-sm">Transcript</button></td>
+                <td>Procedure balance</td>
+                <td class="cell-strong">$385.00</td>
+                <td>Payment plan, 3 of 6</td>
+                <td class="cell-muted">Jul 21, 2026</td>
+                <td><span class="badge badge-success"><span class="dot"></span>Paid</span></td>
+                <td><button class="btn btn-ghost btn-sm">Receipt</button></td>
               </tr>
               <tr>
-                <td><div class="avatar-row"><span class="avatar avatar-sm">UN</span><span class="cell-strong">Unknown caller</span></div></td>
-                <td class="cell-muted">9:31 AM</td>
-                <td>0m 44s</td>
-                <td>General question</td>
-                <td><span class="badge badge-neutral"><span class="dot"></span>Answered</span></td>
-                <td><button class="btn btn-ghost btn-sm">Transcript</button></td>
+                <td><div class="avatar-row"><span class="avatar avatar-sm">TW</span><span class="cell-strong">Taylor Wells (demo)</span></div></td>
+                <td>Statement balance</td>
+                <td class="cell-strong">$128.50</td>
+                <td>Payment link (text)</td>
+                <td class="cell-muted">Jul 21, 2026</td>
+                <td><span class="badge badge-warning"><span class="dot"></span>Pending</span></td>
+                <td><button class="btn btn-ghost btn-sm">Remind</button></td>
               </tr>
               <tr>
-                <td><div class="avatar-row"><span class="avatar avatar-sm">JL</span><span class="cell-strong">Jamie Lee (demo)</span></div></td>
-                <td class="cell-muted">9:02 AM</td>
-                <td>1m 20s</td>
-                <td>Insurance question</td>
-                <td><span class="badge badge-info"><span class="dot"></span>Voicemail</span></td>
-                <td><button class="btn btn-ghost btn-sm">Listen</button></td>
+                <td><div class="avatar-row"><span class="avatar avatar-sm">JP</span><span class="cell-strong">Jordan Park (demo)</span></div></td>
+                <td>Deductible portion</td>
+                <td class="cell-strong">$212.00</td>
+                <td>Payment link (email)</td>
+                <td class="cell-muted">Jul 14, 2026</td>
+                <td><span class="badge badge-danger"><span class="dot"></span>Overdue</span></td>
+                <td><button class="btn btn-ghost btn-sm">Remind</button></td>
+              </tr>
+              <tr>
+                <td><div class="avatar-row"><span class="avatar avatar-sm">CB</span><span class="cell-strong">Casey Brooks (demo)</span></div></td>
+                <td>Cosmetic consult</td>
+                <td class="cell-strong">$150.00</td>
+                <td>In office</td>
+                <td class="cell-muted">Jul 18, 2026</td>
+                <td><span class="badge badge-success"><span class="dot"></span>Paid</span></td>
+                <td><button class="btn btn-ghost btn-sm">Receipt</button></td>
               </tr>
             </tbody>
           </table>
         </div>
         <div class="card-footer" style="justify-content: space-between;">
-          <span class="text-sm text-muted">Showing 5 of 96 calls today</span>
+          <span class="text-sm text-muted">Showing 5 of 318 payments this month</span>
           <div class="row">
             <button class="btn btn-secondary btn-sm">Previous</button>
             <button class="btn btn-secondary btn-sm">Next</button>

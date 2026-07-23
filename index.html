@@ -13,12 +13,13 @@
     position: sticky; top: 0; z-index: 50;
     display: flex; align-items: center; gap: var(--space-6);
     padding: 0 var(--space-8);
-    height: 68px;
+    height: 64px;
     background: color-mix(in srgb, var(--surface-card) 82%, transparent);
     backdrop-filter: saturate(1.4) blur(12px);
     -webkit-backdrop-filter: saturate(1.4) blur(12px);
     border-bottom: 1px solid var(--border-color);
   }
+  .landing-topbar .actions { margin-left: auto; display: flex; align-items: center; gap: var(--space-3); }
 
   .hero {
     position: relative;
@@ -31,20 +32,7 @@
       radial-gradient(800px 520px at 50% 118%, color-mix(in srgb, var(--pe-bella) 12%, transparent), transparent 62%),
       var(--surface-page);
   }
-  .hero-inner { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: var(--space-4); }
-  .hero-pill {
-    display: inline-flex; align-items: center; gap: var(--space-3);
-    padding: 9px 20px;
-    border-radius: var(--radius-full);
-    background: var(--surface-card);
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-xs);
-    font-size: var(--text-md);
-    font-weight: var(--weight-medium);
-    color: var(--text-secondary);
-  }
-  .hero-pill .dot-row { display: inline-flex; gap: 5px; }
-  .hero-pill .dot-row span { width: 10px; height: 10px; border-radius: 50%; }
+  .hero-inner { max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: var(--space-4); }
   .hero h1 {
     font-size: clamp(2rem, 4.5vw, 3.25rem);
     font-weight: var(--weight-bold);
@@ -57,7 +45,7 @@
 
   .section { max-width: var(--content-max); margin: 0 auto; padding: var(--space-6) var(--space-6) 0; }
 
-  .product-card { gap: var(--space-4); }
+  .product-card { gap: var(--space-4); padding: var(--space-5); }
   .product-card::before { opacity: 1; height: 3px; }
   .product-tagline { font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--text-muted); display: block; margin-top: var(--space-2); }
 
@@ -101,50 +89,46 @@
   @media (max-width: 900px) {
     .platform-features { grid-template-columns: 1fr; }
     .platform-band { margin-left: var(--space-4); margin-right: var(--space-4); padding: var(--space-8); }
-    .landing-topbar { padding: 0 var(--space-4); }
+    .landing-topbar { padding: 0 var(--space-4); gap: var(--space-3); }
+    .landing-topbar .actions .btn-ghost { display: none; }
   }
 </style>
 </head>
-<body data-mobile-pair>
+<body>
 
 <header class="landing-topbar">
   <a class="wm-inline" href="index.html" aria-label="Practice Engine home">
-    <span class="g">PRACTICE</span><span class="k">ENGINE</span>
+    <span class="wm-words"><span class="g">PRACTICE</span><span class="k">ENGINE</span></span>
+    <span class="wm-rule" aria-hidden="true"></span>
   </a>
+  <nav class="actions" aria-label="Landing navigation">
+    <a class="btn btn-ghost btn-sm" href="design-system.html">Design System</a>
+    <a class="btn btn-secondary btn-sm" href="login.html">Sign In</a>
+    <a class="btn btn-primary btn-sm" href="register.html">Get Started</a>
+  </nav>
 </header>
 
 <main>
   <section class="hero">
     <div class="hero-inner">
-      <span class="hero-pill" data-animate>
-        <span class="dot-row" aria-hidden="true">
-          <span style="background: var(--pe-recall);"></span>
-          <span style="background: var(--pe-bella);"></span>
-          <span style="background: var(--pe-chatbot);"></span>
-          <span style="background: var(--pe-scheduler);"></span>
-          <span style="background: var(--pe-intake);"></span>
-        </span>
-        One platform &middot; Five products &middot; Every patient touchpoint
-      </span>
       <div class="pe-wordmark wm-lg" data-animate style="--d: 60ms;" aria-hidden="true">
         <span class="wm-top">PRACTICE</span>
         <span class="wm-rule"></span>
         <span class="wm-bottom">ENGINE</span>
       </div>
       <h1 data-animate style="--d: 120ms;">The operating system for the <span class="accent-word">modern practices</span></h1>
-      <p class="hero-sub" data-animate style="--d: 180ms;">Five applications, one design language, zero friction. Practice Engine handles recalls, calls, chat, scheduling, and intake so your team can focus on care.</p>
+      <p class="hero-sub" data-animate style="--d: 180ms;">Seven applications, one design language, one login. Practice Engine handles recalls, calls, chat, scheduling, intake, and payments so your care team can focus on patients.</p>
     </div>
   </section>
 
   <section class="section" id="products" aria-label="Applications">
-    <div class="grid grid-3">
+    <div class="grid grid-4">
 
       <a class="card card-hover product-card" data-product="recall" href="recall-health.html" data-animate>
         <div class="row-between">
           <div class="product-card-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></svg>
           </div>
-          <span class="badge badge-accent">Outreach</span>
         </div>
         <div>
           <h3 class="h3">Recall Health</h3>
@@ -152,12 +136,11 @@
         </div>
       </a>
 
-      <a class="card card-hover product-card" data-product="receptionist" href="ai-receptionist.html" data-animate style="--d: 70ms;">
+      <a class="card card-hover product-card" data-product="receptionist" href="ai-receptionist.html" data-animate style="--d: 60ms;">
         <div class="row-between">
           <div class="product-card-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           </div>
-          <span class="badge badge-accent">Voice</span>
         </div>
         <div>
           <h3 class="h3">AI Medical Receptionist</h3>
@@ -165,12 +148,11 @@
         </div>
       </a>
 
-      <a class="card card-hover product-card" data-product="chatbot" href="ai-chatbot.html" data-animate style="--d: 140ms;">
+      <a class="card card-hover product-card" data-product="chatbot" href="ai-chatbot.html" data-animate style="--d: 120ms;">
         <div class="row-between">
           <div class="product-card-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg>
           </div>
-          <span class="badge badge-accent">Web</span>
         </div>
         <div>
           <h3 class="h3">AI Chatbot</h3>
@@ -178,12 +160,11 @@
         </div>
       </a>
 
-      <a class="card card-hover product-card" data-product="scheduler" href="appointment-scheduler.html" data-animate>
+      <a class="card card-hover product-card" data-product="scheduler" href="appointment-scheduler.html" data-animate style="--d: 180ms;">
         <div class="row-between">
           <div class="product-card-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/></svg>
           </div>
-          <span class="badge badge-accent">Scheduling</span>
         </div>
         <div>
           <h3 class="h3">Appointment Scheduler</h3>
@@ -191,29 +172,39 @@
         </div>
       </a>
 
-      <a class="card card-hover product-card" data-product="intake" href="patient-intake.html" data-animate style="--d: 70ms;">
+      <a class="card card-hover product-card" data-product="intake" href="patient-intake.html" data-animate>
         <div class="row-between">
           <div class="product-card-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M8 11h8"/><path d="M8 15h5"/></svg>
           </div>
-          <span class="badge badge-accent">Forms</span>
         </div>
         <div>
           <h3 class="h3">Patient Intake</h3>
-          <span class="product-tagline">Paperwork done before arrival</span>
+          <span class="product-tagline">Registration done before arrival</span>
         </div>
       </a>
 
-      <a class="card card-hover product-card" href="design-system.html" data-animate style="--d: 140ms;">
+      <a class="card card-hover product-card" data-product="paymydoc" href="pay-my-doc.html" data-animate style="--d: 60ms;">
         <div class="row-between">
           <div class="product-card-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
           </div>
-          <span class="badge badge-accent">Foundation</span>
         </div>
         <div>
-          <h3 class="h3">Design System</h3>
-          <span class="product-tagline">The shared foundation</span>
+          <h3 class="h3">Pay My Doc</h3>
+          <span class="product-tagline">Patient payments without friction</span>
+        </div>
+      </a>
+
+      <a class="card card-hover product-card" data-product="admin" href="pe-admin.html" data-animate style="--d: 120ms;">
+        <div class="row-between">
+          <div class="product-card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7"/><path d="M4 10V3"/><path d="M12 21v-9"/><path d="M12 8V3"/><path d="M20 21v-5"/><path d="M20 12V3"/><path d="M1 14h6"/><path d="M9 8h6"/><path d="M17 16h6"/></svg>
+          </div>
+        </div>
+        <div>
+          <h3 class="h3">Practice Engine Admin</h3>
+          <span class="product-tagline">Central control for the whole suite</span>
         </div>
       </a>
 
@@ -228,8 +219,8 @@
         <span class="feat-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         </span>
-        <h3>One login, one account</h3>
-        <p>Your team signs in once and moves between products with the app switcher. Roles and permissions carry across the whole suite.</p>
+        <h3>One login, every product</h3>
+        <p>Sign in once with your Practice Engine account and move between products with the app switcher. Roles and permissions carry across the whole suite.</p>
       </div>
       <div class="platform-feature">
         <span class="feat-icon" aria-hidden="true">
@@ -243,7 +234,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
         </span>
         <h3>Connected by default</h3>
-        <p>A recall becomes a booking, a call becomes an appointment, an appointment triggers intake. Data flows without exports.</p>
+        <p>A recall becomes a booking, a call becomes an appointment, a visit triggers intake and payment. Data flows without exports.</p>
       </div>
     </div>
   </section>
@@ -252,10 +243,11 @@
 <footer class="landing-footer">
   <div class="landing-footer-inner">
     <a class="wm-inline" href="index.html" aria-label="Practice Engine home" style="font-size: var(--text-xs);">
-      <span class="g">PRACTICE</span><span class="k">ENGINE</span>
+      <span class="wm-words"><span class="g">PRACTICE</span><span class="k">ENGINE</span></span>
+      <span class="wm-rule" aria-hidden="true"></span>
     </a>
     <span>A unified healthcare product family.</span>
-    <span><a href="design-system.html">Design System</a> &middot; <a href="index-mobile.html">Mobile version</a></span>
+    <span><a href="login.html">Sign In</a> &middot; <a href="design-system.html">Design System</a></span>
   </div>
 </footer>
 

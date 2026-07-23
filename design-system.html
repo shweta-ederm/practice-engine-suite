@@ -29,14 +29,18 @@
   .space-demo { background: var(--accent-soft); height: 20px; border-radius: 4px; }
 </style>
 </head>
-<body data-mobile-pair>
+<body>
 
 <header class="topbar">
   <a class="topbar-brand" href="index.html">
-    <div class="brand-mark" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
-    </div>
-    <span>Practice Engine</span>
+    <span class="pe-mark" style="--mark-size: 32px;" aria-hidden="true">
+      <span class="pe-mark-text">PE</span>
+      <span class="pe-mark-rule"></span>
+    </span>
+    <span class="wm-inline" aria-hidden="true">
+      <span class="wm-words"><span class="g">PRACTICE</span><span class="k">ENGINE</span></span>
+      <span class="wm-rule"></span>
+    </span>
   </a>
   <div class="topbar-divider" aria-hidden="true"></div>
   <span class="topbar-product">Design System</span>
@@ -55,6 +59,7 @@
     <a class="nav-item" href="#spacing">Spacing and shape</a>
     <span class="sidebar-section">Components</span>
     <a class="nav-item" href="#buttons">Buttons</a>
+    <a class="nav-item" href="#tabs">Tabs</a>
     <a class="nav-item" href="#forms">Forms</a>
     <a class="nav-item" href="#badges">Badges and alerts</a>
     <a class="nav-item" href="#tables">Tables</a>
@@ -81,72 +86,88 @@
           <span class="h4">Preview product theme</span>
           <div class="segmented" role="tablist" aria-label="Theme preview">
             <button class="active" data-theme-preview="">Suite</button>
-            <button data-theme-preview="recall">Recall</button>
-            <button data-theme-preview="receptionist">Receptionist</button>
+            <button data-theme-preview="recall">RH</button>
+            <button data-theme-preview="receptionist">Bella</button>
             <button data-theme-preview="chatbot">Chatbot</button>
             <button data-theme-preview="scheduler">Scheduler</button>
             <button data-theme-preview="intake">Intake</button>
+            <button data-theme-preview="paymydoc">Pay My Doc</button>
+            <button data-theme-preview="admin">Admin</button>
           </div>
         </div>
       </div>
 
       <section id="brand" class="ds-section card">
         <div class="card-header">
-          <h2 class="card-title">Brand identity: Practice Engine</h2>
-          <span class="badge badge-accent">Direction: Evergreen and Ink</span>
+          <h2 class="card-title">Brand identity: the Product Spectrum logo</h2>
+          <span class="badge badge-accent">One logo, many sizes</span>
         </div>
         <div class="card-body stack">
-          <p class="text-secondary" style="max-width: 640px;">The umbrella brand keeps the wordmark's green, refined into a deeper evergreen for contrast and pairing with an ink neutral. Products own the vivid accents; the platform stays calm, grounded, and premium. Three approved lockup variations:</p>
+          <p class="text-secondary" style="max-width: 680px;">Practice Engine has a single logo: PRACTICE in the original logo green over the product spectrum rule, with ENGINE in ink. The spectrum carries one stripe per product, so the mark grows with the suite. Use the size that fits the context; never restyle or recolor the parts.</p>
           <div class="grid grid-3">
             <div class="card" style="box-shadow: none;">
-              <div class="card-body" style="display: flex; align-items: center; justify-content: center; min-height: 150px;">
-                <div class="pe-wordmark" aria-label="Variation A wordmark">
-                  <span class="wm-top" style="color: #6CAC72;">PRACTICE</span>
-                  <span class="wm-rule"></span>
-                  <span class="wm-bottom">ENGINE</span>
-                </div>
-              </div>
-              <div class="card-footer" style="justify-content: flex-start;">
-                <div>
-                  <div class="h4">A. Heritage Sage</div>
-                  <span class="text-xs text-muted">The original logo green (#6CAC72) with ink. For print and legacy contexts.</span>
-                </div>
-              </div>
-            </div>
-            <div class="card" style="box-shadow: none; background: var(--pe-ink);">
-              <div class="card-body" style="display: flex; align-items: center; justify-content: center; min-height: 150px;">
-                <div class="pe-wordmark wm-invert" aria-label="Variation B wordmark">
+              <div class="card-body" style="display: flex; align-items: center; justify-content: center; min-height: 140px;">
+                <div class="pe-wordmark wm-lg" aria-label="Full lockup">
                   <span class="wm-top">PRACTICE</span>
                   <span class="wm-rule"></span>
                   <span class="wm-bottom">ENGINE</span>
                 </div>
               </div>
-              <div class="card-footer" style="justify-content: flex-start; border-top-color: rgba(255,255,255,0.12);">
+              <div class="card-footer" style="justify-content: flex-start;">
                 <div>
-                  <div class="h4" style="color: var(--pe-white);">B. Evergreen Ink <span class="badge badge-accent" style="margin-left: 6px;">Primary</span></div>
-                  <span class="text-xs" style="color: var(--pe-gray-400);">Evergreen #3E8E5C on ink. The default digital identity, used across the suite.</span>
+                  <div class="h4">Full lockup</div>
+                  <span class="text-xs text-muted">Hero surfaces: landing page, sign-in, marketing. Minimum width 200px.</span>
                 </div>
               </div>
             </div>
             <div class="card" style="box-shadow: none;">
-              <div class="card-body" style="display: flex; align-items: center; justify-content: center; min-height: 150px;">
-                <div class="pe-wordmark" aria-label="Variation C wordmark">
-                  <span class="wm-top" style="color: var(--pe-ink);">PRACTICE</span>
-                  <span class="wm-rule" style="height: 3px; border-radius: 2px; background: linear-gradient(90deg, var(--pe-recall), var(--pe-bella), var(--pe-chatbot), var(--pe-scheduler), var(--pe-intake));"></span>
+              <div class="card-body" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-5); min-height: 140px;">
+                <div class="pe-wordmark" aria-label="Standard lockup">
+                  <span class="wm-top">PRACTICE</span>
+                  <span class="wm-rule"></span>
                   <span class="wm-bottom">ENGINE</span>
                 </div>
+                <a class="wm-inline" href="#brand" aria-label="Inline lockup">
+                  <span class="wm-words"><span class="g">PRACTICE</span><span class="k">ENGINE</span></span>
+                  <span class="wm-rule" aria-hidden="true"></span>
+                </a>
               </div>
               <div class="card-footer" style="justify-content: flex-start;">
                 <div>
-                  <div class="h4">C. Product Spectrum</div>
-                  <span class="text-xs text-muted">Ink wordmark with the five product accents as the rule. For suite-level marketing moments.</span>
+                  <div class="h4">Standard and inline</div>
+                  <span class="text-xs text-muted">Cards and documents (stacked); top bars and footers (single line).</span>
+                </div>
+              </div>
+            </div>
+            <div class="card" style="box-shadow: none;">
+              <div class="card-body" style="display: flex; align-items: center; justify-content: center; gap: var(--space-5); min-height: 140px;">
+                <span class="pe-mark" style="--mark-size: 80px;" role="img" aria-label="App icon, 80 pixels">
+                  <span class="pe-mark-text">PE</span>
+                  <span class="pe-mark-rule"></span>
+                </span>
+                <span class="pe-mark" style="--mark-size: 48px;" role="img" aria-label="Small app icon, 48 pixels">
+                  <span class="pe-mark-text">PE</span>
+                  <span class="pe-mark-rule"></span>
+                </span>
+                <span class="pe-mark" style="--mark-size: 32px;" role="img" aria-label="Favicon, 32 pixels">
+                  <span class="pe-mark-text">PE</span>
+                  <span class="pe-mark-rule"></span>
+                </span>
+                <span class="pe-mark" style="--mark-size: 16px;" role="img" aria-label="Favicon, 16 pixels">
+                  <span class="pe-mark-rule" style="width: 62%;"></span>
+                </span>
+              </div>
+              <div class="card-footer" style="justify-content: flex-start;">
+                <div>
+                  <div class="h4">Icon, app tile, favicons</div>
+                  <span class="text-xs text-muted">PE monogram over the spectrum on ink: 80, 48, and 32px. At 16px the monogram drops and the spectrum alone remains.</span>
                 </div>
               </div>
             </div>
           </div>
           <div class="alert alert-info">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-            <div><span class="alert-title">Usage.</span> B is the working identity everywhere in product. A is reserved for contexts that must match the original logo exactly. C appears only at suite level, never inside a single product.</div>
+            <div><span class="alert-title">Rules.</span> PRACTICE is always logo green (#6CAC72), ENGINE is always ink, and the spectrum rule always lists the product colors in suite order. The spectrum is reserved for the logo; never reuse it as a decorative element inside a product.</div>
           </div>
         </div>
       </section>
@@ -156,12 +177,13 @@
         <div class="card-body stack">
           <h3 class="h4">Product accent colors</h3>
           <div class="swatch-row">
-            <div class="swatch"><div class="swatch-color" style="background:var(--pe-brand-600)"></div><div class="swatch-info"><div class="name">Suite Evergreen</div><div class="value">#3E8E5C</div></div></div>
+            <div class="swatch"><div class="swatch-color" style="background: var(--pe-ink); position: relative;"><span style="position: absolute; left: 16%; right: 16%; bottom: 8px; height: 4px; border-radius: 2px; background: var(--pe-spectrum);"></span></div><div class="swatch-info"><div class="name">Platform Ink + Spectrum</div><div class="value">#0B1220</div></div></div>
             <div class="swatch"><div class="swatch-color" style="background:var(--pe-recall)"></div><div class="swatch-info"><div class="name">RH Orange</div><div class="value">#F8941D</div></div></div>
             <div class="swatch"><div class="swatch-color" style="background:var(--pe-bella)"></div><div class="swatch-info"><div class="name">Bella Heliotrope</div><div class="value">#6E62A8</div></div></div>
-            <div class="swatch"><div class="swatch-color" style="background:var(--pe-chatbot)"></div><div class="swatch-info"><div class="name">Chatbot Teal</div><div class="value">#0D9488</div></div></div>
+            <div class="swatch"><div class="swatch-color" style="background:var(--pe-chatbot)"></div><div class="swatch-info"><div class="name">Chatbot Cobalt</div><div class="value">#4169D1</div></div></div>
             <div class="swatch"><div class="swatch-color" style="background:var(--pe-scheduler)"></div><div class="swatch-info"><div class="name">Scheduler Sky</div><div class="value">#0284C7</div></div></div>
             <div class="swatch"><div class="swatch-color" style="background:var(--pe-intake)"></div><div class="swatch-info"><div class="name">Intake Mauve</div><div class="value">#B07AA1</div></div></div>
+            <div class="swatch"><div class="swatch-color" style="background:var(--pe-paymydoc)"></div><div class="swatch-info"><div class="name">Pay My Doc Green</div><div class="value">#16A34A</div></div></div>
           </div>
           <h3 class="h4">Neutrals</h3>
           <div class="swatch-row">
@@ -308,14 +330,38 @@
         </div>
       </section>
 
+      <section id="tabs" class="ds-section card">
+        <div class="card-header"><h2 class="card-title">Tabs</h2></div>
+        <div class="card-body stack">
+          <div>
+            <h3 class="h4" style="margin-bottom: var(--space-3);">Underline tabs</h3>
+            <div class="tabs" role="tablist" aria-label="Underline tabs demo">
+              <button class="tab active">Overview</button>
+              <button class="tab">Activity</button>
+              <button class="tab">Settings</button>
+              <button class="tab">History</button>
+            </div>
+            <p class="text-sm text-muted" style="margin-top: var(--space-3);">For switching views within a page or card. The active tab carries the accent underline. Scrolls horizontally on overflow with no visible scrollbar.</p>
+          </div>
+          <div>
+            <h3 class="h4" style="margin-bottom: var(--space-3);">Segmented control</h3>
+            <div class="segmented" role="tablist" aria-label="Segmented control demo">
+              <button class="active">Day</button>
+              <button>Week</button>
+              <button>Month</button>
+            </div>
+            <p class="text-sm text-muted" style="margin-top: var(--space-3);">For compact, mutually exclusive options like ranges and view modes. Use tabs for content sections, segmented controls for settings of the same content.</p>
+          </div>
+        </div>
+      </section>
+
       <section id="tables" class="ds-section card">
         <div class="card-header">
           <h2 class="card-title">Tables</h2>
-          <div class="tabs" style="border-bottom: none;">
-            <button class="tab active">Tab one</button>
-            <button class="tab">Tab two</button>
-            <button class="tab">Tab three</button>
-          </div>
+          <select class="select" style="width: 160px;" aria-label="Table filter demo">
+            <option>All records</option>
+            <option>Active only</option>
+          </select>
         </div>
         <div class="table-wrap">
           <table class="table">
@@ -342,13 +388,10 @@
         </div>
       </section>
 
-      <section id="cards" class="ds-section ds-cards">
+      <section id="cards" class="ds-section stack">
         <div class="grid grid-3">
-          <div class="card stat-card">
-            <div class="row-between">
-              <span class="stat-label">Stat card</span>
-              <span class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 7l-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg></span>
-            </div>
+          <div class="card stat-card stat-edge" style="--edge: var(--chart-1);">
+            <span class="stat-label">Edge stat (dashboard standard)</span>
             <span class="stat-value">4,821</span>
             <span class="stat-delta up">&#9650; 12% vs last period</span>
           </div>
@@ -359,6 +402,33 @@
           </div>
           <div class="card card-hover" style="display:flex; align-items:center; justify-content:center; min-height: 140px;">
             <span class="text-muted text-sm">Hover me: elevation + lift</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Stat card variants</h2>
+            <span class="text-sm text-muted">Pick by prominence, not preference</span>
+          </div>
+          <div class="card-body stack">
+            <div class="grid grid-3">
+              <div class="kpi-card" style="--kpi: var(--accent);">
+                <div class="kpi-title">KPI banner
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 7l-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg>
+                </div>
+                <span class="kpi-value">1,284</span>
+              </div>
+              <div class="card stat-card stat-edge" style="--edge: var(--chart-2);">
+                <span class="stat-label">Edge stat</span>
+                <span class="stat-value">$48,320</span>
+                <span class="text-xs text-muted">supporting caption</span>
+              </div>
+              <div class="card stat-card stat-edge" style="--edge: var(--chart-3);">
+                <span class="stat-label">Edge stat</span>
+                <span class="stat-value">4.2x</span>
+                <span class="text-xs text-muted">supporting caption</span>
+              </div>
+            </div>
+            <p class="text-sm text-secondary" style="max-width: 720px;">Two tiers on dashboards. The edge stat (`.stat-edge`, color via `--edge`, cycling through the active chart tokens) is the standard for every app's metric rows; stat cards carry no icons. The KPI banner (`.kpi-card`, color via `--kpi`) is reserved for a page's two or three headline numbers. The plain borderless stat card remains only for neutral, non-dashboard contexts such as settings summaries. Do not mix tiers within the same row.</p>
           </div>
         </div>
       </section>

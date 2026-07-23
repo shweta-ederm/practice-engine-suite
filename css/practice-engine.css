@@ -25,12 +25,18 @@
   --pe-recall-deep:    #C97207;
   --pe-bella:          #6E62A8;
   --pe-bella-deep:     #5A5090;
-  --pe-chatbot:        #0D9488;
-  --pe-chatbot-deep:   #0F766E;
+  --pe-chatbot:        #4169D1;
+  --pe-chatbot-deep:   #2E4DAD;
   --pe-scheduler:      #0284C7;
   --pe-scheduler-deep: #0369A1;
   --pe-intake:         #B07AA1;
   --pe-intake-deep:    #91567F;
+  --pe-paymydoc:       #16A34A;
+  --pe-paymydoc-deep:  #15803D;
+
+  /* Logo */
+  --pe-logo-green: #6CAC72;
+  --pe-spectrum: linear-gradient(90deg, var(--pe-recall), var(--pe-bella), var(--pe-chatbot), var(--pe-scheduler), var(--pe-intake), var(--pe-paymydoc));
 
   /* Neutrals (slate) */
   --pe-gray-900: #0F172A;
@@ -55,13 +61,15 @@
   --pe-info:         #0284C7;
   --pe-info-soft:    #E0F2FE;
 
-  /* Accent (defaults to brand; overridden per product) */
-  --accent:        var(--pe-brand-600);
-  --accent-strong: var(--pe-brand-700);
-  --accent-soft:   var(--pe-brand-100);
-  --accent-softer: var(--pe-brand-50);
+  /* Accent: the platform default is Ink + Spectrum (neutral ink for
+     interactive accents, the spectrum as the brand signature).
+     Products override with their own accent family. */
+  --accent:        var(--pe-gray-800);
+  --accent-strong: var(--pe-ink);
+  --accent-soft:   var(--pe-gray-200);
+  --accent-softer: var(--pe-gray-50);
   --accent-contrast: #FFFFFF;
-  --accent-gradient: linear-gradient(135deg, var(--pe-brand-600), var(--pe-brand-400));
+  --accent-gradient: linear-gradient(135deg, var(--pe-ink), var(--pe-gray-600));
 
   /* Surfaces */
   --surface-page:    var(--pe-gray-50);
@@ -146,7 +154,7 @@
    accent first, then muted friendly companions, slate last.
    ------------------------------------------------------------ */
 :root {
-  --chart-1: var(--pe-brand-600);
+  --chart-1: #334155;
   --chart-2: #5B7DA3;
   --chart-3: #D9A253;
   --chart-4: #A56A8E;
@@ -179,13 +187,13 @@
 [data-product="chatbot"] {
   --accent:        var(--pe-chatbot);
   --accent-strong: var(--pe-chatbot-deep);
-  --accent-soft:   #CCFBF1;
-  --accent-softer: #F0FDFA;
-  --accent-gradient: linear-gradient(135deg, #0D9488, #2DD4BF);
-  --chart-1: #0D9488;
-  --chart-2: #6C8EBF;
+  --accent-soft:   #E2E9F9;
+  --accent-softer: #F4F7FD;
+  --accent-gradient: linear-gradient(135deg, #4169D1, #7B96E8);
+  --chart-1: #4169D1;
+  --chart-2: #6DA873;
   --chart-3: #E0A458;
-  --chart-4: #9A7CC4;
+  --chart-4: #C489A5;
   --chart-5: #94A3B8;
 }
 [data-product="scheduler"] {
@@ -210,6 +218,30 @@
   --chart-2: #5F9E8F;
   --chart-3: #7C86C6;
   --chart-4: #D9A253;
+  --chart-5: #94A3B8;
+}
+[data-product="paymydoc"] {
+  --accent:        var(--pe-paymydoc);
+  --accent-strong: var(--pe-paymydoc-deep);
+  --accent-soft:   #DCFCE7;
+  --accent-softer: #F0FDF4;
+  --accent-gradient: linear-gradient(135deg, #16A34A, #4ADE80);
+  --chart-1: #16A34A;
+  --chart-2: #4E79A7;
+  --chart-3: #D9A253;
+  --chart-4: #A56A8E;
+  --chart-5: #94A3B8;
+}
+[data-product="admin"] {
+  --accent:        var(--pe-gray-800);
+  --accent-strong: var(--pe-ink);
+  --accent-soft:   var(--pe-gray-200);
+  --accent-softer: var(--pe-gray-50);
+  --accent-gradient: linear-gradient(135deg, var(--pe-ink), var(--pe-gray-600));
+  --chart-1: #334155;
+  --chart-2: #5B7DA3;
+  --chart-3: #D9A253;
+  --chart-4: #A56A8E;
   --chart-5: #94A3B8;
 }
 
@@ -434,6 +466,35 @@ button { font-family: inherit; }
 .card-hover { transition: box-shadow var(--duration-base) var(--ease), transform var(--duration-base) var(--ease), border-color var(--duration-base) var(--ease); }
 .card-hover:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); border-color: var(--accent-soft); }
 
+/* Highlight KPI banner: set --kpi to any product or semantic color */
+.kpi-card {
+  border: 4px solid var(--kpi, var(--accent));
+  background: color-mix(in srgb, var(--kpi, var(--accent)) 7%, var(--surface-card));
+  border-radius: var(--radius-lg);
+  padding: var(--space-3) var(--space-4);
+  display: flex; flex-direction: column; gap: var(--space-1);
+}
+.kpi-card .kpi-title { font-weight: var(--weight-semibold); font-size: var(--text-base); display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); }
+.kpi-card .kpi-title svg { width: 18px; height: 18px; color: var(--kpi, var(--accent)); flex-shrink: 0; }
+.kpi-card .kpi-value { font-size: var(--text-xl); font-weight: var(--weight-bold); letter-spacing: -0.02em; }
+
+/* Stat card with colored left edge: set --edge */
+.stat-edge { border-left: 3px solid var(--edge, var(--accent)); }
+
+/* In equal-height stat rows, labels absorb the height difference so
+   the big values align horizontally across all cards */
+.grid-6 .stat-card .stat-label,
+.grid-4 .stat-card .stat-label { flex: 1; }
+
+/* Filter bar */
+.filter-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+@media (max-width: 1080px) { .filter-bar { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 720px) { .filter-bar { grid-template-columns: 1fr; } }
+
 /* Stat card */
 .stat-card { padding: var(--space-5); display: flex; flex-direction: column; gap: var(--space-2); }
 .stat-label { font-size: var(--text-sm); color: var(--text-secondary); font-weight: var(--weight-medium); }
@@ -535,15 +596,6 @@ button { font-family: inherit; }
   font-weight: var(--weight-semibold);
 }
 .topbar-brand:hover { color: var(--text-primary); }
-.brand-mark {
-  width: 32px; height: 32px;
-  border-radius: var(--radius-md);
-  background: var(--accent-gradient);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--pe-white);
-  flex-shrink: 0;
-}
-.brand-mark svg { width: 18px; height: 18px; }
 .topbar-divider { width: 1px; height: 24px; background: var(--border-color); }
 .topbar-product { font-weight: var(--weight-semibold); color: var(--accent-strong); display: flex; align-items: center; gap: var(--space-2); }
 .topbar-spacer { flex: 1; }
@@ -586,10 +638,25 @@ button { font-family: inherit; }
 .app-tile svg { width: 18px; height: 18px; }
 .app-tile-recall       { background: linear-gradient(135deg, var(--pe-recall), #FBBE6E); }
 .app-tile-receptionist { background: linear-gradient(135deg, var(--pe-bella), #A79BD4); }
-.app-tile-chatbot      { background: linear-gradient(135deg, var(--pe-chatbot), #2DD4BF); }
+.app-tile-chatbot      { background: linear-gradient(135deg, var(--pe-chatbot), #7B96E8); }
 .app-tile-scheduler    { background: linear-gradient(135deg, var(--pe-scheduler), #38BDF8); }
 .app-tile-intake       { background: linear-gradient(135deg, var(--pe-intake), #D3A8C8); }
-.app-tile-suite        { background: linear-gradient(135deg, var(--pe-brand-600), var(--pe-brand-400)); }
+.app-tile-paymydoc     { background: linear-gradient(135deg, var(--pe-paymydoc), #4ADE80); }
+.app-tile-admin,
+.app-tile-suite {
+  background: var(--pe-ink);
+  position: relative;
+  overflow: hidden;
+}
+.app-tile-admin::after,
+.app-tile-suite::after {
+  content: "";
+  position: absolute;
+  left: 18%; right: 18%; bottom: 4px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--pe-spectrum);
+}
 .app-tile-design       { background: linear-gradient(135deg, var(--pe-gray-700), var(--pe-gray-500)); }
 
 /* ------------------------------------------------------------
@@ -630,12 +697,22 @@ button { font-family: inherit; }
 .nav-item.active { background: var(--accent-soft); color: var(--accent-strong); }
 .nav-item .badge { margin-left: auto; }
 
+/* Nested report/analytics links under a section */
+.nav-sub {
+  margin: 0 0 var(--space-1) 26px;
+  padding-left: var(--space-2);
+  border-left: 1px solid var(--border-color);
+  display: flex; flex-direction: column; gap: 1px;
+}
+.nav-sub .nav-item { padding: 5px var(--space-3); font-size: var(--text-sm); font-weight: var(--weight-regular); }
+.nav-sub .nav-item.active { font-weight: var(--weight-medium); }
+
 .main {
   flex: 1;
   min-width: 0;
-  padding: var(--space-8);
+  padding: var(--space-6) var(--space-8);
 }
-.main-inner { max-width: var(--content-max); margin: 0 auto; }
+.main-inner { width: 100%; }
 
 /* Page header */
 .page-header {
@@ -651,6 +728,7 @@ button { font-family: inherit; }
 .grid-2 { grid-template-columns: repeat(2, 1fr); }
 .grid-3 { grid-template-columns: repeat(3, 1fr); }
 .grid-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-6 { grid-template-columns: repeat(6, 1fr); gap: var(--space-4); }
 .stack { display: flex; flex-direction: column; gap: var(--space-5); }
 .row { display: flex; align-items: center; gap: var(--space-3); }
 .row-between { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); }
@@ -662,7 +740,9 @@ button { font-family: inherit; }
   display: flex; gap: var(--space-1);
   border-bottom: 1px solid var(--border-color);
   overflow-x: auto;
+  scrollbar-width: none;
 }
+.tabs::-webkit-scrollbar { display: none; }
 .tab {
   padding: var(--space-2) var(--space-4);
   font-size: var(--text-base);
@@ -1008,7 +1088,7 @@ button { font-family: inherit; }
 .product-card:hover .product-card-link svg { transform: translateX(3px); }
 
 /* ------------------------------------------------------------
-   22. Mobile shell (used by *-mobile.html pages)
+   22. Mobile shell (retained for the future mobile page rebuild)
    ------------------------------------------------------------ */
 .mobile-shell {
   max-width: 480px;
@@ -1069,6 +1149,7 @@ button { font-family: inherit; }
 @media (max-width: 1080px) {
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .grid-6 { grid-template-columns: repeat(3, 1fr); }
   .topbar-search { width: 200px; }
 }
 @media (max-width: 900px) {
@@ -1076,7 +1157,7 @@ button { font-family: inherit; }
   .main { padding: var(--space-5); }
 }
 @media (max-width: 720px) {
-  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  .grid-2, .grid-3, .grid-4, .grid-6 { grid-template-columns: 1fr; }
   .topbar { padding: 0 var(--space-4); }
   .topbar-search { display: none; }
   .page-header { flex-direction: column; }
@@ -1137,31 +1218,55 @@ button { font-family: inherit; }
   line-height: 1;
   text-align: center;
 }
-.pe-wordmark .wm-top { color: var(--pe-brand-600); }
-.pe-wordmark .wm-rule { height: 1px; background: var(--border-color-strong); }
+.pe-wordmark .wm-top { color: var(--pe-logo-green); }
+.pe-wordmark .wm-rule { height: 3px; border-radius: 2px; background: var(--pe-spectrum); }
 .pe-wordmark .wm-bottom { color: var(--pe-ink); }
-.pe-wordmark.wm-invert .wm-top { color: var(--pe-brand-400); }
+.pe-wordmark.wm-invert .wm-top { color: var(--pe-logo-green); }
 .pe-wordmark.wm-invert .wm-bottom { color: var(--pe-white); }
-.pe-wordmark.wm-invert .wm-rule { background: rgba(255, 255, 255, 0.25); }
 .pe-wordmark.wm-lg .wm-top, .pe-wordmark.wm-lg .wm-bottom { font-size: 1.5rem; }
+.pe-wordmark.wm-sm .wm-top, .pe-wordmark.wm-sm .wm-bottom { font-size: 0.6875rem; }
+.pe-wordmark.wm-sm { gap: 4px; }
+.pe-wordmark.wm-sm .wm-rule { height: 2px; }
 
 /* Inline single-line lockup for chrome and footers */
 .wm-inline {
-  display: inline-flex; align-items: baseline; gap: var(--space-2);
+  display: inline-flex; flex-direction: column; gap: 3px;
   font-family: var(--font-logo);
   font-weight: var(--weight-semibold);
   letter-spacing: 0.1em;
   font-size: var(--text-sm);
 }
-.wm-inline .g { color: var(--pe-brand-600); }
+.wm-inline .wm-words { display: inline-flex; align-items: baseline; gap: var(--space-2); }
+.wm-inline .g { color: var(--pe-logo-green); }
 .wm-inline .k { color: var(--pe-ink); }
+.wm-inline .wm-rule { height: 2px; border-radius: 1px; background: var(--pe-spectrum); }
 
-.topbar-brand span {
-  font-family: var(--font-logo);
-  font-size: 0.75rem;
-  font-weight: var(--weight-semibold);
-  letter-spacing: 0.1em;
+/* Icon-only mark: rounded square with PE monogram over the spectrum */
+.pe-mark {
+  --mark-size: 64px;
+  width: var(--mark-size); height: var(--mark-size);
+  border-radius: calc(var(--mark-size) * 0.22);
+  background: var(--pe-ink);
+  display: inline-flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: calc(var(--mark-size) * 0.09);
+  flex-shrink: 0;
 }
+.pe-mark .pe-mark-text {
+  font-family: var(--font-logo);
+  font-weight: var(--weight-semibold);
+  color: var(--pe-white);
+  font-size: calc(var(--mark-size) * 0.34);
+  letter-spacing: 0.06em;
+  margin-right: -0.06em;
+  line-height: 1;
+}
+.pe-mark .pe-mark-rule {
+  width: 56%; height: calc(var(--mark-size) * 0.07);
+  border-radius: var(--radius-full);
+  background: var(--pe-spectrum);
+}
+
+.topbar-brand .wm-inline { font-size: 0.6875rem; }
 
 /* ------------------------------------------------------------
    26. Micro-animations

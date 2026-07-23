@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In | Practice Engine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/practice-engine.css">
+<style>
+  .auth-page {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: var(--space-6);
+    background:
+      radial-gradient(700px 420px at 10% -10%, color-mix(in srgb, var(--pe-brand-500) 15%, transparent), transparent 62%),
+      radial-gradient(640px 400px at 92% 8%, color-mix(in srgb, var(--pe-recall) 12%, transparent), transparent 60%),
+      radial-gradient(760px 500px at 50% 120%, color-mix(in srgb, var(--pe-bella) 11%, transparent), transparent 62%),
+      var(--surface-page);
+  }
+  .auth-card { width: 100%; max-width: 420px; display: flex; flex-direction: column; gap: var(--space-5); }
+  .auth-card .card-body { display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-8); }
+  .auth-logo { display: flex; justify-content: center; }
+  .auth-title { text-align: center; }
+  .auth-title .h2 { color: var(--pe-ink); }
+  .auth-title p { color: var(--text-muted); font-size: var(--text-sm); margin-top: var(--space-2); }
+  .sso-strip {
+    display: flex; align-items: center; justify-content: center; gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+  .sso-strip .app-tile { width: 30px; height: 30px; border-radius: 8px; }
+  .sso-strip .app-tile svg { width: 15px; height: 15px; }
+  .auth-links { text-align: center; font-size: var(--text-sm); color: var(--text-muted); }
+</style>
+</head>
+<body>
+
+<main class="auth-page">
+  <div class="auth-card" data-animate>
+    <div class="auth-logo">
+      <a class="pe-wordmark" href="index.html" aria-label="Practice Engine home">
+        <span class="wm-top">PRACTICE</span>
+        <span class="wm-rule"></span>
+        <span class="wm-bottom">ENGINE</span>
+      </a>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <div class="auth-title">
+          <h1 class="h2">Sign in with your Practice Engine account</h1>
+          <p>One account. Every product in the suite.</p>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="login-email">Work email</label>
+          <input class="input" id="login-email" type="email" placeholder="you@yourpractice.com" autocomplete="email">
+        </div>
+        <div class="field">
+          <label class="field-label" for="login-password">Password</label>
+          <input class="input" id="login-password" type="password" placeholder="Enter your password" autocomplete="current-password">
+          <span class="field-hint" style="text-align: right;"><a href="#">Forgot password?</a></span>
+        </div>
+        <label class="checkbox-row"><input type="checkbox" checked> <span class="text-sm">Keep me signed in on this device</span></label>
+
+        <a class="btn btn-primary btn-lg" href="index.html" style="width: 100%;">Sign In</a>
+
+        <div class="row" style="gap: var(--space-3);" aria-hidden="true">
+          <span style="flex: 1; height: 1px; background: var(--border-color);"></span>
+          <span class="text-xs text-muted">SINGLE SIGN-ON UNLOCKS</span>
+          <span style="flex: 1; height: 1px; background: var(--border-color);"></span>
+        </div>
+
+        <div class="sso-strip" aria-label="Products included with your account">
+          <span class="app-tile app-tile-recall" title="Recall Health"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></span>
+          <span class="app-tile app-tile-receptionist" title="AI Medical Receptionist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <span class="app-tile app-tile-chatbot" title="AI Chatbot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span>
+          <span class="app-tile app-tile-scheduler" title="Appointment Scheduler"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg></span>
+          <span class="app-tile app-tile-intake" title="Patient Intake"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></span>
+          <span class="app-tile app-tile-paymydoc" title="Pay My Doc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>
+          <span class="app-tile app-tile-admin" title="Practice Engine Admin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7"/><path d="M4 10V3"/><path d="M12 21v-9"/><path d="M12 8V3"/><path d="M20 21v-5"/><path d="M20 12V3"/><path d="M1 14h6"/><path d="M9 8h6"/><path d="M17 16h6"/></svg></span>
+        </div>
+        <p class="text-xs text-muted" style="text-align: center;">Sign in once and move between every product with the app switcher. No separate passwords, ever.</p>
+      </div>
+    </div>
+
+    <p class="auth-links">New to Practice Engine? <a href="register.html">Create your practice account</a> &middot; <a href="index.html">Back to home</a></p>
+  </div>
+</main>
+
+<script src="js/practice-engine.js"></script>
+</body>
+</html>

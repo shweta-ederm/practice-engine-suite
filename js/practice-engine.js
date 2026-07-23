@@ -21,33 +21,6 @@
     animated.forEach(function (el) { el.classList.add("in-view"); });
   }
 
-  /* Route small screens to the dedicated -mobile page, and wide screens back.
-     Pages opt in via <body data-mobile-pair> (desktop) or data-desktop-pair (mobile). */
-  var body = document.body;
-  var MOBILE_BREAKPOINT = 768;
-
-  function currentPage() {
-    var path = window.location.pathname.split("/").pop();
-    return path || "index.html";
-  }
-
-  function routeForViewport() {
-    var page = currentPage();
-    if (window.innerWidth <= MOBILE_BREAKPOINT && body.hasAttribute("data-mobile-pair")) {
-      var mobile = page.replace(/\.html$/, "-mobile.html");
-      if (mobile !== page) window.location.replace(mobile);
-    } else if (window.innerWidth > MOBILE_BREAKPOINT && body.hasAttribute("data-desktop-pair")) {
-      var desktop = page.replace(/-mobile\.html$/, ".html");
-      if (desktop !== page) window.location.replace(desktop);
-    }
-  }
-  routeForViewport();
-  var resizeTimer;
-  window.addEventListener("resize", function () {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(routeForViewport, 250);
-  });
-
   /* App switcher */
   document.querySelectorAll("[data-switcher-toggle]").forEach(function (btn) {
     var menu = btn.closest(".app-switcher").querySelector(".app-switcher-menu");
