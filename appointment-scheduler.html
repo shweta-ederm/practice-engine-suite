@@ -7,9 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/practice-engine.css">
-<style>
-  .cal-wrap { overflow-x: auto; }
-</style>
 </head>
 <body>
 
@@ -57,8 +54,12 @@
 </header>
 
 <div class="app-shell">
-  <nav class="sidebar" aria-label="Scheduler navigation">
+  <nav class="sidebar" aria-label="Online Scheduler navigation">
     <a class="nav-item active" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+      Dashboard
+    </a>
+    <a class="nav-item" href="#">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
       Calendar
     </a>
@@ -89,17 +90,15 @@
   <main class="main">
     <div class="main-inner stack">
 
-      <div class="page-header">
+      <div class="page-header" style="margin-bottom: 0;">
         <div>
-          <h1 class="h1">This Week</h1>
-          <p class="text-secondary">Jul 20 to Jul 24, 2026 &middot; Dr. Demo Provider</p>
+          <h1 class="h1">Dashboard</h1>
         </div>
         <div class="row">
-          <div class="segmented" role="tablist" aria-label="Calendar view">
-            <button>Day</button>
-            <button class="active">Week</button>
-            <button>Month</button>
-          </div>
+          <button class="btn btn-secondary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+            Export
+          </button>
           <button class="btn btn-primary" data-modal-open="modal-new-appt">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
             New Appointment
@@ -130,9 +129,9 @@
 
       <div class="grid grid-4">
         <div class="card stat-card stat-edge" style="--edge: var(--chart-1);">
-          <span class="stat-label">Appointments this week</span>
-          <span class="stat-value">124</span>
-          <span class="stat-delta up">&#9650; 92% capacity</span>
+          <span class="stat-label">Appointments booked (June)</span>
+          <span class="stat-value">1,462</span>
+          <span class="stat-delta up">&#9650; 9% vs May</span>
         </div>
         <div class="card stat-card stat-edge" style="--edge: var(--chart-2);">
           <span class="stat-label">Self-booked online</span>
@@ -145,83 +144,49 @@
           <span class="stat-delta up">&#9650; down from 4.6%</span>
         </div>
         <div class="card stat-card stat-edge" style="--edge: var(--chart-4);">
-          <span class="stat-label">Waitlist</span>
-          <span class="stat-value">18</span>
-          <span class="stat-delta up">&#9650; auto-filling gaps</span>
+          <span class="stat-label">Schedule fill rate</span>
+          <span class="stat-value">92%</span>
+          <span class="stat-delta up">&#9650; 3 pts</span>
         </div>
       </div>
 
-      <div class="card">
-        <div class="card-header">
-          <h2 class="card-title">Week of Jul 20</h2>
-          <div class="row">
-            <button class="btn btn-icon btn-sm" aria-label="Previous week">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-            </button>
-            <button class="btn btn-secondary btn-sm">Today</button>
-            <button class="btn btn-icon btn-sm" aria-label="Next week">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-            </button>
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Bookings per week</h2>
+            <span class="text-sm text-muted">Last 8 weeks</span>
+          </div>
+          <div class="card-body">
+            <div class="bar-chart" style="height: 170px;" role="img" aria-label="Bookings per week over eight weeks, rising from 289 to 368">
+              <div class="bar c1" style="height: 62%" title="289"></div>
+              <div class="bar c1" style="height: 66%" title="301"></div>
+              <div class="bar c1" style="height: 60%" title="282"></div>
+              <div class="bar c1" style="height: 70%" title="318"></div>
+              <div class="bar c1" style="height: 74%" title="331"></div>
+              <div class="bar c1" style="height: 71%" title="322"></div>
+              <div class="bar c1" style="height: 78%" title="347"></div>
+              <div class="bar c1 emph" style="height: 84%" title="368"></div>
+            </div>
+            <div class="chart-labels">
+              <span>Jun 1</span><span>Jun 8</span><span>Jun 15</span><span>Jun 22</span><span>Jun 29</span><span>Jul 6</span><span>Jul 13</span><span>Jul 20</span>
+            </div>
           </div>
         </div>
-        <div class="cal-wrap">
-          <div class="calendar-grid" role="grid" aria-label="Week calendar">
-            <div class="cal-head" aria-hidden="true"></div>
-            <div class="cal-head">Mon <span class="text-xs text-muted">Jul 20</span></div>
-            <div class="cal-head">Tue <span class="text-xs text-muted">Jul 21</span></div>
-            <div class="cal-head today">Wed <span class="text-xs">Jul 22</span></div>
-            <div class="cal-head">Thu <span class="text-xs text-muted">Jul 23</span></div>
-            <div class="cal-head">Fri <span class="text-xs text-muted">Jul 24</span></div>
 
-            <div class="cal-time">8 AM</div>
-            <div><div class="cal-event">Annual exam &middot; A.M.</div></div>
-            <div></div>
-            <div><div class="cal-event ev-info">New patient &middot; R.C.</div></div>
-            <div><div class="cal-event">Follow-up &middot; T.W.</div></div>
-            <div></div>
-
-            <div class="cal-time">9 AM</div>
-            <div><div class="cal-event ev-success">Follow-up &middot; J.P.</div></div>
-            <div><div class="cal-event">Annual exam &middot; D.K.</div></div>
-            <div><div class="cal-event span-2">Procedure &middot; M.B.</div></div>
-            <div></div>
-            <div><div class="cal-event ev-info">New patient &middot; S.R.</div></div>
-
-            <div class="cal-time">10 AM</div>
-            <div></div>
-            <div><div class="cal-event ev-warning">Waitlist hold</div></div>
-            <div></div>
-            <div><div class="cal-event">Annual exam &middot; C.B.</div></div>
-            <div><div class="cal-event">Follow-up &middot; P.K.</div></div>
-
-            <div class="cal-time">11 AM</div>
-            <div><div class="cal-event ev-info">New patient &middot; L.T.</div></div>
-            <div></div>
-            <div><div class="cal-event">Annual exam &middot; V.N.</div></div>
-            <div><div class="cal-event ev-success">Telehealth &middot; K.D.</div></div>
-            <div></div>
-
-            <div class="cal-time">1 PM</div>
-            <div><div class="cal-event">Follow-up &middot; B.H.</div></div>
-            <div><div class="cal-event">Annual exam &middot; F.G.</div></div>
-            <div><div class="cal-event ev-warning">Waitlist hold</div></div>
-            <div></div>
-            <div><div class="cal-event ev-info">New patient &middot; W.S.</div></div>
-
-            <div class="cal-time">2 PM</div>
-            <div></div>
-            <div><div class="cal-event ev-success">Telehealth &middot; N.O.</div></div>
-            <div><div class="cal-event">Follow-up &middot; E.L.</div></div>
-            <div><div class="cal-event">Annual exam &middot; G.M.</div></div>
-            <div></div>
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Visit mix</h2>
+            <span class="text-sm text-muted">1,462 visits in June</span>
           </div>
-        </div>
-        <div class="card-footer" style="justify-content: flex-start;">
-          <div class="legend">
-            <span class="legend-item"><span class="legend-swatch" style="background: var(--accent);"></span>Standard visit</span>
-            <span class="legend-item"><span class="legend-swatch" style="background: var(--pe-info);"></span>New patient</span>
-            <span class="legend-item"><span class="legend-swatch" style="background: var(--pe-success);"></span>Telehealth</span>
-            <span class="legend-item"><span class="legend-swatch" style="background: var(--pe-warning);"></span>Waitlist hold</span>
+          <div class="card-body row" style="gap: var(--space-8); align-items: center;">
+            <div class="donut" style="background: conic-gradient(var(--chart-1) 0 38%, var(--chart-2) 38% 69%, var(--chart-3) 69% 88%, var(--chart-4) 88% 100%);" data-value="92%" role="img" aria-label="Visit mix: annual exams 38 percent, follow-ups 31 percent, new patients 19 percent, telehealth 12 percent"></div>
+            <div class="stack" style="gap: var(--space-3); flex: 1;">
+              <div class="row-between text-sm"><span class="legend-item"><span class="legend-swatch sw-1"></span>Annual exams</span><span class="text-muted">38%</span></div>
+              <div class="row-between text-sm"><span class="legend-item"><span class="legend-swatch sw-2"></span>Follow-ups</span><span class="text-muted">31%</span></div>
+              <div class="row-between text-sm"><span class="legend-item"><span class="legend-swatch sw-3"></span>New patients</span><span class="text-muted">19%</span></div>
+              <div class="row-between text-sm"><span class="legend-item"><span class="legend-swatch sw-4"></span>Telehealth</span><span class="text-muted">12%</span></div>
+              <div class="row-between text-sm" style="padding-top: var(--space-2); border-top: 1px solid var(--border-color);"><span>New patient share trend</span><span class="cell-strong">&#9650; up 4 pts</span></div>
+            </div>
           </div>
         </div>
       </div>
@@ -229,82 +194,62 @@
       <div class="grid grid-2">
         <div class="card">
           <div class="card-header">
-            <h2 class="card-title">Today's schedule</h2>
-            <span class="badge badge-accent">Wed, Jul 22</span>
+            <h2 class="card-title">How appointments get booked</h2>
+            <span class="text-sm text-muted">June 2026</span>
           </div>
-          <div>
-            <div class="list-item">
-              <span class="avatar">RC</span>
-              <div class="list-item-body">
-                <div class="list-item-title">Riley Chen (demo)</div>
-                <div class="list-item-sub">8:00 AM &middot; New patient consult</div>
-              </div>
-              <span class="badge badge-success"><span class="dot"></span>Checked in</span>
+          <div class="card-body stack" style="gap: var(--space-4);">
+            <div class="hbar-row">
+              <span class="hbar-label" style="width: 210px;">Patient self-booking</span>
+              <div class="hbar-track" style="height: 14px;"><div class="hbar-fill sw-1" style="width: 100%"></div></div>
+              <span class="hbar-value">61%</span>
             </div>
-            <div class="list-item">
-              <span class="avatar">MB</span>
-              <div class="list-item-body">
-                <div class="list-item-title">Morgan Bell (demo)</div>
-                <div class="list-item-sub">9:00 AM &middot; Procedure, 2 hours</div>
-              </div>
-              <span class="badge badge-info"><span class="dot"></span>In room</span>
+            <div class="hbar-row">
+              <span class="hbar-label" style="width: 210px;">Front desk</span>
+              <div class="hbar-track" style="height: 14px;"><div class="hbar-fill sw-2" style="width: 36%"></div></div>
+              <span class="hbar-value">22%</span>
             </div>
-            <div class="list-item">
-              <span class="avatar">VN</span>
-              <div class="list-item-body">
-                <div class="list-item-title">Val Nguyen (demo)</div>
-                <div class="list-item-sub">11:00 AM &middot; Annual exam</div>
-              </div>
-              <span class="badge badge-neutral"><span class="dot"></span>Confirmed</span>
+            <div class="hbar-row">
+              <span class="hbar-label" style="width: 210px;">Medical Receptionist calls</span>
+              <div class="hbar-track" style="height: 14px;"><div class="hbar-fill sw-3" style="width: 18%"></div></div>
+              <span class="hbar-value">11%</span>
             </div>
-            <div class="list-item">
-              <span class="avatar">EL</span>
-              <div class="list-item-body">
-                <div class="list-item-title">Emery Lopez (demo)</div>
-                <div class="list-item-sub">2:00 PM &middot; Follow-up</div>
-              </div>
-              <span class="badge badge-warning"><span class="dot"></span>Unconfirmed</span>
+            <div class="hbar-row">
+              <span class="hbar-label" style="width: 210px;">Recall Health links</span>
+              <div class="hbar-track" style="height: 14px;"><div class="hbar-fill sw-4" style="width: 10%"></div></div>
+              <span class="hbar-value">6%</span>
+            </div>
+            <div class="alert alert-success" style="margin-top: var(--space-2);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 7l-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg>
+              <div><span class="alert-title">Staff time reclaimed.</span> 78% of bookings now arrive without front desk involvement, up from 51% a year ago.</div>
             </div>
           </div>
         </div>
 
         <div class="card">
           <div class="card-header">
-            <h2 class="card-title">Waitlist</h2>
-            <a class="text-sm" href="#">Manage</a>
+            <h2 class="card-title">Waitlist performance</h2>
+            <a class="text-sm" href="#">Manage waitlist</a>
           </div>
           <div class="card-body stack" style="gap: var(--space-4);">
-            <div class="alert alert-success" role="status">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
-              <div><span class="alert-title">Gap filled automatically.</span> Tuesday 10 AM cancellation was offered to the waitlist and booked in 4 minutes.</div>
-            </div>
             <div class="row-between text-sm">
               <span>Patients waiting</span><span class="cell-strong">18</span>
             </div>
             <div class="row-between text-sm">
-              <span>Avg. time to fill a gap</span><span class="cell-strong">11 min</span>
+              <span>Avg. time to fill a canceled slot</span><span class="cell-strong">11 min</span>
             </div>
             <div class="row-between text-sm">
-              <span>Gaps filled this month</span><span class="cell-strong">42</span>
+              <span>Slots refilled this month</span><span class="cell-strong">42</span>
             </div>
-            <div class="progress" aria-label="Waitlist conversion">
-              <div class="progress-fill" style="width: 78%"></div>
+            <div class="row-between text-sm">
+              <span>Revenue protected by refills</span><span class="cell-strong">$9,450</span>
             </div>
-            <span class="text-xs text-muted">78% of open slots refilled within one hour</span>
-            <div class="stack" style="gap: var(--space-2); margin-top: var(--space-2); padding-top: var(--space-4); border-top: 1px solid var(--border-color);">
-              <div class="row-between text-sm"><span style="font-weight: var(--weight-medium);">Visit mix this week</span><span class="text-muted">124 visits</span></div>
-              <div class="mix-bar" role="img" aria-label="Visit mix: annual exams 38 percent, follow-ups 31 percent, new patients 19 percent, telehealth 12 percent">
-                <span class="sw-1" style="width: 38%"></span>
-                <span class="sw-2" style="width: 31%"></span>
-                <span class="sw-3" style="width: 19%"></span>
-                <span class="sw-4" style="width: 12%"></span>
-              </div>
-              <div class="legend">
-                <span class="legend-item"><span class="legend-swatch sw-1"></span>Annual</span>
-                <span class="legend-item"><span class="legend-swatch sw-2"></span>Follow-up</span>
-                <span class="legend-item"><span class="legend-swatch sw-3"></span>New patient</span>
-                <span class="legend-item"><span class="legend-swatch sw-4"></span>Telehealth</span>
-              </div>
+            <div>
+              <div class="row-between text-sm"><span>Open slots refilled within one hour</span><span class="text-muted">78%</span></div>
+              <div class="progress" style="margin-top: 6px;" aria-label="78 percent of open slots refilled within one hour"><div class="progress-fill" style="width: 78%"></div></div>
+            </div>
+            <div class="alert alert-success" role="status">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+              <div><span class="alert-title">Gaps fill themselves.</span> Tuesday's 10 AM cancellation was offered to the waitlist and rebooked in 4 minutes.</div>
             </div>
           </div>
         </div>

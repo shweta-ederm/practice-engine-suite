@@ -8,86 +8,220 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/practice-engine.css">
 <style>
-  .auth-page {
+  .auth-split {
     min-height: 100vh;
-    display: flex; align-items: center; justify-content: center;
-    padding: var(--space-6);
+    display: grid;
+    grid-template-columns: 11fr 9fr;
+  }
+
+  /* Visual panel: swap the CSS art for a real photo by setting a
+     background-image on .auth-visual when one is chosen */
+  .auth-visual {
+    position: relative;
+    overflow: hidden;
     background:
-      radial-gradient(700px 420px at 10% -10%, color-mix(in srgb, var(--pe-brand-500) 15%, transparent), transparent 62%),
-      radial-gradient(640px 400px at 92% 8%, color-mix(in srgb, var(--pe-recall) 12%, transparent), transparent 60%),
-      radial-gradient(760px 500px at 50% 120%, color-mix(in srgb, var(--pe-bella) 11%, transparent), transparent 62%),
-      var(--surface-page);
+      radial-gradient(900px 600px at 85% 10%, color-mix(in srgb, var(--pe-bella) 30%, transparent), transparent 60%),
+      radial-gradient(700px 500px at 10% 30%, color-mix(in srgb, var(--pe-brand-500) 26%, transparent), transparent 60%),
+      radial-gradient(800px 600px at 40% 110%, color-mix(in srgb, var(--pe-scheduler) 24%, transparent), transparent 62%),
+      radial-gradient(500px 400px at 95% 85%, color-mix(in srgb, var(--pe-recall) 18%, transparent), transparent 60%),
+      var(--pe-ink);
+    color: var(--pe-white);
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding: var(--space-12);
   }
-  .auth-card { width: 100%; max-width: 420px; display: flex; flex-direction: column; gap: var(--space-5); }
-  .auth-card .card-body { display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-8); }
-  .auth-logo { display: flex; justify-content: center; }
-  .auth-title { text-align: center; }
-  .auth-title .h2 { color: var(--pe-ink); }
-  .auth-title p { color: var(--text-muted); font-size: var(--text-sm); margin-top: var(--space-2); }
-  .sso-strip {
-    display: flex; align-items: center; justify-content: center; gap: var(--space-3);
-    flex-wrap: wrap;
+  .auth-visual::after {
+    content: "";
+    position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+    background-size: 26px 26px;
+    pointer-events: none;
   }
-  .sso-strip .app-tile { width: 30px; height: 30px; border-radius: 8px; }
-  .sso-strip .app-tile svg { width: 15px; height: 15px; }
+  .auth-visual > * { position: relative; z-index: 1; }
+  .visual-headline {
+    font-size: clamp(1.75rem, 2.8vw, 2.5rem);
+    font-weight: var(--weight-bold);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    max-width: 480px;
+  }
+  .visual-headline .hl { color: var(--pe-brand-400); }
+  .visual-sub { color: var(--pe-gray-400); max-width: 440px; margin-top: var(--space-4); line-height: 1.65; }
+  .visual-marks { display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: var(--space-6); }
+  .visual-marks .app-mark { --mark-size: 44px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1); }
+  .testi {
+    position: relative;
+    min-height: 130px;
+    border-left: 3px solid var(--pe-brand-400);
+    max-width: 460px;
+  }
+  .testi-slide {
+    position: absolute; inset: 0 0 auto 0;
+    padding-left: var(--space-4);
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+    pointer-events: none;
+  }
+  .testi-slide.active { opacity: 1; transform: none; pointer-events: auto; }
+  .testi-slide p { color: var(--pe-gray-300); font-size: var(--text-md); line-height: 1.6; }
+  .testi-slide .who { color: var(--pe-gray-500); font-size: var(--text-sm); margin-top: var(--space-2); }
+  .testi-dots { display: flex; gap: var(--space-2); margin-top: var(--space-4); padding-left: var(--space-4); }
+  .testi-dots button {
+    width: 8px; height: 8px; border-radius: 50%;
+    border: none; padding: 0; cursor: pointer;
+    background: rgba(255, 255, 255, 0.28);
+    transition: background var(--duration-fast) var(--ease), transform var(--duration-fast) var(--ease);
+  }
+  .testi-dots button.active { background: var(--pe-brand-400); transform: scale(1.25); }
+
+  .auth-form-side {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: var(--space-8);
+    background: var(--surface-card);
+  }
+  .auth-form { width: 100%; max-width: 380px; display: flex; flex-direction: column; gap: var(--space-4); }
+  .auth-title h1 { font-size: var(--text-xl); font-weight: var(--weight-bold); letter-spacing: -0.01em; color: var(--pe-ink); }
+  .auth-title p { color: var(--text-muted); font-size: var(--text-sm); margin-top: var(--space-1); }
+  .social-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+  .btn-social {
+    background: var(--surface-card);
+    border: 1px solid var(--border-color-strong);
+    color: var(--text-primary);
+    font-weight: var(--weight-medium);
+  }
+  .btn-social:hover { background: var(--pe-gray-50); border-color: var(--pe-gray-400); }
+  .btn-social svg { width: 17px; height: 17px; }
+  .or-row { display: flex; align-items: center; gap: var(--space-3); }
+  .or-row span:first-child, .or-row span:last-child { flex: 1; height: 1px; background: var(--border-color); }
+  .or-row .or-text { color: var(--text-faint); font-size: var(--text-xs); font-weight: var(--weight-medium); letter-spacing: 0.06em; }
+  .sso-strip { display: flex; align-items: center; justify-content: center; gap: var(--space-2); }
+  .sso-strip .app-mark { --mark-size: 28px; }
   .auth-links { text-align: center; font-size: var(--text-sm); color: var(--text-muted); }
+
+  @media (max-width: 1024px) {
+    .auth-split { grid-template-columns: 1fr; }
+    .auth-visual { display: none; }
+    .auth-form-side { min-height: 100vh; }
+  }
 </style>
 </head>
 <body>
 
-<main class="auth-page">
-  <div class="auth-card" data-animate>
-    <div class="auth-logo">
-      <a class="pe-wordmark" href="index.html" aria-label="Practice Engine home">
-        <span class="wm-top">PRACTICE</span>
-        <span class="wm-rule"></span>
-        <span class="wm-bottom">ENGINE</span>
-      </a>
-    </div>
-
-    <div class="card">
-      <div class="card-body">
-        <div class="auth-title">
-          <h1 class="h2">Sign in with your Practice Engine account</h1>
-          <p>One account. Every product in the suite.</p>
-        </div>
-
-        <div class="field">
-          <label class="field-label" for="login-email">Work email</label>
-          <input class="input" id="login-email" type="email" placeholder="you@yourpractice.com" autocomplete="email">
-        </div>
-        <div class="field">
-          <label class="field-label" for="login-password">Password</label>
-          <input class="input" id="login-password" type="password" placeholder="Enter your password" autocomplete="current-password">
-          <span class="field-hint" style="text-align: right;"><a href="#">Forgot password?</a></span>
-        </div>
-        <label class="checkbox-row"><input type="checkbox" checked> <span class="text-sm">Keep me signed in on this device</span></label>
-
-        <a class="btn btn-primary btn-lg" href="index.html" style="width: 100%;">Sign In</a>
-
-        <div class="row" style="gap: var(--space-3);" aria-hidden="true">
-          <span style="flex: 1; height: 1px; background: var(--border-color);"></span>
-          <span class="text-xs text-muted">SINGLE SIGN-ON UNLOCKS</span>
-          <span style="flex: 1; height: 1px; background: var(--border-color);"></span>
-        </div>
-
-        <div class="sso-strip" aria-label="Products included with your account">
-          <span class="app-tile app-tile-recall" title="Recall Health"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></span>
-          <span class="app-tile app-tile-receptionist" title="Medical Receptionist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
-          <span class="app-tile app-tile-chatbot" title="Chatbot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span>
-          <span class="app-tile app-tile-scheduler" title="Online Scheduler"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg></span>
-          <span class="app-tile app-tile-intake" title="Patient Intake"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></span>
-          <span class="app-tile app-tile-paymydoc" title="Pay My Doc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>
-          <span class="app-tile app-tile-admin" title="Practice Engine Admin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7"/><path d="M4 10V3"/><path d="M12 21v-9"/><path d="M12 8V3"/><path d="M20 21v-5"/><path d="M20 12V3"/><path d="M1 14h6"/><path d="M9 8h6"/><path d="M17 16h6"/></svg></span>
-        </div>
-        <p class="text-xs text-muted" style="text-align: center;">Sign in once and move between every product with the app switcher. No separate passwords, ever.</p>
+<main class="auth-split">
+  <section class="auth-visual" aria-hidden="true">
+    <a class="pe-wordmark wm-invert" href="index.html" aria-label="Practice Engine home" style="align-self: flex-start;">
+      <span class="wm-top">PRACTICE</span>
+      <span class="wm-rule"></span>
+      <span class="wm-bottom">ENGINE</span>
+    </a>
+    <div>
+      <h2 class="visual-headline">Every patient touchpoint, <span class="hl">one platform</span>.</h2>
+      <p class="visual-sub">Recalls, calls, chat, scheduling, intake, and payments working as one system, so your team can focus on care.</p>
+      <div class="visual-marks">
+        <span class="app-mark" data-product="recall"><span class="app-mark-text">R</span><span class="app-mark-rule"></span></span>
+        <span class="app-mark" data-product="receptionist"><span class="app-mark-text">B</span><span class="app-mark-rule"></span></span>
+        <span class="app-mark" data-product="chatbot"><span class="app-mark-text">C</span><span class="app-mark-rule"></span></span>
+        <span class="app-mark" data-product="scheduler"><span class="app-mark-text">S</span><span class="app-mark-rule"></span></span>
+        <span class="app-mark" data-product="intake"><span class="app-mark-text">I</span><span class="app-mark-rule"></span></span>
+        <span class="app-mark" data-product="paymydoc"><span class="app-mark-text">P</span><span class="app-mark-rule"></span></span>
       </div>
     </div>
+    <div>
+      <div class="testi">
+        <div class="testi-slide active">
+          <p>"The front desk stopped drowning the month we went live. Recalls, booking, and payments just happen now."</p>
+          <div class="who">Practice Manager, Coastal Dermatology (demo)</div>
+        </div>
+        <div class="testi-slide">
+          <p>"Our no-show rate fell by a third, and patients keep telling us how easy it is to book and pay."</p>
+          <div class="who">Owner, Harbor View Family Medicine (demo)</div>
+        </div>
+        <div class="testi-slide">
+          <p>"One login for the whole team, one place to see everything. Switching software used to scare us. This did not."</p>
+          <div class="who">Office Administrator, Lakeside Pediatrics (demo)</div>
+        </div>
+      </div>
+      <div class="testi-dots" role="tablist" aria-label="Testimonials">
+        <button class="active" aria-label="Testimonial 1"></button>
+        <button aria-label="Testimonial 2"></button>
+        <button aria-label="Testimonial 3"></button>
+      </div>
+    </div>
+  </section>
 
-    <p class="auth-links">New to Practice Engine? <a href="register.html">Create your practice account</a> &middot; <a href="index.html">Back to home</a></p>
-  </div>
+  <section class="auth-form-side">
+    <div class="auth-form" data-animate>
+      <div class="auth-title">
+        <h1>Sign in to Practice Engine</h1>
+        <p>One account. Every product in the suite.</p>
+      </div>
+
+      <div class="social-row">
+        <button class="btn btn-social">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.27c0-.85-.08-1.66-.22-2.45H12v4.64h6.45a5.52 5.52 0 0 1-2.39 3.62v3h3.87c2.26-2.09 3.57-5.16 3.57-8.81z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.93-2.91l-3.87-3c-1.07.72-2.44 1.14-4.06 1.14-3.12 0-5.77-2.11-6.71-4.95H1.29v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.29 14.28a7.2 7.2 0 0 1 0-4.56v-3.1H1.29a12 12 0 0 0 0 10.76l4-3.1z"/><path fill="#EA4335" d="M12 4.77c1.76 0 3.34.61 4.58 1.8l3.44-3.44A11.97 11.97 0 0 0 12 0 12 12 0 0 0 1.29 6.62l4 3.1C6.23 6.88 8.88 4.77 12 4.77z"/></svg>
+          Google
+        </button>
+        <button class="btn btn-social">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.86-3.08.38-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.06-.38C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.79 1.18-.19 2.31-.89 3.51-.84 1.54.12 2.65.71 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.47 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+          Apple
+        </button>
+      </div>
+
+      <div class="or-row" aria-hidden="true">
+        <span></span><span class="or-text">OR</span><span></span>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="login-email">Work email</label>
+        <input class="input" id="login-email" type="email" placeholder="you@yourpractice.com" autocomplete="email">
+      </div>
+      <div class="field">
+        <label class="field-label" for="login-password">Password</label>
+        <input class="input" id="login-password" type="password" placeholder="Enter your password" autocomplete="current-password">
+        <span class="field-hint" style="text-align: right;"><a href="#">Forgot password?</a></span>
+      </div>
+
+      <a class="btn btn-primary btn-lg" href="index.html" style="width: 100%;">Sign In</a>
+
+      <div class="stack" style="gap: var(--space-2); align-items: center; margin-top: var(--space-2);">
+        <div class="sso-strip" aria-label="Products included with your account">
+          <span class="app-mark" data-product="recall" title="Recall Health"><span class="app-mark-text">R</span><span class="app-mark-rule"></span></span>
+          <span class="app-mark" data-product="receptionist" title="Medical Receptionist"><span class="app-mark-text">B</span><span class="app-mark-rule"></span></span>
+          <span class="app-mark" data-product="chatbot" title="Chatbot"><span class="app-mark-text">C</span><span class="app-mark-rule"></span></span>
+          <span class="app-mark" data-product="scheduler" title="Online Scheduler"><span class="app-mark-text">S</span><span class="app-mark-rule"></span></span>
+          <span class="app-mark" data-product="intake" title="Patient Intake"><span class="app-mark-text">I</span><span class="app-mark-rule"></span></span>
+          <span class="app-mark" data-product="paymydoc" title="Pay My Doc"><span class="app-mark-text">P</span><span class="app-mark-rule"></span></span>
+          <span class="pe-mark" style="--mark-size: 28px;" title="Practice Engine Admin"><span class="pe-mark-text">PE</span><span class="pe-mark-rule"></span></span>
+        </div>
+        <span class="text-xs text-muted">One sign-in unlocks every product on your plan.</span>
+      </div>
+
+      <p class="auth-links">New to Practice Engine? <a href="register.html">Create your practice account</a><br><a class="text-xs" href="login-v2.html">View photo version</a></p>
+    </div>
+  </section>
 </main>
 
 <script src="js/practice-engine.js"></script>
+<script>
+  var slides = document.querySelectorAll(".testi-slide");
+  var dots = document.querySelectorAll(".testi-dots button");
+  var current = 0;
+  var timer;
+
+  function showSlide(index) {
+    current = index;
+    slides.forEach(function (s, i) { s.classList.toggle("active", i === index); });
+    dots.forEach(function (d, i) { d.classList.toggle("active", i === index); });
+  }
+  function nextSlide() { showSlide((current + 1) % slides.length); }
+  function startTimer() {
+    clearInterval(timer);
+    timer = setInterval(nextSlide, 5000);
+  }
+  dots.forEach(function (dot, i) {
+    dot.addEventListener("click", function () { showSlide(i); startTimer(); });
+  });
+  startTimer();
+</script>
 </body>
 </html>
