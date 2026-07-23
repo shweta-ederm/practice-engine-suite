@@ -554,6 +554,7 @@ button { font-family: inherit; }
   vertical-align: middle;
 }
 .table tbody tr { transition: background var(--duration-fast) var(--ease); }
+.table tbody tr[data-href] { cursor: pointer; }
 .table tbody tr:hover { background: var(--accent-softer); }
 .table tbody tr:last-child td { border-bottom: none; }
 .table .cell-strong { font-weight: var(--weight-medium); color: var(--text-primary); }
@@ -597,7 +598,17 @@ button { font-family: inherit; }
 }
 .topbar-brand:hover { color: var(--text-primary); }
 .topbar-divider { width: 1px; height: 24px; background: var(--border-color); }
-.topbar-product { font-weight: var(--weight-semibold); color: var(--accent-strong); display: flex; align-items: center; gap: var(--space-2); }
+/* Brand zone matches the sidebar width so the product name lines up
+   with the main content heading below it */
+.topbar-brand { min-width: calc(var(--sidebar-width) - var(--space-6)); }
+.topbar-product {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--accent-strong);
+  display: flex; align-items: center; gap: var(--space-2);
+}
 .topbar-spacer { flex: 1; }
 .topbar-actions { display: flex; align-items: center; gap: var(--space-2); }
 .topbar-search { width: 280px; }
@@ -696,6 +707,34 @@ button { font-family: inherit; }
 .nav-item:hover { background: var(--surface-sunken); color: var(--text-primary); }
 .nav-item.active { background: var(--accent-soft); color: var(--accent-strong); }
 .nav-item .badge { margin-left: auto; }
+
+/* Collapsible sidebar group */
+.nav-group summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex; align-items: center; gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  transition: background var(--duration-fast) var(--ease), color var(--duration-fast) var(--ease);
+}
+.nav-group summary::-webkit-details-marker { display: none; }
+.nav-group summary:hover { background: var(--surface-sunken); color: var(--text-primary); }
+.nav-group summary svg { width: 18px; height: 18px; flex-shrink: 0; }
+.nav-group summary::after {
+  content: "";
+  margin-left: auto;
+  width: 7px; height: 7px;
+  border-right: 2px solid var(--text-faint);
+  border-bottom: 2px solid var(--text-faint);
+  transform: rotate(-45deg);
+  transition: transform var(--duration-fast) var(--ease);
+  flex-shrink: 0;
+}
+.nav-group[open] summary::after { transform: rotate(45deg); }
+.nav-group .nav-sub { margin-top: var(--space-1); }
 
 /* Nested report/analytics links under a section */
 .nav-sub {
@@ -1240,6 +1279,56 @@ button { font-family: inherit; }
 .wm-inline .g { color: var(--pe-logo-green); }
 .wm-inline .k { color: var(--pe-ink); }
 .wm-inline .wm-rule { height: 2px; border-radius: 1px; background: var(--pe-spectrum); }
+
+/* App mark (Ink Family): ink tile, product-colored letter and rule.
+   Inherits its color from the active product theme via --accent. */
+.app-mark {
+  --mark-size: 36px;
+  width: var(--mark-size); height: var(--mark-size);
+  border-radius: calc(var(--mark-size) * 0.22);
+  background: var(--pe-ink);
+  display: inline-flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: calc(var(--mark-size) * 0.09);
+  flex-shrink: 0;
+}
+.app-mark .app-mark-text {
+  font-family: var(--font-logo);
+  font-weight: var(--weight-semibold);
+  color: var(--accent);
+  font-size: calc(var(--mark-size) * 0.32);
+  letter-spacing: 0.04em;
+  margin-right: -0.04em;
+  line-height: 1;
+}
+.app-mark .app-mark-rule {
+  width: 56%; height: calc(var(--mark-size) * 0.07);
+  border-radius: var(--radius-full);
+  background: var(--accent);
+}
+
+/* Product-first lockup with parent endorsement: app mark + name + by-line */
+.app-lockup { display: inline-flex; align-items: center; gap: var(--space-3); }
+.app-lockup:hover .app-lockup-name { color: var(--accent-strong); }
+.app-lockup-body { display: flex; flex-direction: column; }
+.app-lockup-name {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  color: var(--accent);
+  white-space: nowrap;
+}
+.lockup-endorse {
+  display: inline-flex; align-items: baseline; gap: var(--space-1);
+  font-family: var(--font-logo);
+  font-size: 0.5625rem;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.1em;
+  margin-top: 3px;
+}
+.lockup-endorse .by { font-family: var(--font-sans); font-weight: var(--weight-medium); letter-spacing: 0.04em; color: var(--text-muted); font-size: 0.625rem; }
+.lockup-endorse .g { color: var(--pe-logo-green); }
+.lockup-endorse .k { color: var(--pe-ink); }
 
 /* Icon-only mark: rounded square with PE monogram over the spectrum */
 .pe-mark {

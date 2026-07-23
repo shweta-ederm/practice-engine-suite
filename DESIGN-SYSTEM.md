@@ -27,7 +27,15 @@ Lockups and sizes (see the Brand section of design-system.html):
 
 Rules: PRACTICE is always logo green, ENGINE is always ink, the spectrum always lists product colors in suite order, and the spectrum is never reused as decoration inside a product.
 
-Product nicknames used internally: Recall Health is "RH", the AI Medical Receptionist is "Bella".
+### App icons and lockups (Ink Family, approved July 2026)
+
+Each product has its own mark descended from the PE icon: `.app-mark`, an ink rounded square with a single letter and bottom rule in the product's color (R, B, C, S, I, P), colored automatically by the active theme's `--accent`. In-product headers use the product-first lockup `.app-lockup`: the app mark, the product name in the product's accent color, and the `.lockup-endorse` by-line ("by PRACTICE ENGINE"). Parent-first ("PRACTICE ENGINE | Product") remains for suite chrome: sign-in, PE Admin, the design system, invoices. The possessive form is prose-only, and no screen shows both lockup orders at once.
+
+Product nicknames used internally: Recall Health is "RH", the Medical Receptionist is "Bella" (Bella is the assistant persona; the practice-facing product name is Medical Receptionist, and each practice can rename its own assistant in Practice Settings).
+
+### Product name registry (single source of truth)
+
+Product display names live in ONE place: the `PE_PRODUCTS` map at the top of `js/practice-engine.js`. Every name label in the suite carries `data-product-name="key"` (add `data-name-short` for the short form, e.g. PE Admin) and is filled from the registry at load; the hardcoded text inside is only a no-JS fallback. To rename a product: edit the registry line, then sweep prose and `<title>` tags with a find-and-replace. Wired surfaces include app switchers, top bar lockups, landing cards, Logo Lab captions and lockups, the design system theme switcher, and the Practice Settings product picker.
 
 ## Product theming
 
@@ -37,9 +45,9 @@ Set `data-product` on the `<html>` element and the entire page re-themes. Produc
 |---|---|---|---|
 | Suite (default) | (none) | Ink `#1E293B` + Spectrum | `#0B1220 to #475569` |
 | Recall Health (RH) | `recall` | `#F8941D` Orange | `#F8941D to #FBBE6E` |
-| AI Medical Receptionist (Bella) | `receptionist` | `#6E62A8` Heliotrope | `#6E62A8 to #A79BD4` |
-| AI Chatbot | `chatbot` | `#4169D1` Cobalt | `#4169D1 to #7B96E8` |
-| Appointment Scheduler | `scheduler` | `#0284C7` Sky | `#0284C7 to #38BDF8` |
+| Medical Receptionist (Bella) | `receptionist` | `#6E62A8` Heliotrope | `#6E62A8 to #A79BD4` |
+| Chatbot | `chatbot` | `#4169D1` Cobalt | `#4169D1 to #7B96E8` |
+| Online Scheduler | `scheduler` | `#0284C7` Sky | `#0284C7 to #38BDF8` |
 | Patient Intake | `intake` | `#B07AA1` Mauve | `#B07AA1 to #D3A8C8` |
 | Pay My Doc | `paymydoc` | `#16A34A` Green | `#16A34A to #4ADE80` |
 | Practice Engine Admin | `admin` | Ink `#1E293B` + Spectrum | `#0B1220 to #475569` |
@@ -134,7 +142,7 @@ All components live in `css/practice-engine.css`. Reuse before creating new ones
 
 - Never use em dashes in UI text, content, documentation, or code comments.
 - All demo data must be clearly fictional (suffix names with "(demo)"); never include real patient information (PHI) anywhere in this project. The repo is publicly hosted, so real provider and practice names are also replaced with fictional ones.
-- Use standard healthtech terminology patients and staff already know: "intake forms" and "registration" (never "packets"), "patient balances", "payment plans", "recalls", "no-shows", "e-signature", "EHR sync". If a term needs explaining, replace it.
+- Use standard healthtech terminology patients and staff already know: "intake forms" and "registration" (never "packets"), "patient balances", "payment plans", "recalls", "no-shows", "e-signature", "PMS sync". If a term needs explaining, replace it.
 - Keep desktop and mobile versions visually and functionally consistent (mobile currently deferred, see Page inventory).
 
 ## Page inventory
@@ -145,19 +153,26 @@ All components live in `css/practice-engine.css`. Reuse before creating new ones
 | Sign in | login.html |
 | Create account | register.html |
 | Recall Health | recall-health.html |
-| AI Medical Receptionist | ai-receptionist.html |
-| AI Chatbot | ai-chatbot.html |
-| Appointment Scheduler | appointment-scheduler.html |
+| Medical Receptionist | ai-receptionist.html |
+| Chatbot | ai-chatbot.html |
+| Online Scheduler | appointment-scheduler.html |
 | Patient Intake | patient-intake.html |
 | Pay My Doc | pay-my-doc.html |
 | Practice Engine Admin | pe-admin.html |
-| PE Admin: Practice Settings | pe-admin-practices.html |
+| PE Admin: Practices list | pe-admin-practices.html |
+| PE Admin: Practice detail | pe-admin-practice-detail.html |
+| Logo Lab (icon proposals) | brand-icons.html |
 | Design system reference | design-system.html |
 
 Mobile pages are deferred by client decision (July 2026): the `-mobile` pages were removed and will be rebuilt later. Rule 4's naming convention still applies when they return. Desktop pages remain responsive down to tablet widths in the meantime.
 
 ## Changelog
 
+- 2026-07-22 (v7.3): Product renames: Online Scheduler (was Appointment Scheduler), Medical Receptionist (was AI Medical Receptionist), Chatbot (was AI Chatbot). Added the PE_PRODUCTS name registry in shared JS as the single source of truth for product names, wired via data-product-name across switchers, lockups, cards, Logo Lab, and pickers. Chatbot dashboard rebuilt stakeholder-first: Active Chats and Conversation History became sidebar items, Top topics promoted with counts and an insight callout, lead details replaced by a Chat outcomes donut with after-hours share and response time, plus a 14-day trend and recent conversations table. Medical Receptionist dashboard dropped the Live call card (operators use Call Log). Practice Settings: assistant name became a per-practice setting, Practice Information went two-column, and People and Places split into separate Locations, Providers, and Users tabs (Team Members renamed Users). Logo Lab: proposals relabeled (B Current, C Alternative), naming-rules and recommendation sections removed, Final logos section added and decluttered, captions single-line.
+- 2026-07-22 (v7.2): Ink Family app icons approved and rolled out: `.app-mark` and the product-first `.app-lockup` with "by Practice Engine" endorsement (app name in the app's color) now head every product app's top bar; parent-first stays on suite chrome. Practice detail page redesigned around products: an app-mark picker strip selects each product's config workspace, and the twelve practice sections clubbed into four tabs (Profile, People and Places, Operations, Billing and IT); the left menu and its section headings are gone. Appointment Scheduler renamed Online Scheduler everywhere (file name unchanged). RH's Create Campaign moved from the topbar to the page-header actions like other apps.
+- 2026-07-22 (v7.1): Logo Lab gained full-name lockup demos for Proposals A and B, plus naming rules: product-first with a "by Practice Engine" endorsement for in-product and patient-facing surfaces; parent-first ("Practice Engine | Product") for suite chrome, sign-in, admin, and formal documents; the possessive form is prose-only and never a visual lockup; never both orders on one screen. Client preference noted for Proposal B (Ink Family), pending final sign-off.
+- 2026-07-22 (v7): Practice Settings split into a full-width Practices list page (search, plan/status/group-manager filters, clickable rows via the new `tr[data-href]` pattern) and a practice detail page with a left settings menu inside the practice (production pattern): 12 practice sections plus a Products group where each product opens its own panel of grouped config cards with an activation toggle, built to absorb many more settings over time. Practice Info leads with Practice Information (joined date, activation status, group manager, PM/EHR/legacy PM systems) and a full Demographics form. Topbar product names enlarged, uppercased, and aligned with the main heading (brand zone matches sidebar width). Page-header buttons standardized at default size (topbar and card headers stay small). RH sidebar simplified with collapsible Analytics/Reports/Financials groups (`.nav-group`). Landing gained the app switcher and a Logo Lab card; brand-icons.html holds three app-icon proposals (Ink Family recommended) pending approval. "EHR sync" renamed to "PMS sync" in sync contexts. Standard and Inline logo lockups split into separate design system cards.
+- 2026-07-22 (v6.3): Pay My Doc dashboard rebuilt to the production content: nav (Dashboard; Patients, Billing; Analytics, Memberships; Integrations, Settings), Collections MTD / Digital Payment Rate / Avg Days to Collect / Patient Satisfaction stats, Collections by Month bars, five-segment Payment Method Mix donut with integrated legend, Recent Payments, AI Insights panel, and Outstanding Balances by Category, all on design system components with the PMD chart palette.
 - 2026-07-22 (v6.2): App top bars now carry the official brand lockup: the `.pe-mark` icon (PE monogram over the spectrum, 32px) beside the `.wm-inline` wordmark, replacing the old gradient grid mark. The obsolete `.brand-mark` component was removed from the CSS.
 - 2026-07-22 (v6.1): Added the PE Admin Practice Settings module (pe-admin-practices.html): practice list with master-detail settings across 13 sections (rich Practice Info with representative, PM/EHR systems, maps URLs and full address details; Contact; Locations; Providers; Business Hours; Team; Templates; Branding; Billing; Notifications; Integrations; IT Settings; and Products with activate/deactivate toggles plus per-product configuration). All product dashboards now present the global admin view: Period/Practice/Locations/Providers filter bar and the signed-in Global Admin identity in the topbar. Stat card standard revised: edge stats with chart-token colors on every dashboard, icons removed, values align horizontally in equal-height rows. PE Admin product adoption chart merged its legend into self-labeled bars.
 - 2026-07-22 (v6): Platform identity resolved to Ink + Spectrum: the suite default and PE Admin themes now use neutral ink accents with the spectrum as the signature (ink tiles with spectrum stripes), because the old suite evergreen sat too close to Pay My Doc's money green. Pay My Doc keeps green. Landing decluttered: hero pill and card category badges removed, leaving wordmark, headline, subhead, and clean icon-name-tagline cards. Added `.grid-6`; Recall Health's six financial stats now run six across like production.

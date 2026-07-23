@@ -86,13 +86,13 @@
           <span class="h4">Preview product theme</span>
           <div class="segmented" role="tablist" aria-label="Theme preview">
             <button class="active" data-theme-preview="">Suite</button>
-            <button data-theme-preview="recall">RH</button>
-            <button data-theme-preview="receptionist">Bella</button>
-            <button data-theme-preview="chatbot">Chatbot</button>
-            <button data-theme-preview="scheduler">Scheduler</button>
-            <button data-theme-preview="intake">Intake</button>
-            <button data-theme-preview="paymydoc">Pay My Doc</button>
-            <button data-theme-preview="admin">Admin</button>
+            <button data-theme-preview="recall" data-product-name="recall">RH</button>
+            <button data-theme-preview="receptionist" data-product-name="receptionist">Medical Receptionist</button>
+            <button data-theme-preview="chatbot" data-product-name="chatbot">Chatbot</button>
+            <button data-theme-preview="scheduler" data-product-name="scheduler">Online Scheduler</button>
+            <button data-theme-preview="intake" data-product-name="intake">Patient Intake</button>
+            <button data-theme-preview="paymydoc" data-product-name="paymydoc">Pay My Doc</button>
+            <button data-theme-preview="admin" data-product-name="admin" data-name-short>PE Admin</button>
           </div>
         </div>
       </div>
@@ -104,7 +104,7 @@
         </div>
         <div class="card-body stack">
           <p class="text-secondary" style="max-width: 680px;">Practice Engine has a single logo: PRACTICE in the original logo green over the product spectrum rule, with ENGINE in ink. The spectrum carries one stripe per product, so the mark grows with the suite. Use the size that fits the context; never restyle or recolor the parts.</p>
-          <div class="grid grid-3">
+          <div class="grid grid-4">
             <div class="card" style="box-shadow: none;">
               <div class="card-body" style="display: flex; align-items: center; justify-content: center; min-height: 140px;">
                 <div class="pe-wordmark wm-lg" aria-label="Full lockup">
@@ -121,12 +121,22 @@
               </div>
             </div>
             <div class="card" style="box-shadow: none;">
-              <div class="card-body" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-5); min-height: 140px;">
+              <div class="card-body" style="display: flex; align-items: center; justify-content: center; min-height: 140px;">
                 <div class="pe-wordmark" aria-label="Standard lockup">
                   <span class="wm-top">PRACTICE</span>
                   <span class="wm-rule"></span>
                   <span class="wm-bottom">ENGINE</span>
                 </div>
+              </div>
+              <div class="card-footer" style="justify-content: flex-start;">
+                <div>
+                  <div class="h4">Standard</div>
+                  <span class="text-xs text-muted">Stacked lockup for cards, documents, and receipts.</span>
+                </div>
+              </div>
+            </div>
+            <div class="card" style="box-shadow: none;">
+              <div class="card-body" style="display: flex; align-items: center; justify-content: center; min-height: 140px;">
                 <a class="wm-inline" href="#brand" aria-label="Inline lockup">
                   <span class="wm-words"><span class="g">PRACTICE</span><span class="k">ENGINE</span></span>
                   <span class="wm-rule" aria-hidden="true"></span>
@@ -134,8 +144,8 @@
               </div>
               <div class="card-footer" style="justify-content: flex-start;">
                 <div>
-                  <div class="h4">Standard and inline</div>
-                  <span class="text-xs text-muted">Cards and documents (stacked); top bars and footers (single line).</span>
+                  <div class="h4">Inline</div>
+                  <span class="text-xs text-muted">Single line with the spectrum underneath, for top bars and footers.</span>
                 </div>
               </div>
             </div>
