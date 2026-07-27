@@ -27,8 +27,10 @@
       var(--pe-ink);
     color: var(--pe-white);
     display: flex; flex-direction: column; justify-content: space-between;
-    padding: var(--space-12);
+    align-items: flex-end;
+    padding: var(--space-12) clamp(var(--space-12), 7vw, 7rem) var(--space-12) var(--space-8);
   }
+  .auth-visual > * { width: min(460px, 100%); }
   .auth-visual::after {
     content: "";
     position: absolute; inset: 0;
@@ -109,7 +111,7 @@
 
 <main class="auth-split">
   <section class="auth-visual" aria-hidden="true">
-    <a class="pe-wordmark wm-invert" href="index.html" aria-label="Practice Engine home" style="align-self: flex-start;">
+    <a class="pe-wordmark wm-invert" href="index.html" aria-label="Practice Engine home" style="display: inline-flex;">
       <span class="wm-top">PRACTICE</span>
       <span class="wm-rule"></span>
       <span class="wm-bottom">ENGINE</span>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" data-product="recall">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recall Health Analytics | Practice Engine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/practice-engine.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="app-lockup" href="recall-health.html">
+    <span class="app-mark" aria-hidden="true"><span class="app-mark-text">R</span><span class="app-mark-rule"></span></span>
+    <span class="app-lockup-body">
+      <span class="app-lockup-name" data-product-name="recall">Recall Health</span>
+      <span class="lockup-endorse"><span class="by">by</span><span class="g">PRACTICE</span><span class="k">ENGINE</span></span>
+    </span>
+  </a>
+  <div class="topbar-spacer"></div>
+  <div class="input-group topbar-search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    <input class="input" type="search" placeholder="Search patients, campaigns...">
+  </div>
+  <div class="topbar-actions">
+    <button class="btn btn-icon" aria-label="Notifications">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+    </button>
+    <div class="app-switcher">
+      <button class="btn btn-icon" data-switcher-toggle aria-label="Switch application" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="5" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="12" cy="19" r="2"/><circle cx="19" cy="19" r="2"/></svg>
+      </button>
+      <nav class="app-switcher-menu" aria-label="Applications">
+        <a class="app-switcher-item" href="index.html"><span class="app-tile app-tile-suite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>Suite Home</a>
+        <a class="app-switcher-item" href="recall-health.html"><span class="app-tile app-tile-recall"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></span><span data-product-name="recall">Recall Health</span></a>
+        <a class="app-switcher-item" href="ai-receptionist.html"><span class="app-tile app-tile-receptionist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span data-product-name="receptionist">Medical Receptionist</span></a>
+        <a class="app-switcher-item" href="ai-chatbot.html"><span class="app-tile app-tile-chatbot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span><span data-product-name="chatbot">Chatbot</span></a>
+        <a class="app-switcher-item" href="appointment-scheduler.html"><span class="app-tile app-tile-scheduler"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg></span><span data-product-name="scheduler">Online Scheduler</span></a>
+        <a class="app-switcher-item" href="patient-intake.html"><span class="app-tile app-tile-intake"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></span><span data-product-name="intake">Patient Intake</span></a>
+        <a class="app-switcher-item" href="pay-my-doc.html"><span class="app-tile app-tile-paymydoc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span><span data-product-name="paymydoc">Pay My Doc</span></a>
+        <a class="app-switcher-item" href="pe-admin.html"><span class="app-tile app-tile-admin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7"/><path d="M4 10V3"/><path d="M12 21v-9"/><path d="M12 8V3"/><path d="M20 21v-5"/><path d="M20 12V3"/><path d="M1 14h6"/><path d="M9 8h6"/><path d="M17 16h6"/></svg></span><span data-product-name="admin" data-name-short>PE Admin</span></a>
+        <a class="app-switcher-item" href="design-system.html"><span class="app-tile app-tile-design"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></span>Design System</a>
+      </nav>
+    </div>
+    <div class="avatar-row">
+      <div style="text-align: right;">
+        <div class="text-sm" style="font-weight: var(--weight-semibold); line-height: 1.2;">Shweta Singh</div>
+        <div class="text-xs text-muted">Global Admin</div>
+      </div>
+      <span class="avatar" title="Shweta Singh">SS</span>
+    </div>
+  </div>
+</header>
+
+<div class="app-shell">
+  <nav class="sidebar" aria-label="Recall Health navigation">
+    <a class="nav-item" href="recall-health.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+      Dashboard
+    </a>
+    <a class="nav-item" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+      Campaigns
+    </a>
+    <a class="nav-item" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Patients
+    </a>
+    <a class="nav-item active" href="recall-health-analytics.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+      Analytics
+    </a>
+    <span class="sidebar-section">More</span>
+    <details class="nav-group">
+      <summary>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+        Reports
+      </summary>
+      <div class="nav-sub">
+        <a class="nav-item" href="#">Reactivation Summary</a>
+        <a class="nav-item" href="#">Patient Survey Report</a>
+        <a class="nav-item" href="#">Appointment Report</a>
+        <a class="nav-item" href="#">Contact Log</a>
+        <a class="nav-item" href="#">Opt-out Report</a>
+        <a class="nav-item" href="#">Call Transcription</a>
+      </div>
+    </details>
+    <details class="nav-group">
+      <summary>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        Financials
+      </summary>
+      <div class="nav-sub">
+        <a class="nav-item" href="#">Lost Revenue</a>
+        <a class="nav-item" href="#">Revenue Details</a>
+      </div>
+    </details>
+  </nav>
+
+  <main class="main">
+    <div class="main-inner stack">
+
+      <div class="page-header" style="margin-bottom: 0;">
+        <div>
+          <h1 class="h1">Analytics</h1>
+        </div>
+        <div class="row">
+          <button class="btn btn-secondary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
+            Schedule Email Report
+          </button>
+          <button class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+            Download Board Report
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body filter-bar">
+          <div class="field">
+            <label class="field-label" for="f-period">Period</label>
+            <select class="select" id="f-period"><option>Last 12 months</option><option>Year to date</option><option>Q2 2026</option></select>
+          </div>
+          <div class="field">
+            <label class="field-label" for="f-practice">Practice (1)</label>
+            <select class="select" id="f-practice"><option>Coastal Dermatology (demo)</option><option>All practices</option></select>
+          </div>
+          <div class="field">
+            <label class="field-label" for="f-locations">Locations (4)</label>
+            <select class="select" id="f-locations"><option>All locations</option><option>Main Street Clinic</option><option>Harbor Medical Center</option></select>
+          </div>
+          <div class="field">
+            <label class="field-label" for="f-providers">Providers (16)</label>
+            <select class="select" id="f-providers"><option>All providers</option><option>Dr. Avery North, MD</option><option>Quinn Gold, PA-C</option></select>
+          </div>
+        </div>
+      </div>
+
+      <section class="report-hero">
+        <div class="hero-lead">
+          <div class="hero-eyebrow">Annual Report &middot; Last 12 Months</div>
+          <div class="hero-value">$642K</div>
+          <p class="hero-caption">recovered from patients who had quietly fallen off the schedule, at a 4.2x return on program cost.</p>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><span class="hero-stat-value">3,412</span><span class="hero-stat-label">patients reactivated</span></div>
+          <div class="hero-stat"><span class="hero-stat-value">4.2x</span><span class="hero-stat-label">campaign ROI</span></div>
+          <div class="hero-stat"><span class="hero-stat-value">26.8%</span><span class="hero-stat-label">recall conversion</span></div>
+          <div class="hero-stat"><span class="hero-stat-value">2,986</span><span class="hero-stat-label">completed visits</span></div>
+        </div>
+      </section>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Recovered revenue, month by month</h2>
+            <span class="text-sm text-muted">Trailing 12 months</span>
+          </div>
+          <div class="card-body trend-chart">
+            <svg viewBox="0 0 600 210" role="img" aria-label="Recovered revenue rising from 38 thousand to 68 thousand dollars per month over twelve months">
+              <line class="trend-grid" x1="20" y1="25" x2="580" y2="25"/>
+              <line class="trend-grid" x1="20" y1="78" x2="580" y2="78"/>
+              <line class="trend-grid" x1="20" y1="131" x2="580" y2="131"/>
+              <line class="trend-grid" x1="20" y1="185" x2="580" y2="185"/>
+              <path class="trend-area" d="M20,153 L71,141 L122,145 L173,125 L224,117 L275,97 L325,105 L376,85 L427,73 L478,61 L529,49 L580,33 L580,185 L20,185 Z"/>
+              <path class="trend-line" d="M20,153 L71,141 L122,145 L173,125 L224,117 L275,97 L325,105 L376,85 L427,73 L478,61 L529,49 L580,33"/>
+              <circle class="trend-dot" cx="20" cy="153" r="4"><title>$38K</title></circle>
+              <circle class="trend-dot" cx="71" cy="141" r="4"><title>$41K</title></circle>
+              <circle class="trend-dot" cx="122" cy="145" r="4"><title>$40K</title></circle>
+              <circle class="trend-dot" cx="173" cy="125" r="4"><title>$45K</title></circle>
+              <circle class="trend-dot" cx="224" cy="117" r="4"><title>$47K</title></circle>
+              <circle class="trend-dot" cx="275" cy="97" r="4"><title>$52K</title></circle>
+              <circle class="trend-dot" cx="325" cy="105" r="4"><title>$50K</title></circle>
+              <circle class="trend-dot" cx="376" cy="85" r="4"><title>$55K</title></circle>
+              <circle class="trend-dot" cx="427" cy="73" r="4"><title>$58K</title></circle>
+              <circle class="trend-dot" cx="478" cy="61" r="4"><title>$61K</title></circle>
+              <circle class="trend-dot" cx="529" cy="49" r="4"><title>$64K</title></circle>
+              <circle class="trend-dot" cx="580" cy="33" r="6"><title>$68K</title></circle>
+              <text class="trend-tag" x="576" y="18" text-anchor="end">$68K</text>
+            </svg>
+            <div class="chart-labels">
+              <span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">How a lapsed patient becomes revenue</h2>
+            <span class="text-sm text-muted">Trailing 12 months</span>
+          </div>
+          <div class="card-body">
+            <div class="pipe">
+              <div class="pipe-step">
+                <span class="pipe-num">1</span>
+                <div class="pipe-body"><div class="pipe-name">Due for recall</div><div class="pipe-note">Overdue patients found in the PMS</div></div>
+                <span class="pipe-value">12,480</span>
+              </div>
+              <div class="pipe-drop"><strong>89%</strong> reached by text, email, or voice</div>
+              <div class="pipe-step">
+                <span class="pipe-num">2</span>
+                <div class="pipe-body"><div class="pipe-name">Reached</div><div class="pipe-note">Valid contact, message delivered</div></div>
+                <span class="pipe-value">11,120</span>
+              </div>
+              <div class="pipe-drop"><strong>44%</strong> responded to the outreach</div>
+              <div class="pipe-step">
+                <span class="pipe-num">3</span>
+                <div class="pipe-body"><div class="pipe-name">Responded</div><div class="pipe-note">Replied, clicked, or called back</div></div>
+                <span class="pipe-value">4,890</span>
+              </div>
+              <div class="pipe-drop"><strong>70%</strong> booked an appointment</div>
+              <div class="pipe-step">
+                <span class="pipe-num">4</span>
+                <div class="pipe-body"><div class="pipe-name">Booked</div><div class="pipe-note">Most self-booked from the link</div></div>
+                <span class="pipe-value">3,412</span>
+              </div>
+              <div class="pipe-drop"><strong>88%</strong> showed up</div>
+              <div class="pipe-step">
+                <span class="pipe-num">5</span>
+                <div class="pipe-body"><div class="pipe-name">Completed visit</div><div class="pipe-note">$215 average visit value</div></div>
+                <span class="pipe-value">2,986</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Response rate by channel</h2>
+            <div class="hm-legend">Low <span class="hm-cell hm-1"></span><span class="hm-cell hm-2"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-4"></span><span class="hm-cell hm-5"></span> High</div>
+          </div>
+          <div class="card-body stack" style="gap: var(--space-4);">
+            <div class="heatmap" style="--cols: 12;" role="img" aria-label="Response rate by outreach channel and month: text messages strengthen all year, letters fade to near zero">
+              <span class="hm-rowlabel">Text</span><span class="hm-cell hm-3"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-4"></span><span class="hm-cell hm-4"></span><span class="hm-cell hm-4"></span><span class="hm-cell hm-4"></span><span class="hm-cell hm-4"></span><span class="hm-cell hm-5"></span><span class="hm-cell hm-5"></span><span class="hm-cell hm-5"></span><span class="hm-cell hm-5"></span>
+              <span class="hm-rowlabel">Voice</span><span class="hm-cell hm-2"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-2"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-4"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-4"></span><span class="hm-cell hm-4"></span><span class="hm-cell hm-4"></span><span class="hm-cell hm-4"></span>
+              <span class="hm-rowlabel">Email</span><span class="hm-cell hm-2"></span><span class="hm-cell hm-2"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-2"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-4"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-3"></span>
+              <span class="hm-rowlabel">Letter</span><span class="hm-cell hm-1"></span><span class="hm-cell hm-1"></span><span class="hm-cell hm-1"></span><span class="hm-cell hm-1"></span><span class="hm-cell hm-1"></span><span class="hm-cell hm-0"></span><span class="hm-cell hm-1"></span><span class="hm-cell hm-1"></span><span class="hm-cell hm-0"></span><span class="hm-cell hm-0"></span><span class="hm-cell hm-0"></span><span class="hm-cell hm-0"></span>
+              <span></span><span class="hm-collabel">Aug</span><span class="hm-collabel">Sep</span><span class="hm-collabel">Oct</span><span class="hm-collabel">Nov</span><span class="hm-collabel">Dec</span><span class="hm-collabel">Jan</span><span class="hm-collabel">Feb</span><span class="hm-collabel">Mar</span><span class="hm-collabel">Apr</span><span class="hm-collabel">May</span><span class="hm-collabel">Jun</span><span class="hm-collabel">Jul</span>
+            </div>
+            <div class="alert alert-info">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              <div><span class="alert-title">Marketing gold.</span> Texts get 3x the response of letters at a tenth of the cost. The mix shifted toward text all year, and ROI followed.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Against this year's goals</h2>
+            <span class="text-sm text-muted">The tick marks the target</span>
+          </div>
+          <div class="card-body stack" style="gap: var(--space-6);">
+            <div class="row" style="justify-content: space-around; flex-wrap: wrap; gap: var(--space-4);">
+              <div class="ring-block">
+                <div class="ring" style="--val: 100;"><div class="ring-center"><span class="ring-value">107%</span></div></div>
+                <span class="ring-label">Of the $600K revenue goal</span>
+              </div>
+              <div class="ring-block">
+                <div class="ring" style="--val: 88;"><div class="ring-center"><span class="ring-value">88%</span></div></div>
+                <span class="ring-label">Booked visits attended</span>
+              </div>
+              <div class="ring-block">
+                <div class="ring" style="--val: 96;"><div class="ring-center"><span class="ring-value">96%</span></div></div>
+                <span class="ring-label">Contact data quality</span>
+              </div>
+            </div>
+            <div class="stack" style="gap: var(--space-4); border-top: 1px solid var(--border-color); padding-top: var(--space-5);">
+              <div class="text-sm" style="font-weight: var(--weight-semibold);">Conversion vs 25% target, by channel</div>
+              <div class="hbar-row">
+                <span class="hbar-label" style="width: 170px;">Text</span>
+                <div class="bullet-track"><div class="bullet-fill" style="width: 77%"></div><span class="bullet-target" style="--t: 62%"></span></div>
+                <span class="hbar-value">31%</span>
+              </div>
+              <div class="hbar-row">
+                <span class="hbar-label" style="width: 170px;">Voice</span>
+                <div class="bullet-track"><div class="bullet-fill" style="width: 67%"></div><span class="bullet-target" style="--t: 62%"></span></div>
+                <span class="hbar-value">27%</span>
+              </div>
+              <div class="hbar-row">
+                <span class="hbar-label" style="width: 170px;">Email</span>
+                <div class="bullet-track"><div class="bullet-fill" style="width: 47%"></div><span class="bullet-target" style="--t: 62%"></span></div>
+                <span class="hbar-value">19%</span>
+              </div>
+              <div class="hbar-row">
+                <span class="hbar-label" style="width: 170px;">Letter</span>
+                <div class="bullet-track"><div class="bullet-fill" style="width: 22%"></div><span class="bullet-target" style="--t: 62%"></span></div>
+                <span class="hbar-value">9%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Campaign leaderboard</h2>
+          <span class="text-sm text-muted">Trailing 12 months, vs the year before</span>
+        </div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr><th>Campaign</th><th>Reactivated</th><th>Revenue</th><th>Conversion</th><th>vs last year</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="cell-strong">Annual Skin Exam Recall</td><td>1,284</td><td>$242K</td><td>31%</td><td><span class="chip-delta up">&#9650; 18%</span></td></tr>
+              <tr><td class="cell-strong">Lapsed 18+ Months Win-back</td><td>692</td><td>$131K</td><td>22%</td><td><span class="chip-delta up">&#9650; 9%</span></td></tr>
+              <tr><td class="cell-strong">Post-procedure Follow-up</td><td>587</td><td>$118K</td><td>34%</td><td><span class="chip-delta up">&#9650; 12%</span></td></tr>
+              <tr><td class="cell-strong">Cosmetic Consult Revival</td><td>468</td><td>$92K</td><td>19%</td><td><span class="chip-delta down">&#9660; 3%</span></td></tr>
+              <tr><td class="cell-strong">Insurance Renewal Sweep</td><td>381</td><td>$59K</td><td>24%</td><td><span class="chip-delta up">&#9650; 6%</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="js/practice-engine.js"></script>
+</body>
+</html>

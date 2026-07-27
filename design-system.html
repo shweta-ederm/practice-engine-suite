@@ -46,6 +46,7 @@
   <span class="topbar-product">Design System</span>
   <div class="topbar-spacer"></div>
   <div class="topbar-actions">
+    <a class="btn btn-secondary btn-sm" href="brand-icons.html">Logo Lab</a>
     <a class="btn btn-secondary btn-sm" href="index.html">Suite Home</a>
   </div>
 </header>
@@ -65,6 +66,7 @@
     <a class="nav-item" href="#tables">Tables</a>
     <a class="nav-item" href="#cards">Cards and stats</a>
     <a class="nav-item" href="#dataviz">Data viz</a>
+    <a class="nav-item" href="#report-widgets">Report widgets</a>
     <a class="nav-item" href="#states">Empty and loading</a>
     <a class="nav-item" href="#chat">Chat</a>
     <a class="nav-item" href="#modals">Modals</a>
@@ -498,6 +500,109 @@
                   <span class="legend-item"><span class="legend-swatch" style="background: var(--accent-soft);"></span>Series B</span>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="report-widgets" class="ds-section card">
+        <div class="card-header">
+          <h2 class="card-title">Report widgets (Analytics pages)</h2>
+          <span class="text-sm text-muted">Dashboards monitor; Analytics tells the year's story</span>
+        </div>
+        <div class="card-body stack">
+          <p class="text-sm text-secondary" style="max-width: 680px;">Product dashboards use stat cards, bar charts, and donuts for the operational snapshot. The per-product Analytics pages use this separate widget family so the two never look alike: an ink hero band for the one headline number, line trends, hour-by-day heatmaps, goal rings, target bullets, step pipelines, and delta chips.</p>
+
+          <h3 class="h4">Report hero</h3>
+          <section class="report-hero">
+            <div class="hero-lead">
+              <div class="hero-eyebrow">Annual Report &middot; Last 12 Months</div>
+              <div class="hero-value">$642K</div>
+              <p class="hero-caption">The one number for the board slide, in the product's color on ink, with a plain-language caption.</p>
+            </div>
+            <div class="hero-stats">
+              <div class="hero-stat"><span class="hero-stat-value">3,412</span><span class="hero-stat-label">supporting stat</span></div>
+              <div class="hero-stat"><span class="hero-stat-value">4.2x</span><span class="hero-stat-label">supporting stat</span></div>
+              <div class="hero-stat"><span class="hero-stat-value">26.8%</span><span class="hero-stat-label">supporting stat</span></div>
+            </div>
+          </section>
+
+          <div class="grid grid-2">
+            <div class="stack" style="gap: var(--space-3);">
+              <h3 class="h4">Trend line</h3>
+              <div class="trend-chart">
+                <svg viewBox="0 0 600 210" role="img" aria-label="Sample single-series trend line rising over twelve points">
+                  <line class="trend-grid" x1="20" y1="25" x2="580" y2="25"/>
+                  <line class="trend-grid" x1="20" y1="78" x2="580" y2="78"/>
+                  <line class="trend-grid" x1="20" y1="131" x2="580" y2="131"/>
+                  <line class="trend-grid" x1="20" y1="185" x2="580" y2="185"/>
+                  <path class="trend-area" d="M20,153 L71,141 L122,145 L173,125 L224,117 L275,97 L325,105 L376,85 L427,73 L478,61 L529,49 L580,33 L580,185 L20,185 Z"/>
+                  <path class="trend-line" d="M20,153 L71,141 L122,145 L173,125 L224,117 L275,97 L325,105 L376,85 L427,73 L478,61 L529,49 L580,33"/>
+                  <circle class="trend-dot" cx="20" cy="153" r="4"></circle>
+                  <circle class="trend-dot" cx="275" cy="97" r="4"></circle>
+                  <circle class="trend-dot" cx="580" cy="33" r="6"></circle>
+                  <text class="trend-tag" x="576" y="18" text-anchor="end">$68K</text>
+                </svg>
+              </div>
+              <p class="text-xs text-muted">One series only, accent-colored, latest point emphasized and tagged. Values on hover via SVG titles.</p>
+            </div>
+            <div class="stack" style="gap: var(--space-3);">
+              <h3 class="h4">Heatmap</h3>
+              <div class="heatmap" style="--cols: 8;" role="img" aria-label="Sample heatmap, three rows by eight columns">
+                <span class="hm-rowlabel">Row A</span><span class="hm-cell hm-1"></span><span class="hm-cell hm-2"></span><span class="hm-cell hm-2"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-4"></span><span class="hm-cell hm-5"></span><span class="hm-cell hm-4"></span><span class="hm-cell hm-2"></span>
+                <span class="hm-rowlabel">Row B</span><span class="hm-cell hm-0"></span><span class="hm-cell hm-1"></span><span class="hm-cell hm-2"></span><span class="hm-cell hm-2"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-4"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-1"></span>
+                <span class="hm-rowlabel">Row C</span><span class="hm-cell hm-1"></span><span class="hm-cell hm-1"></span><span class="hm-cell hm-2"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-2"></span><span class="hm-cell hm-1"></span>
+                <span></span><span class="hm-collabel">1</span><span class="hm-collabel">2</span><span class="hm-collabel">3</span><span class="hm-collabel">4</span><span class="hm-collabel">5</span><span class="hm-collabel">6</span><span class="hm-collabel">7</span><span class="hm-collabel">8</span>
+              </div>
+              <div class="hm-legend">Low <span class="hm-cell hm-1"></span><span class="hm-cell hm-2"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-4"></span><span class="hm-cell hm-5"></span> High</div>
+              <p class="text-xs text-muted">Sequential single hue built from the accent (hm-0 to hm-5). Always ships with the Low to High ramp legend.</p>
+            </div>
+          </div>
+
+          <div class="grid grid-2">
+            <div class="stack" style="gap: var(--space-3);">
+              <h3 class="h4">Goal rings and target bullets</h3>
+              <div class="row" style="gap: var(--space-6); flex-wrap: wrap;">
+                <div class="ring-block">
+                  <div class="ring" style="--val: 89;"><div class="ring-center"><span class="ring-value">89%</span></div></div>
+                  <span class="ring-label">Goal attainment</span>
+                </div>
+                <div class="stack" style="gap: var(--space-4); flex: 1; min-width: 220px; justify-content: center;">
+                  <div class="hbar-row">
+                    <span class="hbar-label">Above target</span>
+                    <div class="bullet-track"><div class="bullet-fill" style="width: 77%"></div><span class="bullet-target" style="--t: 62%"></span></div>
+                    <span class="hbar-value">31%</span>
+                  </div>
+                  <div class="hbar-row">
+                    <span class="hbar-label">Below target</span>
+                    <div class="bullet-track"><div class="bullet-fill" style="width: 47%"></div><span class="bullet-target" style="--t: 62%"></span></div>
+                    <span class="hbar-value">19%</span>
+                  </div>
+                </div>
+              </div>
+              <p class="text-xs text-muted">Rings take --val 0 to 100. Bullets add a target tick (--t) to the hbar layout; note when shorter is better.</p>
+            </div>
+            <div class="stack" style="gap: var(--space-3);">
+              <h3 class="h4">Step pipeline and delta chips</h3>
+              <div class="pipe">
+                <div class="pipe-step">
+                  <span class="pipe-num">1</span>
+                  <div class="pipe-body"><div class="pipe-name">Stage one</div><div class="pipe-note">Where the volume starts</div></div>
+                  <span class="pipe-value">12,480</span>
+                </div>
+                <div class="pipe-drop"><strong>89%</strong> hand-off rate between stages</div>
+                <div class="pipe-step">
+                  <span class="pipe-num">2</span>
+                  <div class="pipe-body"><div class="pipe-name">Stage two</div><div class="pipe-note">What survived the hand-off</div></div>
+                  <span class="pipe-value">11,120</span>
+                </div>
+              </div>
+              <div class="row" style="gap: var(--space-3); flex-wrap: wrap;">
+                <span class="chip-delta up">&#9650; 18%</span>
+                <span class="chip-delta down">&#9660; 3%</span>
+                <span class="chip-delta flat">no change</span>
+              </div>
+              <p class="text-xs text-muted">Pipelines replace funnel bars on Analytics pages. Delta chips carry year-over-year movement in tables.</p>
             </div>
           </div>
         </div>

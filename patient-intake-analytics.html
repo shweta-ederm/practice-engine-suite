@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" data-product="intake">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patient Intake Analytics | Practice Engine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/practice-engine.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="app-lockup" href="patient-intake.html">
+    <span class="app-mark" aria-hidden="true"><span class="app-mark-text">I</span><span class="app-mark-rule"></span></span>
+    <span class="app-lockup-body">
+      <span class="app-lockup-name" data-product-name="intake">Patient Intake</span>
+      <span class="lockup-endorse"><span class="by">by</span><span class="g">PRACTICE</span><span class="k">ENGINE</span></span>
+    </span>
+  </a>
+  <div class="topbar-spacer"></div>
+  <div class="input-group topbar-search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    <input class="input" type="search" placeholder="Search intake forms...">
+  </div>
+  <div class="topbar-actions">
+    <button class="btn btn-icon" aria-label="Notifications">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+    </button>
+    <div class="app-switcher">
+      <button class="btn btn-icon" data-switcher-toggle aria-label="Switch application" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="5" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="12" cy="19" r="2"/><circle cx="19" cy="19" r="2"/></svg>
+      </button>
+      <nav class="app-switcher-menu" aria-label="Applications">
+        <a class="app-switcher-item" href="index.html"><span class="app-tile app-tile-suite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>Suite Home</a>
+        <a class="app-switcher-item" href="recall-health.html"><span class="app-tile app-tile-recall"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></span><span data-product-name="recall">Recall Health</span></a>
+        <a class="app-switcher-item" href="ai-receptionist.html"><span class="app-tile app-tile-receptionist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span data-product-name="receptionist">Medical Receptionist</span></a>
+        <a class="app-switcher-item" href="ai-chatbot.html"><span class="app-tile app-tile-chatbot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span><span data-product-name="chatbot">Chatbot</span></a>
+        <a class="app-switcher-item" href="appointment-scheduler.html"><span class="app-tile app-tile-scheduler"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg></span><span data-product-name="scheduler">Online Scheduler</span></a>
+        <a class="app-switcher-item" href="patient-intake.html"><span class="app-tile app-tile-intake"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></span><span data-product-name="intake">Patient Intake</span></a>
+        <a class="app-switcher-item" href="pay-my-doc.html"><span class="app-tile app-tile-paymydoc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span><span data-product-name="paymydoc">Pay My Doc</span></a>
+        <a class="app-switcher-item" href="pe-admin.html"><span class="app-tile app-tile-admin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7"/><path d="M4 10V3"/><path d="M12 21v-9"/><path d="M12 8V3"/><path d="M20 21v-5"/><path d="M20 12V3"/><path d="M1 14h6"/><path d="M9 8h6"/><path d="M17 16h6"/></svg></span><span data-product-name="admin" data-name-short>PE Admin</span></a>
+        <a class="app-switcher-item" href="design-system.html"><span class="app-tile app-tile-design"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></span>Design System</a>
+      </nav>
+    </div>
+    <div class="avatar-row">
+      <div style="text-align: right;">
+        <div class="text-sm" style="font-weight: var(--weight-semibold); line-height: 1.2;">Shweta Singh</div>
+        <div class="text-xs text-muted">Global Admin</div>
+      </div>
+      <span class="avatar" title="Shweta Singh">SS</span>
+    </div>
+  </div>
+</header>
+
+<div class="app-shell">
+  <nav class="sidebar" aria-label="Patient Intake navigation">
+    <a class="nav-item" href="patient-intake.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+      Dashboard
+    </a>
+    <a class="nav-item" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M8 11h8"/><path d="M8 15h5"/></svg>
+      Intake Forms
+      <span class="badge badge-accent">9</span>
+    </a>
+    <a class="nav-item" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+      Form Builder
+    </a>
+    <span class="sidebar-section">Insights</span>
+    <a class="nav-item active" href="patient-intake-analytics.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+      Analytics
+    </a>
+    <a class="nav-item" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 10v6m11-11h-6M7 12H1"/></svg>
+      Settings
+    </a>
+  </nav>
+
+  <main class="main">
+    <div class="main-inner stack">
+
+      <div class="page-header" style="margin-bottom: 0;">
+        <div>
+          <h1 class="h1">Analytics</h1>
+        </div>
+        <div class="row">
+          <button class="btn btn-secondary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
+            Schedule Email Report
+          </button>
+          <button class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+            Download Board Report
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body filter-bar">
+          <div class="field">
+            <label class="field-label" for="f-period">Period</label>
+            <select class="select" id="f-period"><option>Last 12 months</option><option>Year to date</option><option>Q2 2026</option></select>
+          </div>
+          <div class="field">
+            <label class="field-label" for="f-practice">Practice (1)</label>
+            <select class="select" id="f-practice"><option>Coastal Dermatology (demo)</option><option>All practices</option></select>
+          </div>
+          <div class="field">
+            <label class="field-label" for="f-locations">Locations (4)</label>
+            <select class="select" id="f-locations"><option>All locations</option><option>Main Street Clinic</option><option>Harbor Medical Center</option></select>
+          </div>
+          <div class="field">
+            <label class="field-label" for="f-providers">Providers (16)</label>
+            <select class="select" id="f-providers"><option>All providers</option><option>Dr. Avery North, MD</option><option>Quinn Gold, PA-C</option></select>
+          </div>
+        </div>
+      </div>
+
+      <section class="report-hero">
+        <div class="hero-lead">
+          <div class="hero-eyebrow">Annual Report &middot; Last 12 Months</div>
+          <div class="hero-value">89%</div>
+          <p class="hero-caption">of patients now arrive with forms completed, signed, and synced. Before launch it was 12%, and the rest happened on a clipboard in the waiting room.</p>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><span class="hero-stat-value">14,820</span><span class="hero-stat-label">form sets completed</span></div>
+          <div class="hero-stat"><span class="hero-stat-value">610</span><span class="hero-stat-label">staff hours saved</span></div>
+          <div class="hero-stat"><span class="hero-stat-value">6m 20s</span><span class="hero-stat-label">avg completion time</span></div>
+          <div class="hero-stat"><span class="hero-stat-value">97%</span><span class="hero-stat-label">e-signed</span></div>
+        </div>
+      </section>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Pre-visit completion, month by month</h2>
+            <span class="text-sm text-muted">Share of visits with forms done before arrival</span>
+          </div>
+          <div class="card-body trend-chart">
+            <svg viewBox="0 0 600 210" role="img" aria-label="Pre-visit completion rising steadily from 74 percent to 89 percent over twelve months">
+              <line class="trend-grid" x1="20" y1="25" x2="580" y2="25"/>
+              <line class="trend-grid" x1="20" y1="78" x2="580" y2="78"/>
+              <line class="trend-grid" x1="20" y1="131" x2="580" y2="131"/>
+              <line class="trend-grid" x1="20" y1="185" x2="580" y2="185"/>
+              <path class="trend-area" d="M20,169 L71,153 L122,145 L173,129 L224,121 L275,105 L325,97 L376,81 L427,73 L478,65 L529,57 L580,49 L580,185 L20,185 Z"/>
+              <path class="trend-line" d="M20,169 L71,153 L122,145 L173,129 L224,121 L275,105 L325,97 L376,81 L427,73 L478,65 L529,57 L580,49"/>
+              <circle class="trend-dot" cx="20" cy="169" r="4"><title>74%</title></circle>
+              <circle class="trend-dot" cx="71" cy="153" r="4"><title>76%</title></circle>
+              <circle class="trend-dot" cx="122" cy="145" r="4"><title>77%</title></circle>
+              <circle class="trend-dot" cx="173" cy="129" r="4"><title>79%</title></circle>
+              <circle class="trend-dot" cx="224" cy="121" r="4"><title>80%</title></circle>
+              <circle class="trend-dot" cx="275" cy="105" r="4"><title>82%</title></circle>
+              <circle class="trend-dot" cx="325" cy="97" r="4"><title>83%</title></circle>
+              <circle class="trend-dot" cx="376" cy="81" r="4"><title>85%</title></circle>
+              <circle class="trend-dot" cx="427" cy="73" r="4"><title>86%</title></circle>
+              <circle class="trend-dot" cx="478" cy="65" r="4"><title>87%</title></circle>
+              <circle class="trend-dot" cx="529" cy="57" r="4"><title>88%</title></circle>
+              <circle class="trend-dot" cx="580" cy="49" r="6"><title>89%</title></circle>
+              <text class="trend-tag" x="576" y="34" text-anchor="end">89%</text>
+            </svg>
+            <div class="chart-labels">
+              <span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">From reminder to chart-ready</h2>
+            <span class="text-sm text-muted">Trailing 12 months</span>
+          </div>
+          <div class="card-body">
+            <div class="pipe">
+              <div class="pipe-step">
+                <span class="pipe-num">1</span>
+                <div class="pipe-body"><div class="pipe-name">Form sets sent</div><div class="pipe-note">Automatic, as soon as a visit is booked</div></div>
+                <span class="pipe-value">16,650</span>
+              </div>
+              <div class="pipe-drop"><strong>94%</strong> started, most on the first reminder</div>
+              <div class="pipe-step">
+                <span class="pipe-num">2</span>
+                <div class="pipe-body"><div class="pipe-name">Started</div><div class="pipe-note">Any device, saved progress</div></div>
+                <span class="pipe-value">15,650</span>
+              </div>
+              <div class="pipe-drop"><strong>95%</strong> finished once started</div>
+              <div class="pipe-step">
+                <span class="pipe-num">3</span>
+                <div class="pipe-body"><div class="pipe-name">Completed and signed</div><div class="pipe-note">6m 20s average, 97% e-signed</div></div>
+                <span class="pipe-value">14,820</span>
+              </div>
+              <div class="pipe-drop"><strong>100%</strong> synced automatically, zero re-keying</div>
+              <div class="pipe-step">
+                <span class="pipe-num">4</span>
+                <div class="pipe-body"><div class="pipe-name">In the PMS chart</div><div class="pipe-note">Ready before the patient arrives</div></div>
+                <span class="pipe-value">14,820</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">When patients do their paperwork</h2>
+            <div class="hm-legend">Low <span class="hm-cell hm-1"></span><span class="hm-cell hm-2"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-4"></span><span class="hm-cell hm-5"></span> High</div>
+          </div>
+          <div class="card-body stack" style="gap: var(--space-4);">
+            <div class="heatmap" style="--cols: 6;" role="img" aria-label="Completions in two-hour blocks by day, peaking on evenings between 7 and 10 pm, strongest on Sunday evenings">
+              <span class="hm-rowlabel">Mon</span><span class="hm-cell hm-1"></span><span class="hm-cell hm-2"></span><span class="hm-cell hm-2"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-4"></span><span class="hm-cell hm-3"></span>
+              <span class="hm-rowlabel">Tue</span><span class="hm-cell hm-2"></span><span class="hm-cell hm-1"></span><span class="hm-cell hm-2"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-4"></span><span class="hm-cell hm-3"></span>
+              <span class="hm-rowlabel">Wed</span><span class="hm-cell hm-1"></span><span class="hm-cell hm-2"></span><span class="hm-cell hm-2"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-5"></span><span class="hm-cell hm-3"></span>
+              <span class="hm-rowlabel">Thu</span><span class="hm-cell hm-2"></span><span class="hm-cell hm-1"></span><span class="hm-cell hm-2"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-4"></span><span class="hm-cell hm-3"></span>
+              <span class="hm-rowlabel">Fri</span><span class="hm-cell hm-2"></span><span class="hm-cell hm-2"></span><span class="hm-cell hm-1"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-2"></span>
+              <span class="hm-rowlabel">Sat</span><span class="hm-cell hm-3"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-2"></span><span class="hm-cell hm-4"></span><span class="hm-cell hm-4"></span><span class="hm-cell hm-2"></span>
+              <span class="hm-rowlabel">Sun</span><span class="hm-cell hm-2"></span><span class="hm-cell hm-2"></span><span class="hm-cell hm-3"></span><span class="hm-cell hm-5"></span><span class="hm-cell hm-5"></span><span class="hm-cell hm-4"></span>
+              <span></span><span class="hm-collabel">12pm</span><span class="hm-collabel">2pm</span><span class="hm-collabel">4pm</span><span class="hm-collabel">6pm</span><span class="hm-collabel">8pm</span><span class="hm-collabel">10pm</span>
+            </div>
+            <div class="alert alert-info">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              <div><span class="alert-title">Marketing gold.</span> 7pm to 10pm is prime paperwork time, and Sunday evening is the single busiest stretch. Digital intake works when your office doesn't.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Against this year's goals</h2>
+            <span class="text-sm text-muted">The tick marks the target</span>
+          </div>
+          <div class="card-body stack" style="gap: var(--space-6);">
+            <div class="row" style="justify-content: space-around; flex-wrap: wrap; gap: var(--space-4);">
+              <div class="ring-block">
+                <div class="ring" style="--val: 89;"><div class="ring-center"><span class="ring-value">89%</span></div></div>
+                <span class="ring-label">Pre-visit completion, goal 90%</span>
+              </div>
+              <div class="ring-block">
+                <div class="ring" style="--val: 97;"><div class="ring-center"><span class="ring-value">97%</span></div></div>
+                <span class="ring-label">E-signature adoption</span>
+              </div>
+              <div class="ring-block">
+                <div class="ring" style="--val: 100;"><div class="ring-center"><span class="ring-value">100%</span></div></div>
+                <span class="ring-label">PMS sync success</span>
+              </div>
+            </div>
+            <div class="stack" style="gap: var(--space-4); border-top: 1px solid var(--border-color); padding-top: var(--space-5);">
+              <div class="text-sm" style="font-weight: var(--weight-semibold);">Completion vs 90% target, by form set</div>
+              <div class="hbar-row">
+                <span class="hbar-label" style="width: 170px;">Procedure consents</span>
+                <div class="bullet-track"><div class="bullet-fill" style="width: 97%"></div><span class="bullet-target" style="--t: 90%"></span></div>
+                <span class="hbar-value">97%</span>
+              </div>
+              <div class="hbar-row">
+                <span class="hbar-label" style="width: 170px;">Annual health update</span>
+                <div class="bullet-track"><div class="bullet-fill" style="width: 93%"></div><span class="bullet-target" style="--t: 90%"></span></div>
+                <span class="hbar-value">93%</span>
+              </div>
+              <div class="hbar-row">
+                <span class="hbar-label" style="width: 170px;">New patient packet</span>
+                <div class="bullet-track"><div class="bullet-fill" style="width: 91%"></div><span class="bullet-target" style="--t: 90%"></span></div>
+                <span class="hbar-value">91%</span>
+              </div>
+              <div class="hbar-row">
+                <span class="hbar-label" style="width: 170px;">Insurance and ID capture</span>
+                <div class="bullet-track"><div class="bullet-fill" style="width: 86%"></div><span class="bullet-target" style="--t: 90%"></span></div>
+                <span class="hbar-value">86%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Form set performance</h2>
+          <span class="text-sm text-muted">Trailing 12 months, vs the year before</span>
+        </div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr><th>Form set</th><th>Sent</th><th>Completed pre-visit</th><th>Avg time</th><th>vs last year</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="cell-strong">New patient packet</td><td>5,210</td><td>91%</td><td>9m 40s</td><td><span class="chip-delta up">&#9650; 11%</span></td></tr>
+              <tr><td class="cell-strong">Annual health update</td><td>4,380</td><td>93%</td><td>4m 10s</td><td><span class="chip-delta up">&#9650; 9%</span></td></tr>
+              <tr><td class="cell-strong">Procedure consents</td><td>3,660</td><td>97%</td><td>2m 30s</td><td><span class="chip-delta up">&#9650; 6%</span></td></tr>
+              <tr><td class="cell-strong">Insurance and ID capture</td><td>3,400</td><td>86%</td><td>3m 05s</td><td><span class="chip-delta up">&#9650; 17%</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="js/practice-engine.js"></script>
+</body>
+</html>
