@@ -156,7 +156,6 @@
 
       <div class="grid grid-2">
 
-        <div class="stack">
           <div class="card">
             <div class="card-header">
               <h2 class="card-title">Intake queue</h2>
@@ -235,62 +234,6 @@
               <button class="btn btn-primary btn-sm">Create a form</button>
             </div>
           </div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <h2 class="card-title">Patient view: new patient form set</h2>
-            <span class="badge badge-neutral">Preview</span>
-          </div>
-          <div class="card-body stack" style="gap: var(--space-5);">
-            <div class="steps" aria-label="Intake progress">
-              <span class="step done"><span class="step-num">&#10003;</span>About you</span>
-              <span class="step-connector" aria-hidden="true"></span>
-              <span class="step active"><span class="step-num">2</span>Insurance</span>
-              <span class="step-connector" aria-hidden="true"></span>
-              <span class="step"><span class="step-num">3</span>History</span>
-              <span class="step-connector" aria-hidden="true"></span>
-              <span class="step"><span class="step-num">4</span>Consent</span>
-            </div>
-
-            <div class="grid grid-2" style="gap: var(--space-4);">
-              <div class="field">
-                <label class="field-label" for="ins-carrier">Insurance carrier</label>
-                <select class="select" id="ins-carrier">
-                  <option>Select carrier...</option>
-                  <option>Sample Carrier A</option>
-                  <option>Sample Carrier B</option>
-                </select>
-              </div>
-              <div class="field">
-                <label class="field-label" for="ins-member">Member ID</label>
-                <input class="input" id="ins-member" type="text" placeholder="e.g. XXX123456">
-              </div>
-            </div>
-            <div class="field">
-              <label class="field-label" for="ins-holder">Policy holder name</label>
-              <input class="input" id="ins-holder" type="text" placeholder="Full name as it appears on the card">
-              <span class="field-hint">Leave blank if you are the policy holder.</span>
-            </div>
-            <div class="field field-error">
-              <label class="field-label" for="ins-group">Group number</label>
-              <input class="input" id="ins-group" type="text" value="12">
-              <span class="field-error-msg">Group numbers are usually 5 or more characters. Please check your card.</span>
-            </div>
-            <div class="field">
-              <label class="field-label">Upload insurance card</label>
-              <div class="signature-box">Drag a photo here or tap to upload</div>
-            </div>
-            <label class="checkbox-row">
-              <input type="checkbox" checked>
-              <span class="text-sm">I confirm this insurance information is accurate to the best of my knowledge.</span>
-            </label>
-          </div>
-          <div class="card-footer" style="justify-content: space-between;">
-            <button class="btn btn-ghost">Back</button>
-            <button class="btn btn-primary">Continue to History</button>
-          </div>
-        </div>
 
       </div>
 

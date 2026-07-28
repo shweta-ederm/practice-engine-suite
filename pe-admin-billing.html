@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en" data-product="admin">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Billing and Plans | Practice Engine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/practice-engine.css">
+<style>
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+  .prod-cell { display: inline-flex; align-items: center; gap: var(--space-3); }
+  .prod-cell .app-mark { --mark-size: 26px; }
+  .marks-inline { display: inline-flex; gap: 5px; }
+  .marks-inline .app-mark { --mark-size: 22px; }
+  .bundle-card { position: relative; display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-6); }
+  .bundle-price { font-size: var(--text-2xl); font-weight: var(--weight-bold); letter-spacing: -0.01em; }
+  .bundle-price small { font-size: var(--text-sm); font-weight: var(--weight-regular); color: var(--text-muted); }
+  .bundle-flag { position: absolute; top: var(--space-4); right: var(--space-4); }
+  .rev-row { display: flex; align-items: center; gap: var(--space-3); font-size: var(--text-sm); }
+  .rev-label { width: 160px; color: var(--text-secondary); flex-shrink: 0; }
+  .rev-track { flex: 1; height: 14px; background: var(--surface-sunken); border-radius: var(--radius-full); overflow: hidden; }
+  .rev-fill { height: 100%; border-radius: var(--radius-full); }
+  .rev-value { width: 56px; text-align: right; font-weight: var(--weight-semibold); flex-shrink: 0; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="topbar-brand" href="index.html">
+    <span class="pe-mark" style="--mark-size: 32px;" aria-hidden="true">
+      <span class="pe-mark-text">PE</span>
+      <span class="pe-mark-rule"></span>
+    </span>
+    <span class="wm-inline" aria-hidden="true">
+      <span class="wm-words"><span class="g">PRACTICE</span><span class="k">ENGINE</span></span>
+      <span class="wm-rule"></span>
+    </span>
+  </a>
+  <div class="topbar-divider" aria-hidden="true"></div>
+  <span class="topbar-product">Admin</span>
+  <div class="topbar-spacer"></div>
+  <div class="input-group topbar-search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    <input class="input" type="search" placeholder="Search customers, users, invoices...">
+  </div>
+  <div class="topbar-actions">
+    <button class="btn btn-icon" aria-label="Notifications">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+    </button>
+    <div class="app-switcher">
+      <button class="btn btn-icon" data-switcher-toggle aria-label="Switch application" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="5" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="12" cy="19" r="2"/><circle cx="19" cy="19" r="2"/></svg>
+      </button>
+      <nav class="app-switcher-menu" aria-label="Applications">
+        <a class="app-switcher-item" href="index.html"><span class="app-tile app-tile-suite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>Suite Home</a>
+        <a class="app-switcher-item" href="recall-health.html"><span class="app-tile app-tile-recall"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></span><span data-product-name="recall">Recall Health</span></a>
+        <a class="app-switcher-item" href="ai-receptionist.html"><span class="app-tile app-tile-receptionist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span data-product-name="receptionist">Medical Receptionist</span></a>
+        <a class="app-switcher-item" href="ai-chatbot.html"><span class="app-tile app-tile-chatbot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span><span data-product-name="chatbot">Chatbot</span></a>
+        <a class="app-switcher-item" href="appointment-scheduler.html"><span class="app-tile app-tile-scheduler"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg></span><span data-product-name="scheduler">Online Scheduler</span></a>
+        <a class="app-switcher-item" href="patient-intake.html"><span class="app-tile app-tile-intake"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></span><span data-product-name="intake">Patient Intake</span></a>
+        <a class="app-switcher-item" href="pay-my-doc.html"><span class="app-tile app-tile-paymydoc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span><span data-product-name="paymydoc">Pay My Doc</span></a>
+        <a class="app-switcher-item" href="pe-admin.html"><span class="app-tile app-tile-admin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7"/><path d="M4 10V3"/><path d="M12 21v-9"/><path d="M12 8V3"/><path d="M20 21v-5"/><path d="M20 12V3"/><path d="M1 14h6"/><path d="M9 8h6"/><path d="M17 16h6"/></svg></span><span data-product-name="admin" data-name-short>PE Admin</span></a>
+        <a class="app-switcher-item" href="design-system.html"><span class="app-tile app-tile-design"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></span>Design System</a>
+      </nav>
+    </div>
+    <div class="avatar-row">
+      <div style="text-align: right;">
+        <div class="text-sm" style="font-weight: var(--weight-semibold); line-height: 1.2;">Shweta Singh</div>
+        <div class="text-xs text-muted">Global Admin</div>
+      </div>
+      <span class="avatar" title="Shweta Singh">SS</span>
+    </div>
+  </div>
+</header>
+
+<div class="app-shell">
+  <nav class="sidebar" aria-label="Admin navigation">
+    <a class="nav-item" href="pe-admin.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+      Overview
+    </a>
+    <a class="nav-item" href="pe-admin-products.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      Product Dashboards
+    </a>
+    <a class="nav-item" href="pe-admin-practices.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
+      Practices
+      <span class="badge badge-accent">1,240</span>
+    </a>
+    <a class="nav-item" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Users and Roles
+    </a>
+    <a class="nav-item active" href="pe-admin-billing.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+      Billing and Plans
+    </a>
+    <a class="nav-item" href="pe-admin-integrations.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      Integrations
+    </a>
+    <span class="sidebar-section">Operations</span>
+    <a class="nav-item" href="pe-admin-health.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      System Health
+    </a>
+    <a class="nav-item" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Security and Audit
+    </a>
+    <a class="nav-item" href="pe-admin-settings.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 10v6m11-11h-6M7 12H1"/></svg>
+      Platform Settings
+    </a>
+  </nav>
+
+  <main class="main">
+    <div class="main-inner stack">
+
+      <div class="page-header">
+        <div>
+          <h1 class="h1">Billing and Plans</h1>
+          <p class="text-secondary">One price book drives every invoice. Bundles and custom plans override it, never replace it.</p>
+        </div>
+        <div class="row">
+          <button class="btn btn-secondary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+            Export
+          </button>
+          <button class="btn btn-primary" data-modal-open="modal-new-plan">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+            New Plan or Bundle
+          </button>
+        </div>
+      </div>
+
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-tab-target="billing-overview">Overview</button>
+        <button class="tab" data-tab-target="billing-pricebook">Price Book</button>
+        <button class="tab" data-tab-target="billing-plans">Plans and Bundles</button>
+        <button class="tab" data-tab-target="billing-invoices">Invoices</button>
+      </div>
+
+      <section class="tab-panel active" id="billing-overview">
+        <div class="stack">
+          <div class="grid grid-4">
+            <div class="card stat-card stat-edge" style="--edge: var(--chart-1);">
+              <span class="stat-label">Monthly recurring revenue</span>
+              <span class="stat-value">$527K</span>
+              <span class="stat-delta up">&#9650; 6% vs June</span>
+            </div>
+            <div class="card stat-card stat-edge" style="--edge: var(--chart-2);">
+              <span class="stat-label">Usage revenue (July)</span>
+              <span class="stat-value">$118K</span>
+              <span class="stat-delta up">&#9650; 11% vs June</span>
+            </div>
+            <div class="card stat-card stat-edge" style="--edge: var(--chart-3);">
+              <span class="stat-label">Practices on custom plans</span>
+              <span class="stat-value">86</span>
+              <span class="stat-delta">of 1,240 practices</span>
+            </div>
+            <div class="card stat-card stat-edge" style="--edge: var(--chart-4);">
+              <span class="stat-label">Overdue balance</span>
+              <span class="stat-value">$24.3K</span>
+              <span class="stat-delta down">&#9660; 7 invoices open</span>
+            </div>
+          </div>
+
+          <div class="grid grid-2">
+            <div class="card">
+              <div class="card-header">
+                <h2 class="card-title">Subscription revenue by product</h2>
+                <span class="text-sm text-muted">MRR, July 2026</span>
+              </div>
+              <div class="card-body stack" style="gap: var(--space-4);">
+                <div class="rev-row">
+                  <span class="rev-label" data-product-name="recall">Recall Health</span>
+                  <div class="rev-track"><div class="rev-fill" style="width: 100%; background: var(--pe-recall);"></div></div>
+                  <span class="rev-value">$148K</span>
+                </div>
+                <div class="rev-row">
+                  <span class="rev-label" data-product-name="scheduler">Online Scheduler</span>
+                  <div class="rev-track"><div class="rev-fill" style="width: 62%; background: var(--pe-scheduler);"></div></div>
+                  <span class="rev-value">$92K</span>
+                </div>
+                <div class="rev-row">
+                  <span class="rev-label" data-product-name="paymydoc">Pay My Doc</span>
+                  <div class="rev-track"><div class="rev-fill" style="width: 60%; background: var(--pe-paymydoc);"></div></div>
+                  <span class="rev-value">$89K</span>
+                </div>
+                <div class="rev-row">
+                  <span class="rev-label" data-product-name="receptionist">Medical Receptionist</span>
+                  <div class="rev-track"><div class="rev-fill" style="width: 58%; background: var(--pe-bella);"></div></div>
+                  <span class="rev-value">$86K</span>
+                </div>
+                <div class="rev-row">
+                  <span class="rev-label" data-product-name="intake">Patient Intake</span>
+                  <div class="rev-track"><div class="rev-fill" style="width: 53%; background: var(--pe-intake);"></div></div>
+                  <span class="rev-value">$78K</span>
+                </div>
+                <div class="rev-row">
+                  <span class="rev-label" data-product-name="chatbot">Chatbot</span>
+                  <div class="rev-track"><div class="rev-fill" style="width: 23%; background: var(--pe-chatbot);"></div></div>
+                  <span class="rev-value">$34K</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h2 class="card-title">How revenue splits</h2>
+                <span class="text-sm text-muted">July 2026</span>
+              </div>
+              <div class="card-body stack" style="gap: var(--space-5);">
+                <div class="stack" style="gap: var(--space-2);">
+                  <div class="mix-bar" role="img" aria-label="Revenue mix: 78 percent subscriptions, 22 percent usage">
+                    <span class="sw-1" style="width: 78%"></span>
+                    <span class="sw-3" style="width: 22%"></span>
+                  </div>
+                  <div class="legend">
+                    <span class="legend-item"><span class="legend-swatch sw-1"></span>Subscriptions $409K</span>
+                    <span class="legend-item"><span class="legend-swatch sw-3"></span>Usage $118K</span>
+                  </div>
+                </div>
+                <div class="stack" style="gap: var(--space-3); border-top: 1px solid var(--border-color); padding-top: var(--space-4);">
+                  <div class="row-between text-sm"><span>Intakes billed above allowance (July)</span><span class="cell-strong">41,200</span></div>
+                  <div class="row-between text-sm"><span>Reactivations billed (July)</span><span class="cell-strong">9,340</span></div>
+                  <div class="row-between text-sm"><span>Receptionist minutes billed (July)</span><span class="cell-strong">86,900</span></div>
+                  <div class="row-between text-sm"><span>Payment transactions (July)</span><span class="cell-strong">64,800</span></div>
+                </div>
+                <div class="alert alert-info">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                  <div><span class="alert-title">Usage grows with customer success.</span> Meters bill on outcomes: intakes completed, patients reactivated, calls answered. When practices win, revenue follows.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="tab-panel" id="billing-pricebook">
+        <div class="stack">
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">Price Book</h2>
+              <span class="text-sm text-muted">Platform defaults. Bundles and custom plans override these rates.</span>
+            </div>
+            <div class="table-wrap">
+              <table class="table">
+                <thead>
+                  <tr><th>Product</th><th>Base / practice / month</th><th>Included usage</th><th>Usage meter</th><th>Meter rate</th><th></th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="prod-cell"><span class="app-mark" data-product="recall" aria-hidden="true"><span class="app-mark-text">R</span><span class="app-mark-rule"></span></span><span class="cell-strong" data-product-name="recall">Recall Health</span></span></td>
+                    <td>$299</td>
+                    <td>150 reactivations / mo</td>
+                    <td>Per patient reactivated</td>
+                    <td class="cell-strong">$4.00</td>
+                    <td><button class="btn btn-secondary btn-sm">Edit</button></td>
+                  </tr>
+                  <tr>
+                    <td><span class="prod-cell"><span class="app-mark" data-product="receptionist" aria-hidden="true"><span class="app-mark-text">B</span><span class="app-mark-rule"></span></span><span class="cell-strong" data-product-name="receptionist">Medical Receptionist</span></span></td>
+                    <td>$399</td>
+                    <td>1,500 answered minutes / mo</td>
+                    <td>Per additional minute</td>
+                    <td class="cell-strong">$0.35</td>
+                    <td><button class="btn btn-secondary btn-sm">Edit</button></td>
+                  </tr>
+                  <tr>
+                    <td><span class="prod-cell"><span class="app-mark" data-product="chatbot" aria-hidden="true"><span class="app-mark-text">C</span><span class="app-mark-rule"></span></span><span class="cell-strong" data-product-name="chatbot">Chatbot</span></span></td>
+                    <td>$149</td>
+                    <td>1,000 conversations / mo</td>
+                    <td>Per additional conversation</td>
+                    <td class="cell-strong">$0.08</td>
+                    <td><button class="btn btn-secondary btn-sm">Edit</button></td>
+                  </tr>
+                  <tr>
+                    <td><span class="prod-cell"><span class="app-mark" data-product="scheduler" aria-hidden="true"><span class="app-mark-text">S</span><span class="app-mark-rule"></span></span><span class="cell-strong" data-product-name="scheduler">Online Scheduler</span></span></td>
+                    <td>$199</td>
+                    <td>Unlimited bookings</td>
+                    <td class="text-muted">None, flat subscription</td>
+                    <td class="text-muted">n/a</td>
+                    <td><button class="btn btn-secondary btn-sm">Edit</button></td>
+                  </tr>
+                  <tr>
+                    <td><span class="prod-cell"><span class="app-mark" data-product="intake" aria-hidden="true"><span class="app-mark-text">I</span><span class="app-mark-rule"></span></span><span class="cell-strong" data-product-name="intake">Patient Intake</span></span></td>
+                    <td>$179</td>
+                    <td>250 completed intakes / mo</td>
+                    <td>Per completed intake</td>
+                    <td class="cell-strong">$0.85</td>
+                    <td><button class="btn btn-secondary btn-sm">Edit</button></td>
+                  </tr>
+                  <tr>
+                    <td><span class="prod-cell"><span class="app-mark" data-product="paymydoc" aria-hidden="true"><span class="app-mark-text">P</span><span class="app-mark-rule"></span></span><span class="cell-strong" data-product-name="paymydoc">Pay My Doc</span></span></td>
+                    <td>$99</td>
+                    <td>Unlimited statements</td>
+                    <td>Per payment collected</td>
+                    <td class="cell-strong">1.9% + $0.30</td>
+                    <td><button class="btn btn-secondary btn-sm">Edit</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="grid grid-2">
+            <div class="card">
+              <div class="card-header"><h2 class="card-title">Volume discounts</h2></div>
+              <div class="card-body stack" style="gap: var(--space-3);">
+                <div class="row-between text-sm"><span>5 to 9 locations under one practice</span><span class="cell-strong">10% off base subscriptions</span></div>
+                <div class="row-between text-sm"><span>10 or more locations</span><span class="cell-strong">15% off base subscriptions</span></div>
+                <div class="row-between text-sm"><span>Group manager portfolios (25+ practices)</span><span class="cell-strong">Negotiated, use a custom plan</span></div>
+                <p class="text-xs text-muted">Applied automatically at invoicing. Usage meter rates are never volume-discounted here; use a bundle or custom plan instead so every override is named and auditable.</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header"><h2 class="card-title">Billing rules</h2></div>
+              <div class="card-body stack" style="gap: var(--space-3);">
+                <div class="row-between text-sm"><span>Billing cycle</span><span class="cell-strong">Calendar month, invoiced on the 1st</span></div>
+                <div class="row-between text-sm"><span>Price book changes</span><span class="cell-strong">Take effect next cycle, never mid-month</span></div>
+                <div class="row-between text-sm"><span>Grandfathered pricing</span><span class="cell-strong">Kept as named custom plans</span></div>
+                <div class="row-between text-sm"><span>Unused allowance</span><span class="cell-strong">Does not roll over</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="tab-panel" id="billing-plans">
+        <div class="stack">
+          <div class="grid grid-3">
+            <div class="card bundle-card">
+              <div class="marks-inline" aria-hidden="true">
+                <span class="app-mark" data-product="receptionist"><span class="app-mark-text">B</span><span class="app-mark-rule"></span></span>
+                <span class="app-mark" data-product="chatbot"><span class="app-mark-text">C</span><span class="app-mark-rule"></span></span>
+                <span class="app-mark" data-product="scheduler"><span class="app-mark-text">S</span><span class="app-mark-rule"></span></span>
+              </div>
+              <div>
+                <div class="h4">Front Office Bundle</div>
+                <div class="text-sm text-secondary">Every call, chat, and booking handled.</div>
+              </div>
+              <div class="bundle-price">$649 <small>/ practice / mo &middot; save 13%</small></div>
+              <div class="text-sm text-muted"><span data-product-name="receptionist">Medical Receptionist</span> + <span data-product-name="chatbot">Chatbot</span> + <span data-product-name="scheduler">Online Scheduler</span>. Price book meter rates apply.</div>
+              <div class="row-between" style="margin-top: auto;">
+                <span class="badge badge-info">312 practices</span>
+                <button class="btn btn-secondary btn-sm">Edit bundle</button>
+              </div>
+            </div>
+
+            <div class="card bundle-card">
+              <div class="marks-inline" aria-hidden="true">
+                <span class="app-mark" data-product="recall"><span class="app-mark-text">R</span><span class="app-mark-rule"></span></span>
+                <span class="app-mark" data-product="intake"><span class="app-mark-text">I</span><span class="app-mark-rule"></span></span>
+                <span class="app-mark" data-product="paymydoc"><span class="app-mark-text">P</span><span class="app-mark-rule"></span></span>
+              </div>
+              <div>
+                <div class="h4">Revenue Bundle</div>
+                <div class="text-sm text-secondary">Reactivate, register, and get paid.</div>
+              </div>
+              <div class="bundle-price">$499 <small>/ practice / mo &middot; save 14%</small></div>
+              <div class="text-sm text-muted"><span data-product-name="recall">Recall Health</span> + <span data-product-name="intake">Patient Intake</span> + <span data-product-name="paymydoc">Pay My Doc</span>. Price book meter rates apply.</div>
+              <div class="row-between" style="margin-top: auto;">
+                <span class="badge badge-info">208 practices</span>
+                <button class="btn btn-secondary btn-sm">Edit bundle</button>
+              </div>
+            </div>
+
+            <div class="card bundle-card">
+              <span class="badge badge-accent bundle-flag">Most popular</span>
+              <div class="marks-inline" aria-hidden="true">
+                <span class="app-mark" data-product="recall"><span class="app-mark-text">R</span><span class="app-mark-rule"></span></span>
+                <span class="app-mark" data-product="receptionist"><span class="app-mark-text">B</span><span class="app-mark-rule"></span></span>
+                <span class="app-mark" data-product="chatbot"><span class="app-mark-text">C</span><span class="app-mark-rule"></span></span>
+                <span class="app-mark" data-product="scheduler"><span class="app-mark-text">S</span><span class="app-mark-rule"></span></span>
+                <span class="app-mark" data-product="intake"><span class="app-mark-text">I</span><span class="app-mark-rule"></span></span>
+                <span class="app-mark" data-product="paymydoc"><span class="app-mark-text">P</span><span class="app-mark-rule"></span></span>
+              </div>
+              <div>
+                <div class="h4">Full Suite</div>
+                <div class="text-sm text-secondary">The whole engine, one bill.</div>
+              </div>
+              <div class="bundle-price">$1,099 <small>/ practice / mo &middot; save 20%</small></div>
+              <div class="text-sm text-muted">All six products, plus 10% off every usage meter rate.</div>
+              <div class="row-between" style="margin-top: auto;">
+                <span class="badge badge-info">154 practices</span>
+                <button class="btn btn-secondary btn-sm">Edit bundle</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">Custom plans</h2>
+              <span class="text-sm text-muted">Per-practice overrides of base or meter rates. Every deviation from the price book lives here, named and dated.</span>
+            </div>
+            <div class="table-wrap">
+              <table class="table">
+                <thead>
+                  <tr><th>Practice</th><th>Plan</th><th>Products</th><th>Custom terms</th><th>Effective</th><th>Status</th></tr>
+                </thead>
+                <tbody>
+                  <tr data-href="pe-admin-practice-detail.html">
+                    <td class="cell-strong">Coastal Dermatology (demo)</td>
+                    <td>Enterprise Custom</td>
+                    <td><span class="marks-inline" aria-hidden="true"><span class="app-mark" data-product="recall"><span class="app-mark-text">R</span><span class="app-mark-rule"></span></span><span class="app-mark" data-product="receptionist"><span class="app-mark-text">B</span><span class="app-mark-rule"></span></span><span class="app-mark" data-product="scheduler"><span class="app-mark-text">S</span><span class="app-mark-rule"></span></span><span class="app-mark" data-product="intake"><span class="app-mark-text">I</span><span class="app-mark-rule"></span></span><span class="app-mark" data-product="paymydoc"><span class="app-mark-text">P</span><span class="app-mark-rule"></span></span></span></td>
+                    <td class="text-sm">Full Suite base $989 &middot; $3.50 per reactivation &middot; 1,000 intakes included</td>
+                    <td>Jan 2026</td>
+                    <td><span class="badge badge-success"><span class="dot"></span>Active</span></td>
+                  </tr>
+                  <tr data-href="pe-admin-practice-detail.html">
+                    <td class="cell-strong">Summit Health Group (demo)</td>
+                    <td>Multi-location 12</td>
+                    <td><span class="marks-inline" aria-hidden="true"><span class="app-mark" data-product="recall"><span class="app-mark-text">R</span><span class="app-mark-rule"></span></span><span class="app-mark" data-product="scheduler"><span class="app-mark-text">S</span><span class="app-mark-rule"></span></span><span class="app-mark" data-product="intake"><span class="app-mark-text">I</span><span class="app-mark-rule"></span></span></span></td>
+                    <td class="text-sm">12 locations, pooled usage &middot; $0.70 per intake &middot; 15% off base</td>
+                    <td>Mar 2026</td>
+                    <td><span class="badge badge-success"><span class="dot"></span>Active</span></td>
+                  </tr>
+                  <tr data-href="pe-admin-practice-detail.html">
+                    <td class="cell-strong">Harbor Medical Partners (demo)</td>
+                    <td>Pilot, 90 days</td>
+                    <td><span class="marks-inline" aria-hidden="true"><span class="app-mark" data-product="receptionist"><span class="app-mark-text">B</span><span class="app-mark-rule"></span></span><span class="app-mark" data-product="chatbot"><span class="app-mark-text">C</span><span class="app-mark-rule"></span></span></span></td>
+                    <td class="text-sm">Base waived during pilot &middot; $0.30 per answered minute</td>
+                    <td>Jun 2026</td>
+                    <td><span class="badge badge-warning"><span class="dot"></span>Trial</span></td>
+                  </tr>
+                  <tr data-href="pe-admin-practice-detail.html">
+                    <td class="cell-strong">Lakeside Dermatology (demo)</td>
+                    <td>Legacy 2024 pricing</td>
+                    <td><span class="marks-inline" aria-hidden="true"><span class="app-mark" data-product="recall"><span class="app-mark-text">R</span><span class="app-mark-rule"></span></span></span></td>
+                    <td class="text-sm">Grandfathered $249 base &middot; $4.50 per reactivation</td>
+                    <td>Dec 2024</td>
+                    <td><span class="badge badge-neutral"><span class="dot"></span>Grandfathered</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="card-footer">
+              <span class="text-sm text-muted">86 custom plans total</span>
+              <button class="btn btn-primary" data-modal-open="modal-new-plan">New Custom Plan</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="tab-panel" id="billing-invoices">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Invoices</h2>
+            <div class="row">
+              <select class="select" aria-label="Billing period"><option>July 2026</option><option>June 2026</option><option>May 2026</option></select>
+              <select class="select" aria-label="Status filter"><option>All statuses</option><option>Paid</option><option>Due</option><option>Overdue</option></select>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="table">
+              <thead>
+                <tr><th>Invoice</th><th>Practice</th><th>Plan</th><th>Base</th><th>Usage</th><th>Total</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="cell-strong">INV-20481</td>
+                  <td>Coastal Dermatology (demo)</td>
+                  <td>Enterprise Custom</td>
+                  <td>$989</td>
+                  <td>$412</td>
+                  <td class="cell-strong">$1,401</td>
+                  <td><span class="badge badge-success"><span class="dot"></span>Paid</span></td>
+                </tr>
+                <tr>
+                  <td class="cell-strong">INV-20482</td>
+                  <td>Summit Health Group (demo)</td>
+                  <td>Multi-location 12</td>
+                  <td>$2,148</td>
+                  <td>$1,830</td>
+                  <td class="cell-strong">$3,978</td>
+                  <td><span class="badge badge-success"><span class="dot"></span>Paid</span></td>
+                </tr>
+                <tr>
+                  <td class="cell-strong">INV-20463</td>
+                  <td>Harbor Medical Partners (demo)</td>
+                  <td>Pilot, 90 days</td>
+                  <td>$0</td>
+                  <td>$186</td>
+                  <td class="cell-strong">$186</td>
+                  <td><span class="badge badge-info"><span class="dot"></span>Due</span></td>
+                </tr>
+                <tr>
+                  <td class="cell-strong">INV-20455</td>
+                  <td>Lakeside Dermatology (demo)</td>
+                  <td>Legacy 2024 pricing</td>
+                  <td>$249</td>
+                  <td>$94</td>
+                  <td class="cell-strong">$343</td>
+                  <td><span class="badge badge-danger"><span class="dot"></span>Overdue 12 days</span></td>
+                </tr>
+                <tr>
+                  <td class="cell-strong">INV-20441</td>
+                  <td>Cedar Grove Clinic (demo)</td>
+                  <td>Front Office Bundle</td>
+                  <td>$649</td>
+                  <td>$58</td>
+                  <td class="cell-strong">$707</td>
+                  <td><span class="badge badge-success"><span class="dot"></span>Paid</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer">
+            <span class="text-sm text-muted">Every invoice line is base + metered usage above the plan's allowance. Usage detail is one click into the invoice.</span>
+            <button class="btn btn-secondary btn-sm">View all 1,240 invoices</button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<div class="modal-overlay" id="modal-new-plan" role="dialog" aria-modal="true" aria-labelledby="new-plan-title">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 class="h3" id="new-plan-title">New plan or bundle</h2>
+      <button class="btn btn-icon" data-modal-close aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+    </div>
+    <div class="modal-body stack" style="gap: var(--space-4);">
+      <div class="grid grid-2" style="gap: var(--space-4);">
+        <div class="field">
+          <label class="field-label" for="plan-name">Plan name</label>
+          <input class="input" id="plan-name" type="text" placeholder="e.g. Enterprise Custom">
+        </div>
+        <div class="field">
+          <label class="field-label" for="plan-type">Type</label>
+          <select class="select" id="plan-type">
+            <option>Custom plan, one practice</option>
+            <option>Bundle, available to all practices</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label" for="plan-practice">Practice</label>
+        <select class="select" id="plan-practice">
+          <option>Coastal Dermatology (demo)</option>
+          <option>Summit Health Group (demo)</option>
+          <option>Harbor Medical Partners (demo)</option>
+        </select>
+        <span class="field-hint">Only for custom plans. Bundles apply platform-wide.</span>
+      </div>
+      <div class="field">
+        <label class="field-label">Products included</label>
+        <div class="grid grid-2" style="gap: var(--space-2);">
+          <label class="checkbox-row"><input type="checkbox" checked> <span data-product-name="recall">Recall Health</span></label>
+          <label class="checkbox-row"><input type="checkbox" checked> <span data-product-name="receptionist">Medical Receptionist</span></label>
+          <label class="checkbox-row"><input type="checkbox"> <span data-product-name="chatbot">Chatbot</span></label>
+          <label class="checkbox-row"><input type="checkbox" checked> <span data-product-name="scheduler">Online Scheduler</span></label>
+          <label class="checkbox-row"><input type="checkbox" checked> <span data-product-name="intake">Patient Intake</span></label>
+          <label class="checkbox-row"><input type="checkbox"> <span data-product-name="paymydoc">Pay My Doc</span></label>
+        </div>
+      </div>
+      <div class="grid grid-2" style="gap: var(--space-4);">
+        <div class="field">
+          <label class="field-label" for="plan-base">Base price / practice / month</label>
+          <input class="input" id="plan-base" type="text" placeholder="Inherits price book if blank">
+        </div>
+        <div class="field">
+          <label class="field-label" for="plan-effective">Effective from</label>
+          <select class="select" id="plan-effective"><option>Next billing cycle (Aug 1)</option><option>Sep 1, 2026</option></select>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label">Usage overrides</label>
+        <div class="grid grid-2" style="gap: var(--space-4);">
+          <select class="select" aria-label="Meter to override"><option>Per completed intake</option><option>Per patient reactivated</option><option>Per additional minute</option><option>Per additional conversation</option><option>Per payment collected</option></select>
+          <input class="input" type="text" placeholder="Rate, e.g. $0.70">
+        </div>
+        <span class="field-hint">Anything left blank inherits the price book, so a custom plan only records what actually changed.</span>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" data-modal-close>Cancel</button>
+      <button class="btn btn-primary" data-modal-close>Create Plan</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/practice-engine.js"></script>
+<script>
+  document.querySelectorAll("[data-tab-target]").forEach(function (tab) {
+    tab.addEventListener("click", function () {
+      document.querySelectorAll(".tab-panel").forEach(function (p) { p.classList.remove("active"); });
+      var panel = document.getElementById(tab.getAttribute("data-tab-target"));
+      if (panel) panel.classList.add("active");
+    });
+  });
+</script>
+</body>
+</html>

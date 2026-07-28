@@ -3,10 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Practices | Practice Engine Admin</title>
+<title>Platform Settings | Practice Engine</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/practice-engine.css">
+<style>
+  .settings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); align-items: start; }
+  .settings-grid > * { min-width: 0; }
+  @media (max-width: 900px) { .settings-grid { grid-template-columns: 1fr; } }
+</style>
 </head>
 <body>
 
@@ -68,7 +73,7 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
       Product Dashboards
     </a>
-    <a class="nav-item active" href="pe-admin-practices.html">
+    <a class="nav-item" href="pe-admin-practices.html">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
       Practices
       <span class="badge badge-accent">1,240</span>
@@ -94,7 +99,7 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       Security and Audit
     </a>
-    <a class="nav-item" href="pe-admin-settings.html">
+    <a class="nav-item active" href="pe-admin-settings.html">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 10v6m11-11h-6M7 12H1"/></svg>
       Platform Settings
     </a>
@@ -103,149 +108,100 @@
   <main class="main">
     <div class="main-inner stack">
 
-      <div class="page-header" style="margin-bottom: 0;">
+      <div class="page-header">
         <div>
-          <h1 class="h1">Practices</h1>
-          <p class="text-secondary">Every customer practice on the platform.</p>
+          <h1 class="h1">Platform Settings</h1>
+          <p class="text-secondary">Global defaults for the whole platform. Practice-level overrides live inside each practice.</p>
         </div>
         <div class="row">
-          <button class="btn btn-secondary">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
-            Export CSV
-          </button>
-          <button class="btn btn-primary">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-            Add Practice
-          </button>
+          <button class="btn btn-ghost">Discard</button>
+          <button class="btn btn-primary">Save Changes</button>
         </div>
       </div>
 
-      <div class="card">
-        <div class="card-body filter-bar">
-          <div class="field">
-            <label class="field-label" for="pf-search">Search</label>
-            <div class="input-group">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-              <input class="input" id="pf-search" type="search" placeholder="Search by legal name, friendly name, or ID">
+      <div class="settings-grid">
+
+        <div class="card">
+          <div class="card-header"><h2 class="card-title">Organization</h2></div>
+          <div class="card-body stack" style="gap: var(--space-4);">
+            <div class="field"><label class="field-label" for="org-name">Platform name</label><input class="input" id="org-name" type="text" value="Practice Engine"></div>
+            <div class="field"><label class="field-label" for="org-support">Support email</label><input class="input" id="org-support" type="email" value="support@practiceengine.example"></div>
+            <div class="grid grid-2" style="gap: var(--space-4);">
+              <div class="field"><label class="field-label" for="org-tz">Default timezone</label><select class="select" id="org-tz"><option>Eastern (ET)</option><option>Central (CT)</option><option>Mountain (MT)</option><option>Pacific (PT)</option></select></div>
+              <div class="field"><label class="field-label" for="org-region">Data region</label><select class="select" id="org-region"><option>United States</option></select></div>
             </div>
-          </div>
-          <div class="field">
-            <label class="field-label" for="pf-plan">Plan</label>
-            <select class="select" id="pf-plan">
-              <option>Show All</option>
-              <option>Enterprise</option>
-              <option>Growth</option>
-              <option>Starter</option>
-            </select>
-          </div>
-          <div class="field">
-            <label class="field-label" for="pf-status">Product Activation Status</label>
-            <select class="select" id="pf-status">
-              <option>All statuses</option>
-              <option>Activated</option>
-              <option>Under review</option>
-              <option>Trial</option>
-              <option>Suspended</option>
-            </select>
-          </div>
-          <div class="field">
-            <label class="field-label" for="pf-manager">Group Manager</label>
-            <select class="select" id="pf-manager">
-              <option>Select Group Manager</option>
-              <option>Kai Stone (demo)</option>
-              <option>Mel Harper (demo)</option>
-              <option>Sam Rivers (demo)</option>
-            </select>
+            <div class="field"><label class="field-label" for="org-fy">Fiscal year starts</label><select class="select" id="org-fy"><option>January</option><option>July</option><option>October</option></select></div>
           </div>
         </div>
-      </div>
 
-      <div class="card">
-        <div class="table-wrap">
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Friendly Name</th>
-                <th scope="col">Legal Name</th>
-                <th scope="col">Manager</th>
-                <th scope="col">Group Manager</th>
-                <th scope="col">Products</th>
-                <th scope="col">Activation Status</th>
-                <th scope="col">Order Form</th>
-                <th scope="col"><span class="visually-hidden">Actions</span></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr data-href="pe-admin-practice-detail.html">
-                <td><div class="avatar-row"><span class="avatar avatar-sm">CD</span><a class="cell-strong" href="pe-admin-practice-detail.html">Coastal Dermatology (demo)</a></div></td>
-                <td class="cell-muted">Sample Dermatology Group of Sample City LLC</td>
-                <td>Dana Admin (demo)</td>
-                <td>Kai Stone (demo)</td>
-                <td>6</td>
-                <td><span class="badge badge-success"><span class="dot"></span>Activated</span></td>
-                <td><a href="#">Signed</a></td>
-                <td><a class="btn btn-ghost btn-sm" href="pe-admin-practice-detail.html">Manage</a></td>
-              </tr>
-              <tr data-href="pe-admin-practice-detail.html">
-                <td><div class="avatar-row"><span class="avatar avatar-sm">HV</span><a class="cell-strong" href="pe-admin-practice-detail.html">Harbor View Family Medicine (demo)</a></div></td>
-                <td class="cell-muted">Harbor View Physicians PA</td>
-                <td>Kerry Newman (demo)</td>
-                <td>Kai Stone (demo)</td>
-                <td>4</td>
-                <td><span class="badge badge-success"><span class="dot"></span>Activated</span></td>
-                <td><a href="#">Signed</a></td>
-                <td><a class="btn btn-ghost btn-sm" href="pe-admin-practice-detail.html">Manage</a></td>
-              </tr>
-              <tr data-href="pe-admin-practice-detail.html">
-                <td><div class="avatar-row"><span class="avatar avatar-sm">LP</span><a class="cell-strong" href="pe-admin-practice-detail.html">Lakeside Pediatrics (demo)</a></div></td>
-                <td class="cell-muted">Lakeside Children's Health LLC</td>
-                <td>Kris Fanning (demo)</td>
-                <td>Mel Harper (demo)</td>
-                <td>3</td>
-                <td><span class="badge badge-success"><span class="dot"></span>Activated</span></td>
-                <td><a href="#">Signed</a></td>
-                <td><a class="btn btn-ghost btn-sm" href="pe-admin-practice-detail.html">Manage</a></td>
-              </tr>
-              <tr data-href="pe-admin-practice-detail.html">
-                <td><div class="avatar-row"><span class="avatar avatar-sm">AS</span><a class="cell-strong" href="pe-admin-practice-detail.html">Advanced Skin Care Center (demo)</a></div></td>
-                <td class="cell-muted">Advanced Skin Care of Sample County Inc</td>
-                <td>Cora Grimsley (demo)</td>
-                <td>Kai Stone (demo)</td>
-                <td>0</td>
-                <td><span class="badge badge-warning"><span class="dot"></span>Under review</span></td>
-                <td><a href="#">Signed</a></td>
-                <td><a class="btn btn-ghost btn-sm" href="pe-admin-practice-detail.html">Manage</a></td>
-              </tr>
-              <tr data-href="pe-admin-practice-detail.html">
-                <td><div class="avatar-row"><span class="avatar avatar-sm">SV</span><a class="cell-strong" href="pe-admin-practice-detail.html">Summit Vision Care (demo)</a></div></td>
-                <td class="cell-muted">Summit Vision Associates PLLC</td>
-                <td>Heather Bodie (demo)</td>
-                <td>Mel Harper (demo)</td>
-                <td>1</td>
-                <td><span class="badge badge-info"><span class="dot"></span>Trial</span></td>
-                <td><a href="#">Pending</a></td>
-                <td><a class="btn btn-ghost btn-sm" href="pe-admin-practice-detail.html">Manage</a></td>
-              </tr>
-              <tr data-href="pe-admin-practice-detail.html">
-                <td><div class="avatar-row"><span class="avatar avatar-sm">WD</span><a class="cell-strong" href="pe-admin-practice-detail.html">Westlake Dermatology Associates (demo)</a></div></td>
-                <td class="cell-muted">Dermatology of Westlake Village LLP</td>
-                <td>Nat Dierksen (demo)</td>
-                <td>Mel Harper (demo)</td>
-                <td>5</td>
-                <td><span class="badge badge-success"><span class="dot"></span>Activated</span></td>
-                <td><a href="#">Signed</a></td>
-                <td><a class="btn btn-ghost btn-sm" href="pe-admin-practice-detail.html">Manage</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="card-footer" style="justify-content: space-between;">
-          <span class="text-sm text-muted">Showing 6 of 1,240 practices</span>
-          <div class="row">
-            <button class="btn btn-secondary btn-sm">Previous</button>
-            <button class="btn btn-secondary btn-sm">Next</button>
+        <div class="card">
+          <div class="card-header"><h2 class="card-title">Security Policy</h2></div>
+          <div class="card-body stack" style="gap: var(--space-4);">
+            <label class="toggle"><input type="checkbox" checked><span class="toggle-track" aria-hidden="true"></span><span class="text-sm">Require SSO for platform admin users</span></label>
+            <label class="toggle"><input type="checkbox" checked><span class="toggle-track" aria-hidden="true"></span><span class="text-sm">Enforce two-factor authentication for all users</span></label>
+            <div class="grid grid-2" style="gap: var(--space-4);">
+              <div class="field"><label class="field-label" for="sec-session">Session timeout</label><select class="select" id="sec-session"><option>30 minutes</option><option>15 minutes</option><option>60 minutes</option></select></div>
+              <div class="field"><label class="field-label" for="sec-pw">Password rotation</label><select class="select" id="sec-pw"><option>Every 90 days</option><option>Every 180 days</option><option>Never</option></select></div>
+            </div>
+            <label class="toggle"><input type="checkbox"><span class="toggle-track" aria-hidden="true"></span><span class="text-sm">Restrict PE Admin to the office IP allowlist</span></label>
           </div>
         </div>
+
+        <div class="card">
+          <div class="card-header"><h2 class="card-title">New Practice Defaults</h2></div>
+          <div class="card-body stack" style="gap: var(--space-4);">
+            <div class="grid grid-2" style="gap: var(--space-4);">
+              <div class="field"><label class="field-label" for="def-plan">Default plan</label><select class="select" id="def-plan"><option>Full Suite</option><option>Front Office Bundle</option><option>Revenue Bundle</option><option>Price book, per product</option></select></div>
+              <div class="field"><label class="field-label" for="def-trial">Trial length</label><select class="select" id="def-trial"><option>30 days</option><option>60 days</option><option>90 days</option></select></div>
+            </div>
+            <div class="field"><label class="field-label" for="def-quiet">Default quiet hours for outreach</label><select class="select" id="def-quiet"><option>8:00 PM to 8:00 AM</option><option>9:00 PM to 9:00 AM</option></select></div>
+            <label class="toggle"><input type="checkbox" checked><span class="toggle-track" aria-hidden="true"></span><span class="text-sm">Install the standard template library on activation</span></label>
+            <label class="toggle"><input type="checkbox" checked><span class="toggle-track" aria-hidden="true"></span><span class="text-sm">Require a signed BAA before products activate</span></label>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><h2 class="card-title">Communications</h2></div>
+          <div class="card-body stack" style="gap: var(--space-4);">
+            <div class="grid grid-2" style="gap: var(--space-4);">
+              <div class="field"><label class="field-label" for="com-domain">Sender domain</label><input class="input" id="com-domain" type="text" value="msg.practiceengine.example"></div>
+              <div class="field"><label class="field-label" for="com-sms">SMS sender ID</label><input class="input" id="com-sms" type="text" value="PRACTENG"></div>
+            </div>
+            <div class="field"><label class="field-label" for="com-esc">Escalation email</label><input class="input" id="com-esc" type="email" value="oncall@practiceengine.example"></div>
+            <div class="field"><label class="field-label" for="com-status">Public status page</label><input class="input" id="com-status" type="url" value="https://status.practiceengine.example"></div>
+            <label class="toggle"><input type="checkbox" checked><span class="toggle-track" aria-hidden="true"></span><span class="text-sm">Send the monthly platform report to group managers</span></label>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><h2 class="card-title">Data and Compliance</h2></div>
+          <div class="card-body stack" style="gap: var(--space-4);">
+            <div class="grid grid-2" style="gap: var(--space-4);">
+              <div class="field"><label class="field-label" for="dc-audit">Audit log retention</label><select class="select" id="dc-audit"><option>7 years</option><option>10 years</option></select></div>
+              <div class="field"><label class="field-label" for="dc-patient">Patient data retention</label><select class="select" id="dc-patient"><option>Per practice contract</option><option>Platform default, 7 years</option></select></div>
+            </div>
+            <label class="toggle"><input type="checkbox" checked><span class="toggle-track" aria-hidden="true"></span><span class="text-sm">Platform analytics use de-identified data only</span></label>
+            <label class="toggle"><input type="checkbox" checked><span class="toggle-track" aria-hidden="true"></span><span class="text-sm">Block patient information in support tickets</span></label>
+            <p class="text-xs text-muted">Data export and deletion requests are processed within 30 days and logged in Security and Audit.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><h2 class="card-title">API and Developers</h2></div>
+          <div class="card-body stack" style="gap: var(--space-4);">
+            <div class="row-between text-sm">
+              <div><div class="cell-strong">Production key</div><div class="text-xs text-muted">pe_live_&#8226;&#8226;&#8226;&#8226;4821 &middot; created Jan 2026</div></div>
+              <button class="btn btn-secondary btn-sm">Rotate</button>
+            </div>
+            <div class="row-between text-sm" style="border-top: 1px solid var(--border-color); padding-top: var(--space-3);">
+              <div><div class="cell-strong">Sandbox key</div><div class="text-xs text-muted">pe_test_&#8226;&#8226;&#8226;&#8226;9034 &middot; created Mar 2026</div></div>
+              <button class="btn btn-secondary btn-sm">Rotate</button>
+            </div>
+            <div class="field"><label class="field-label" for="api-webhook">Webhook endpoint</label><input class="input" id="api-webhook" type="url" value="https://hooks.practiceengine.example/events"></div>
+            <label class="toggle"><input type="checkbox" checked><span class="toggle-track" aria-hidden="true"></span><span class="text-sm">New integrations start in sandbox mode</span></label>
+          </div>
+        </div>
+
       </div>
 
     </div>

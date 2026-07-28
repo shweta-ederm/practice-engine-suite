@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" data-product="admin">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Integrations | Practice Engine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/practice-engine.css">
+<style>
+  .int-card { display: flex; flex-direction: column; gap: var(--space-3); padding: var(--space-5); }
+  .int-icon {
+    width: 40px; height: 40px; border-radius: var(--radius-md);
+    background: var(--surface-sunken); color: var(--text-secondary);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .int-icon svg { width: 19px; height: 19px; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="topbar-brand" href="index.html">
+    <span class="pe-mark" style="--mark-size: 32px;" aria-hidden="true">
+      <span class="pe-mark-text">PE</span>
+      <span class="pe-mark-rule"></span>
+    </span>
+    <span class="wm-inline" aria-hidden="true">
+      <span class="wm-words"><span class="g">PRACTICE</span><span class="k">ENGINE</span></span>
+      <span class="wm-rule"></span>
+    </span>
+  </a>
+  <div class="topbar-divider" aria-hidden="true"></div>
+  <span class="topbar-product">Admin</span>
+  <div class="topbar-spacer"></div>
+  <div class="input-group topbar-search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    <input class="input" type="search" placeholder="Search customers, users, invoices...">
+  </div>
+  <div class="topbar-actions">
+    <button class="btn btn-icon" aria-label="Notifications">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+    </button>
+    <div class="app-switcher">
+      <button class="btn btn-icon" data-switcher-toggle aria-label="Switch application" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="5" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="12" cy="19" r="2"/><circle cx="19" cy="19" r="2"/></svg>
+      </button>
+      <nav class="app-switcher-menu" aria-label="Applications">
+        <a class="app-switcher-item" href="index.html"><span class="app-tile app-tile-suite"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>Suite Home</a>
+        <a class="app-switcher-item" href="recall-health.html"><span class="app-tile app-tile-recall"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></span><span data-product-name="recall">Recall Health</span></a>
+        <a class="app-switcher-item" href="ai-receptionist.html"><span class="app-tile app-tile-receptionist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span data-product-name="receptionist">Medical Receptionist</span></a>
+        <a class="app-switcher-item" href="ai-chatbot.html"><span class="app-tile app-tile-chatbot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span><span data-product-name="chatbot">Chatbot</span></a>
+        <a class="app-switcher-item" href="appointment-scheduler.html"><span class="app-tile app-tile-scheduler"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg></span><span data-product-name="scheduler">Online Scheduler</span></a>
+        <a class="app-switcher-item" href="patient-intake.html"><span class="app-tile app-tile-intake"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg></span><span data-product-name="intake">Patient Intake</span></a>
+        <a class="app-switcher-item" href="pay-my-doc.html"><span class="app-tile app-tile-paymydoc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span><span data-product-name="paymydoc">Pay My Doc</span></a>
+        <a class="app-switcher-item" href="pe-admin.html"><span class="app-tile app-tile-admin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7"/><path d="M4 10V3"/><path d="M12 21v-9"/><path d="M12 8V3"/><path d="M20 21v-5"/><path d="M20 12V3"/><path d="M1 14h6"/><path d="M9 8h6"/><path d="M17 16h6"/></svg></span><span data-product-name="admin" data-name-short>PE Admin</span></a>
+        <a class="app-switcher-item" href="design-system.html"><span class="app-tile app-tile-design"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg></span>Design System</a>
+      </nav>
+    </div>
+    <div class="avatar-row">
+      <div style="text-align: right;">
+        <div class="text-sm" style="font-weight: var(--weight-semibold); line-height: 1.2;">Shweta Singh</div>
+        <div class="text-xs text-muted">Global Admin</div>
+      </div>
+      <span class="avatar" title="Shweta Singh">SS</span>
+    </div>
+  </div>
+</header>
+
+<div class="app-shell">
+  <nav class="sidebar" aria-label="Admin navigation">
+    <a class="nav-item" href="pe-admin.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+      Overview
+    </a>
+    <a class="nav-item" href="pe-admin-products.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      Product Dashboards
+    </a>
+    <a class="nav-item" href="pe-admin-practices.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
+      Practices
+      <span class="badge badge-accent">1,240</span>
+    </a>
+    <a class="nav-item" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Users and Roles
+    </a>
+    <a class="nav-item" href="pe-admin-billing.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+      Billing and Plans
+    </a>
+    <a class="nav-item active" href="pe-admin-integrations.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      Integrations
+    </a>
+    <span class="sidebar-section">Operations</span>
+    <a class="nav-item" href="pe-admin-health.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      System Health
+    </a>
+    <a class="nav-item" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Security and Audit
+    </a>
+    <a class="nav-item" href="pe-admin-settings.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 10v6m11-11h-6M7 12H1"/></svg>
+      Platform Settings
+    </a>
+  </nav>
+
+  <main class="main">
+    <div class="main-inner stack">
+
+      <div class="page-header">
+        <div>
+          <h1 class="h1">Integrations</h1>
+          <p class="text-secondary">PMS bridges, messaging carriers, and payment rails behind every practice.</p>
+        </div>
+        <div class="row">
+          <button class="btn btn-secondary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+            Sync Logs
+          </button>
+          <button class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+            Add Integration
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-4">
+        <div class="card stat-card stat-edge" style="--edge: var(--chart-1);">
+          <span class="stat-label">Practices connected to a PMS</span>
+          <span class="stat-value">1,204</span>
+          <span class="stat-delta up">&#9650; 97% of 1,240</span>
+        </div>
+        <div class="card stat-card stat-edge" style="--edge: var(--chart-2);">
+          <span class="stat-label">PMS syncs today</span>
+          <span class="stat-value">84,300</span>
+          <span class="stat-delta up">&#9650; 99.6% succeeded</span>
+        </div>
+        <div class="card stat-card stat-edge" style="--edge: var(--chart-3);">
+          <span class="stat-label">Messages delivered (July)</span>
+          <span class="stat-value">412K</span>
+          <span class="stat-delta up">&#9650; 99.9% delivery rate</span>
+        </div>
+        <div class="card stat-card stat-edge" style="--edge: var(--chart-4);">
+          <span class="stat-label">Failing connections</span>
+          <span class="stat-value">9</span>
+          <span class="stat-delta down">&#9660; needs attention below</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">PMS and EHR bridges</h2>
+          <span class="text-sm text-muted">Every product reads and writes through these. One bridge per practice.</span>
+        </div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr><th>System</th><th>Practices</th><th>Direction</th><th>Sync success (30 days)</th><th>Last incident</th><th>Status</th><th></th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="cell-strong">ModMed EMA</td>
+                <td>486</td>
+                <td>Two-way</td>
+                <td>99.8%</td>
+                <td class="text-muted">None</td>
+                <td><span class="badge badge-success"><span class="dot"></span>Active</span></td>
+                <td><button class="btn btn-secondary btn-sm">Manage</button></td>
+              </tr>
+              <tr>
+                <td class="cell-strong">Nextech</td>
+                <td>312</td>
+                <td>Two-way</td>
+                <td>99.4%</td>
+                <td>Jun 2026</td>
+                <td><span class="badge badge-success"><span class="dot"></span>Active</span></td>
+                <td><button class="btn btn-secondary btn-sm">Manage</button></td>
+              </tr>
+              <tr>
+                <td class="cell-strong">athenahealth</td>
+                <td>231</td>
+                <td>Two-way</td>
+                <td>99.7%</td>
+                <td class="text-muted">None</td>
+                <td><span class="badge badge-success"><span class="dot"></span>Active</span></td>
+                <td><button class="btn btn-secondary btn-sm">Manage</button></td>
+              </tr>
+              <tr>
+                <td class="cell-strong">eClinicalWorks</td>
+                <td>129</td>
+                <td>Read + write-back</td>
+                <td>98.9%</td>
+                <td>Jul 2026</td>
+                <td><span class="badge badge-warning"><span class="dot"></span>Degraded</span></td>
+                <td><button class="btn btn-secondary btn-sm">Manage</button></td>
+              </tr>
+              <tr>
+                <td class="cell-strong">Legacy CSV import</td>
+                <td>46</td>
+                <td>Nightly, one-way</td>
+                <td>97.2%</td>
+                <td class="text-muted">n/a</td>
+                <td><span class="badge badge-neutral"><span class="dot"></span>Phasing out</span></td>
+                <td><button class="btn btn-secondary btn-sm">Manage</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card int-card">
+          <span class="int-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></span>
+          <div>
+            <div class="h4">Twilio SMS</div>
+            <div class="text-sm text-secondary">SMS carrier for recalls, reminders, and text-to-pay. 412K messages in July.</div>
+          </div>
+          <div class="row-between" style="margin-top: auto;">
+            <span class="badge badge-success"><span class="dot"></span>Operational</span>
+            <button class="btn btn-secondary btn-sm">Configure</button>
+          </div>
+        </div>
+        <div class="card int-card">
+          <span class="int-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <div>
+            <div class="h4">Twilio Voice</div>
+            <div class="text-sm text-secondary">Voice platform behind <span data-product-name="receptionist">Medical Receptionist</span> and outbound recall calls.</div>
+          </div>
+          <div class="row-between" style="margin-top: auto;">
+            <span class="badge badge-success"><span class="dot"></span>Operational</span>
+            <button class="btn btn-secondary btn-sm">Configure</button>
+          </div>
+        </div>
+        <div class="card int-card">
+          <span class="int-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+          <div>
+            <div class="h4">SendGrid</div>
+            <div class="text-sm text-secondary">Email delivery for recalls, receipts, intake links, and platform reports.</div>
+          </div>
+          <div class="row-between" style="margin-top: auto;">
+            <span class="badge badge-success"><span class="dot"></span>Operational</span>
+            <button class="btn btn-secondary btn-sm">Configure</button>
+          </div>
+        </div>
+        <div class="card int-card">
+          <span class="int-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>
+          <div>
+            <div class="h4">Stripe</div>
+            <div class="text-sm text-secondary">Payment processor settling every <span data-product-name="paymydoc">Pay My Doc</span> transaction.</div>
+          </div>
+          <div class="row-between" style="margin-top: auto;">
+            <span class="badge badge-success"><span class="dot"></span>Operational</span>
+            <button class="btn btn-secondary btn-sm">Configure</button>
+          </div>
+        </div>
+        <div class="card int-card">
+          <span class="int-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div>
+            <div class="h4">Maps and directions</div>
+            <div class="text-sm text-secondary">Apple Maps and Google Maps links on every reminder and confirmation.</div>
+          </div>
+          <div class="row-between" style="margin-top: auto;">
+            <span class="badge badge-success"><span class="dot"></span>Connected</span>
+            <button class="btn btn-secondary btn-sm">Configure</button>
+          </div>
+        </div>
+        <div class="card int-card">
+          <span class="int-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg></span>
+          <div>
+            <div class="h4">Calendar feeds</div>
+            <div class="text-sm text-secondary">Google and Apple calendar invites for booked and rescheduled visits.</div>
+          </div>
+          <div class="row-between" style="margin-top: auto;">
+            <span class="badge badge-success"><span class="dot"></span>Connected</span>
+            <button class="btn btn-secondary btn-sm">Configure</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Needs attention</h2>
+          <span class="badge badge-danger">9 connections</span>
+        </div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr><th>Practice</th><th>System</th><th>Issue</th><th>Since</th><th></th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="cell-strong">Lakeside Dermatology (demo)</td>
+                <td>eClinicalWorks</td>
+                <td>API token expired</td>
+                <td>2 days</td>
+                <td><button class="btn btn-secondary btn-sm">Reauthorize</button></td>
+              </tr>
+              <tr>
+                <td class="cell-strong">Cedar Grove Clinic (demo)</td>
+                <td>ModMed EMA</td>
+                <td>PMS version 4.2 deprecated, upgrade required</td>
+                <td>5 days</td>
+                <td><button class="btn btn-secondary btn-sm">Schedule upgrade</button></td>
+              </tr>
+              <tr>
+                <td class="cell-strong">Harbor Medical Partners (demo)</td>
+                <td>Nextech</td>
+                <td>Rate limited overnight, 214 syncs queued</td>
+                <td>1 day</td>
+                <td><button class="btn btn-secondary btn-sm">Retry backlog</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer">
+          <span class="text-sm text-muted">6 more connections are retrying automatically and clear without action in most cases.</span>
+          <button class="btn btn-secondary btn-sm">View all</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="js/practice-engine.js"></script>
+</body>
+</html>

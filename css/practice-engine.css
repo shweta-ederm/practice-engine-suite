@@ -1219,6 +1219,17 @@ button { font-family: inherit; }
 .bar.c4 { background: var(--chart-4); }
 .bar.c1:hover, .bar.c2:hover, .bar.c3:hover, .bar.c4:hover { filter: brightness(0.92); }
 
+/* Grouped bars: each .bar-pair holds two series bars for one category */
+.bar-chart .bar-pair {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 100%;
+  min-width: 0;
+}
+.bar-chart .bar-pair .bar { flex: 1; }
+
 /* Stacked mix bar: proportional segments, widths set inline */
 .mix-bar {
   display: flex;
